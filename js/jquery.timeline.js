@@ -12,24 +12,17 @@
  */
 
 (function ($) {
-
 	// EVENTS.timeline
-
 	// init.timeline          : triggered when timeline is initialised
 	// scrollStart.timeline   : triggered when item move animation starts
 	// scrollEnd.timeline     : triggered when item move animation ends
 	// itemOpen.timeline      : triggered on click to open item
 	// itemClose.timeline     : triggered on click to close item
-
 	// ---------------------------------------------------------
-
 	// On KeyPress (left)     : trigger $.timeline('left')
 	// On KeyPress (right)    : trigger $.timeline('right')
-
 	// ---------------------------------------------------------
-
 	// $.timeline(METHODS)
-
 	// $.timeline('init')     : initialises timeline
 	// $.timeline('destroy')  : clears timeline data
 	// $.timeline('left')     : moves one left by one element
@@ -37,16 +30,13 @@
 	// $.timeline('open', id) : opens element with 'data-id' = id
 	// $.timeline('close', id): closes element with 'data-id' = id
 	// $.timeline('goTo', id) : goes to element width 'data-id' = id
-
 	var isMobile = false; //initiate as false
 // device detection
 	if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
 			|| /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0, 4)))
 		isMobile = true;
-
 	var t_methods = {
 		init: function (options) {
-
 			// Default settings
 			var settings = $.extend({
 				'itemClass': '.item', // class used for timeline items
@@ -139,7 +129,6 @@
 				$(this).css({width: 0, padding: 0, margin: 0, float: 'left', display: 'none', position: 'relative', overflow: 'hidden'});
 			});
 
-
 			// Get new queries
 			var $iholder = $this.find('.timeline_items:first'),
 					$line = $this.find('.t_line_wrapper:first'),
@@ -149,10 +138,6 @@
 
 			// Set margin so start element would place in midle of the screen
 			$iholder.css({width: width, marginLeft: margin});
-
-
-
-
 			// If the plugin hasn't been initialized yet
 			if (!data) {
 				$this.data('timeline', {
@@ -178,9 +163,6 @@
 				if ($this.hasClass('timelineClean')) {
 				}
 			}
-
-
-
 			// Bind keyLeft and KeyRight functions
 			$(document).keydown(function (e) {
 				if (e.keyCode == 37) {
@@ -192,28 +174,20 @@
 					return false;
 				}
 			});
-
 			$(document).ready(function () {
-
 				$this.find(settings.itemClass).css({'-webkit-touch-callout': 'none', '-webkit-user-select': 'none', '-khtml-user-select': 'none', '-moz-user-select': 'none', '-ms-user-select': 'none', 'user-select': 'none'}).find('img').on('dragstart', function (event) {
 					if (!($(this).hasClass('timeline_rollover_bottom')))
 						event.preventDefault();
 				});
-
-
-
 				$('.image_rollover_bottom').on('dragstart', function (event) {
 					$(this).addClass("disableClick");
 					event.preventDefault();
 				});
-
 				$('.image_rollover_bottom').on('mousedown', function (event) {
 					if (!$(this).is("hover")) {
 						$(this).removeClass("disableClick");
 					}
-
 				});
-
 				$('.image_rollover_bottom').on('click', function (event) {
 					if ($(this).hasClass('disableClick')) {
 						event.preventDefault();
@@ -221,10 +195,6 @@
 					}
 					$(this).removeClass('disableClick')
 				});
-
-
-
-
 			});
 
 			// Respond to window resizing
@@ -232,31 +202,23 @@
 				//var id = $this.find('.active:first').attr('href').substr(1);
 				var data = $this.data('timeline'),
 						id = $items.eq(data.currentIndex).attr('data-id');
-
 				itemWidth = $items.first().width(),
 						itemOpenWidth = $itemsOpen.first().find('div:first').width();
-
 				data.margin += data.itemCount * (data.itemWidth - itemWidth);
 				data.itemWidth = itemWidth;
-
 				if (data.open)
 					data.margin += (data.itemOpenWidth - itemOpenWidth) / 2;
 				data.itemOpenWidth = itemOpenWidth;
-
-
 				if ($('body').width() < 767 && data.open && !data.marginResponse) {
 					data.margin -= (itemWidth + settings.itemMargin) / 2;
 					data.marginResponse = true;
-				}
-				else if ($('body').width() >= 767 && data.marginResponse && data.open) {
+				} else if ($('body').width() >= 767 && data.marginResponse && data.open) {
 					data.margin += (itemWidth + settings.itemMargin) / 2;
 					data.marginResponse = false;
 				}
-
 				data.noAnimation = true;
 				$this.timeline('goTo', id);
 			});
-
 			// Bind left on click
 			$this.find('.t_left').click(function () {
 				$this.timeline('left');
@@ -268,7 +230,6 @@
 			});
 
 			// SWIPE bind
-
 			if (settings.swipeOn) {
 				$items.find('*').each(function () {
 					$(this).css({'-webkit-touch-callout': 'none',
@@ -281,13 +242,9 @@
 				$this.bind('touchstart', function (e) {
 					$this.timeline('touchStart', e);
 				});
-
-
 				$this.find(settings.itemClass).mousedown(function (e) {
 					$this.timeline('mouseDown', e.pageX);
 				});
-
-
 				$(document).bind('touchend', function (e) {
 					data = $this.data('timeline');
 					$this.timeline('touchEnd', data.touchpos);
@@ -300,23 +257,17 @@
 					}
 				});
 			}
-
-
-
 			// Bind open on click
 			$this.find(settings.openTriggerClass).click(function () {
 				$this.timeline('goTo', $(this).attr('data-id'), $(this).attr('data-count'), true);
 			});
-
 			// Bind close on click
 			$this.find('.t_close').click(function () {
 				$this.timeline('close', $(this).attr('data-id'), $(this).attr('data-count'));
 			});
-
 			// Show when loaded
 			$this.css({height: 'auto'}).show();
 			$this.prev('.timelineLoader').hide();
-
 			// Reposition nodes due to their width
 			$this.find('.t_line_node').each(function () {
 				if ($(this).width() < 10)
@@ -449,23 +400,17 @@
 					width = data.itemOpenWidth,
 					easing = data.options.easin,
 					itemMargin = data.options.itemMargin;
-
-
 			$items.each(function () {
 				if ($(this).attr('data-id') == id) {
 					if (!data_count || data_count == $(this).attr('data-count')) {
 						var $newThis = $(this);
 						// Trigger itemOpen event
 						$this.trigger('itemOpen.Timeline');
-
 						// Open content and move margin
 						$(this).stop(true).show().animate({width: width, marginLeft: itemMargin / 2, marginRight: itemMargin / 2}, speed, easing);
-
 						if (typeof $(this).attr('data-access') != 'undefined' && $(this).attr('data-access') != '') {
 							var action = $(this).attr('data-access');
-
 							$.get(action, function (data) {
-
 								$('body').append('<div class="ajax_preloading_holder" style="display:none"></div>');
 								$('.ajax_preloading_holder').html(data);
 								if ($('.ajax_preloading_holder img').length > 0) {
@@ -505,12 +450,10 @@
 								$this.trigger(event);
 							});
 						}
-
 						if ($('body').width() < 767) {
 							data.margin -= (data.itemWidth + data.options.itemMargin) / 2;
 							data.marginResponse = true;
-						}
-						else {
+						} else {
 							data.marginResponse = false;
 						}
 						data.margin -= (width + data.options.itemMargin + data.itemWidth) / 2 - data.itemWidth / 2;
@@ -518,7 +461,6 @@
 						data.open = id;
 					}
 				}
-
 			});
 			return $this;
 		},
@@ -529,13 +471,10 @@
 					speed = data.options.scrollSpeed,
 					width = data.itemOpenWidth,
 					easing = data.options.easing;
-
-
 			$items.each(function () {
 				if ($(this).attr('data-id') == id && $(this).is(":visible")) {
 					// Trigger itemOpen event
 					$this.trigger('itemClose.Timeline');
-
 					// Close content and move margin
 					$(this).stop(true).animate({width: 0, margin: 0}, speed, easing, function () {
 						$(this).hide()
@@ -638,27 +577,19 @@
 				if (data.noAnimation) {
 					data.noAnimation = false;
 					$this.find('.t_line_wrapper').stop(true).css({marginLeft: data.lineMargin + '%'});
-				}
-				else {
+				} else {
 					$this.find('.t_line_wrapper').stop(true).animate({marginLeft: data.lineMargin + '%'}, speed, easing);
 				}
-
-
 				if (data.open) {
 					$this.timeline('close', data.open, id, data_count);
-				}
-				else if (openElement) {
+				} else if (openElement) {
 					$this.timeline('open', id, data_count);
 				}
-
 				// Trigger ScrollStart event
 				$this.trigger('scrollStart.Timeline');
-
 				// Scroll
-
 				data.margin += (data.itemWidth + data.options.itemMargin) * (data.currentIndex - count);
 				data.currentIndex = count;
-
 				var multiply = (parseInt(data.iholder.css('margin-left')) - data.margin) / data.itemWidth;
 				data.iholder.stop(true).animate({marginLeft: data.margin}, speed + (speed / 5) * (Math.abs(multiply) - 1), easing, function () {
 					// Trigger ScrollStop event
@@ -677,7 +608,6 @@
 				data.lineMargin += 100;
 				$this.find('.t_line_wrapper').stop(true).animate({marginLeft: data.lineMargin + '%'}, speed, easing);
 			}
-
 		},
 		// move line to the right
 		lineRight: function () {
@@ -752,14 +682,12 @@
 				var isActive = (index == data.currentIndex ? ' active' : '');
 				if (data.options.categories) {
 					var leftPos = (100 / monthsDays[m]) * d;
-				}
-				else {
+				} else {
 					var leftPos = (100 / (maxY - minY)) * (d - minY);
 				}
 				var nName = ((typeof nodeName != 'undefined') ? nodeName : d);
 				// Store node element
 				nodes[dataId] = '<a href="#' + dataId + '" class="t_line_node' + isActive + '" style="left: ' + leftPos + '%; position:absolute; text-align:center;">' + nName;
-
 				if (typeof dataDesc != 'undefined')
 					nodes[dataId] += '<span class="t_node_desc" style="white-space:nowrap; position:absolute; z-index: 1;"><span>' + dataDesc + '</span></span>';
 
@@ -782,8 +710,7 @@
 				}
 				html += '</div>\n' +
 						'</div>';
-			}
-			else {
+			} else {
 				var firstMonth = true;
 				var cnt = 0;
 				for (var yr in yearsArr) {
@@ -833,9 +760,6 @@
 					cnt++;
 				}
 			}
-
-
-
 			html += '\n' +
 					'				<div style="clear:both"></div>\n' +
 					'			</div>\n' +
@@ -884,7 +808,6 @@
 
 		}
 	};
-
 	// Initiate methods
 	$.fn.timeline = function (method) {
 
@@ -895,11 +818,5 @@
 		} else {
 			$.error('Method ' + method + ' does not exist on jQuery.timeline');
 		}
-
 	};
-
-
-
-
-
 })(jQuery);

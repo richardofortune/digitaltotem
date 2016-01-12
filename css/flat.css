@@ -596,7 +596,7 @@
 
 /* item Image Icon */
 .icon.basic {
-	width:410px;
+	width:100%;
 	height:230px;
 	background:#fa5e5b;
 	/*background:#2ecc71;*/
@@ -617,19 +617,38 @@
 	background:#e67e22;
 }*/
 
+.icon.mytextwithicon.life {
+	background:#2ecc71;
+}
+
+.icon.mytextwithicon.work {
+	background:#3498db;
+}
+
+.icon.mytextwithicon.passion {
+	background:#f1c40f;
+}
+
+.icon.mytextwithicon.pivotal {
+	background:#e67e22;
+}
+
 .icon.mytextwithicon {
     position:relative;
+	width:100%;
+	height:230px;
 }
-/*.icon.mytextwithicon:before {
+.icon.mytextwithicon1 {
+    position:relative;
+}
+.icon.mytextwithicon:before {
 	content: "\f1ae";
 	font-family: FontAwesome;
 	position: absolute;
 	font-size: 120;
 	opacity: .7;
-	margin-top: 100;
-	margin-left: 160;
 	color:#fff;
-}*/
+}
 
 .icon.mytextwithicon.basic:before {
 	content: "\f0a4";
@@ -638,8 +657,20 @@
 	position: absolute;
 	font-size: 120;
 	opacity: .7;
-	margin-top: 100;
-	margin-left: 160;
+}
+
+@media (min-width:400px) {
+	.icon.mytextwithicon:before {
+		margin-top: 25%;
+		margin-left: 39%;
+	}
+}
+
+@media (max-width:399px) {
+	.icon.mytextwithicon:before {
+		margin-top: 29%;
+		margin-left: -13%;
+	}
 }
 
 /*.t_line_m {
