@@ -18,6 +18,7 @@ function filterMe() {
 		if (!isMobile) {
 			$('.tl1').timeline('goTo', '01/01/1970');
 			$('.tl1').timeline('right');
+			$('.tl1').timeline('right');
 		}
 	});
 	if (isMobile) {
