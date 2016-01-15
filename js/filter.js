@@ -95,7 +95,7 @@
 				'margin-top': '10px'
 			});
 			$('.navbar-nav').css({
-				'margin-left': '26%'
+				'margin-left': '20%'
 			});
 		} else {
 			$('.timelineLoader').hide();
