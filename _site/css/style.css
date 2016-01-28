@@ -2,7 +2,7 @@
 /* CSS Document */
 
 @font-face {
-    font-family: 'BebasNeueRegular';
+    font-family: 'Open Sans';
     src: url('fonts/bebas/bebasneue-webfont.eot');
     src: url('fonts/bebas/bebasneue-webfont.eot?#iefix') format('embedded-opentype'),
          url('fonts/bebas/bebasneue-webfont.woff') format('woff'),
@@ -14,7 +14,7 @@
 }
 
 @font-face {
-    font-family: 'PT Sans';
+    font-family: 'Open Sans';
     src: url('fonts/ptsans/pts55f-webfont.eot');
     src: url('fonts/ptsans/pts55f-webfont.eot?#iefix') format('embedded-opentype'),
          url('fonts/ptsans/pts55f-webfont.woff') format('woff'),
@@ -27,7 +27,7 @@
 
 
 h1,h2,h3,h4,h5,h6 {
-	font-family: 'BebasNeueRegular', Sans;
+	font-family: 'Open Sans', Sans;
 	font-weight: normal;
 	color:#313131;
 	margin:10px 0;
@@ -182,4 +182,3 @@ td {
 	padding:10px;
     background: #f2f2f2;
 }
-
