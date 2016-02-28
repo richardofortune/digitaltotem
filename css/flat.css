@@ -528,6 +528,7 @@
 	height: 12px;
 	font-size:16px;
 	line-height: 12px;
+	font-weight: bold;
 	color: #dd5555;
 	cursor:pointer;
 	z-index:2;
@@ -660,7 +661,24 @@
     position:relative;
 }
 
+/* LIFE icon overrides */
+.icon.mytextwithicon.life.begin:before {
+	content: "\f004";
 
+}
+/* PIVOTAL icon overrides */
+.icon.mytextwithicon.pivotal.longshot:before {
+	content: "\f0e7";
+
+}
+
+.icon.mytextwithicon.pivotal.hero:before {
+	content: "\f19d";
+
+}
+
+
+/* WORK icon overrides */
 .icon.mytextwithicon.work.ecole:before {
 	content: "\f13d";
 
@@ -668,6 +686,11 @@
 
 .icon.mytextwithicon.work.msn:before {
 	content: "\f286";
+
+}
+
+.icon.mytextwithicon.work.msnuk:before {
+	content: "\f277";
 
 }
 

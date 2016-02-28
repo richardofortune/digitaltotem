@@ -1,14 +1,14 @@
 /*
- 
+
  Content Timeline 3.1
- 
+
  Date organised content slider.
- 
+
  Copyright (c) 2012 Br0 (shindiristudio.com)
- 
+
  Project site: http://codecanyon.net/
  Project demo: http://shindiristudio.com/timeline
- 
+
  */
 
 (function ($) {
@@ -52,8 +52,8 @@
 				// 'categories'             : ['1900', '1978', '1981', '1995', '2001', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015'], // categories shown above timeline (months are default)
 				// 'nuberOfSegments'        : [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6], // number of elements per category (number of days)
 				'yearsOn': true, // show years (can be any number you use in data-id (elementNumber/category/yearOrSomeOtherNumber))
-				'swipeOn': true, // turn on swipe moving function
-				'hideTimeline': isMobile, //hides the timeline line
+				'swipeOn': false, // turn on swipe moving function
+				'hideTimeline': true, //isMobile, //hides the timeline line
 				'hideControles': false, //hides the prev/next controles
 				'closeItemOnTransition': true, //if ture, closes the item after transition
 				'ajaxFailMessage': 'Ajax request has failed.'
