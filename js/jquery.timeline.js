@@ -45,14 +45,14 @@
 				'closeText': 'x', // text of close button in open item
 				'itemMargin': 5, // spacing between items
 				'scrollSpeed': 500, // animation speed
-				'startItem': '11/08/1977', // timeline start item id, 'last' or 'first' can be used insted
+				'startItem': '11/08/1978', // timeline start item id, 'last' or 'first' can be used insted
 				'easing': 'easeOutSine', // jquery.easing function for animations,
 				'categories': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], // categories shown above timeline (months are default)
 				'nuberOfSegments': [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], // number of elements per category (number of days)
 				// 'categories'             : ['1900', '1978', '1981', '1995', '2001', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015'], // categories shown above timeline (months are default)
 				// 'nuberOfSegments'        : [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6], // number of elements per category (number of days)
 				'yearsOn': true, // show years (can be any number you use in data-id (elementNumber/category/yearOrSomeOtherNumber))
-				'swipeOn': false, // turn on swipe moving function
+				'swipeOn': true, // turn on swipe moving function
 				'hideTimeline': isMobile, //hides the timeline line
 				'hideControles': false, //hides the prev/next controles
 				'closeItemOnTransition': true, //if ture, closes the item after transition
