@@ -1041,14 +1041,14 @@ a:hover, a:visited, a:focus, a:active{
     border-radius: 50%;
     border-width: 1px;
     border-style: solid;
-    width: 232px;
-    height: 232px;
+    width: 150px;
+    height: 150px;
     overflow: hidden;
     display: inline-block;
 }
 .home-header .foto img{
-    width: 232px;
-    height: 232px;
+    width: 150px;
+    height: 150px;
 }
 .home-header .title{
     text-transform: uppercase;
@@ -1134,21 +1134,7 @@ a:hover, a:visited, a:focus, a:active{
     margin: 125px 0 40px;
     position: relative;
 }
-.small-menu .arrow{
-    background: url("../img/arrow.png") left top no-repeat;
-    width: 300px;
-    height: 200px;
-    position: absolute;
-    top: -35px;
-    left: 95px;
-}
-.small-menu .open-menu{
-    font-family: "The Girl Next Door";
-    position: absolute;
-    font-size: 30px;
-    top: 40px;
-    left: 130px;;
-}
+
 .icons-menu {
     height: 100px;
     margin: 0 auto;

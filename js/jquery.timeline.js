@@ -53,7 +53,7 @@
 				// 'nuberOfSegments'        : [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6], // number of elements per category (number of days)
 				'yearsOn': true, // show years (can be any number you use in data-id (elementNumber/category/yearOrSomeOtherNumber))
 				'swipeOn': false, // turn on swipe moving function
-				'hideTimeline': true, //isMobile, //hides the timeline line
+				'hideTimeline': isMobile, //hides the timeline line
 				'hideControles': false, //hides the prev/next controles
 				'closeItemOnTransition': true, //if ture, closes the item after transition
 				'ajaxFailMessage': 'Ajax request has failed.'
