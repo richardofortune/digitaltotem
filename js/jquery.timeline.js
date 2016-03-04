@@ -52,7 +52,7 @@
 				// 'categories'             : ['1900', '1978', '1981', '1995', '2001', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015'], // categories shown above timeline (months are default)
 				// 'nuberOfSegments'        : [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6], // number of elements per category (number of days)
 				'yearsOn': true, // show years (can be any number you use in data-id (elementNumber/category/yearOrSomeOtherNumber))
-				'swipeOn': true, // turn on swipe moving function
+				'swipeOn': false, // turn on swipe moving function
 				'hideTimeline': isMobile, //hides the timeline line
 				'hideControles': false, //hides the prev/next controles
 				'closeItemOnTransition': true, //if ture, closes the item after transition
@@ -132,10 +132,9 @@
 			// Get new queries
 			var $iholder = $this.find('.timeline_items:first'),
 					$line = $this.find('.t_line_wrapper:first'),
-					margin = 300 / 2 - (itemWidth + settings.itemMargin) * (1 / 2 + startIndex),
+					margin = 300 / 2 - ((itemWidth + settings.itemMargin) * (1 / 2 + startIndex)),
 					width = (itemWidth + settings.itemMargin) * $items.length + (itemOpenWidth + settings.itemMargin) + 660,
 					data = $this.data('timeline');
-
 			// Set margin so start element would place in midle of the screen
 			$iholder.css({width: width, marginLeft: margin});
 			// If the plugin hasn't been initialized yet
@@ -545,8 +544,12 @@
 					count = -1,
 					found = false;
 
+			var j = 0;
 			// Find item index
 			$items.each(function (index) {
+				if ($('.item').eq(index).css('display') == 'block') {
+					j -= 400;
+				}
 				if (id == $(this).attr('data-id'))
 				{
 					if (!data_count || data_count == $(this).attr('data-count'))
@@ -591,7 +594,7 @@
 				data.margin += (data.itemWidth + data.options.itemMargin) * (data.currentIndex - count);
 				data.currentIndex = count;
 				var multiply = (parseInt(data.iholder.css('margin-left')) - data.margin) / data.itemWidth;
-				data.iholder.stop(true).animate({marginLeft: data.margin}, speed + (speed / 5) * (Math.abs(multiply) - 1), easing, function () {
+				data.iholder.stop(true).animate({marginLeft: j}, speed + (speed / 5) * (Math.abs(multiply) - 1), easing, function () {
 					// Trigger ScrollStop event
 					$this.trigger('scrollStop.Timeline');
 				});
