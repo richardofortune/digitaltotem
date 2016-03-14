@@ -669,8 +669,20 @@
 /* LIFE icon overrides */
 .icon.mytextwithicon.life.begin:before {
 	content: "\f004";
-
 }
+
+.icon.mytextwithicon.life.home:before {
+	content: "\f015";
+}
+
+.icon.mytextwithicon.life.moveon:before {
+	content: "\f050";
+}
+
+.icon.mytextwithicon.life.marriage:before {
+	content: "\f219";
+}
+
 /* PIVOTAL icon overrides */
 .icon.mytextwithicon.pivotal.longshot:before {
 	content: "\f0e7";
