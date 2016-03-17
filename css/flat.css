@@ -666,7 +666,7 @@
     position:relative;
 }
 
-/* LIFE icon overrides */
+/* LIFE icon overrides -------------------------------*/
 .icon.mytextwithicon.life.begin:before {
 	content: "\f004";
 }
@@ -683,19 +683,8 @@
 	content: "\f219";
 }
 
-/* PIVOTAL icon overrides */
-.icon.mytextwithicon.pivotal.longshot:before {
-	content: "\f0e7";
 
-}
-
-.icon.mytextwithicon.pivotal.hero:before {
-	content: "\f19d";
-
-}
-
-
-/* WORK icon overrides */
+/* WORK icon overrides  -------------------------------*/
 .icon.mytextwithicon.work.ecole:before {
 	content: "\f13d";
 
@@ -711,11 +700,66 @@
 
 }
 
-/*
-.icon.mytextwithicon1.work:before {
-  content: "\f286";
-  color:#fff;
-}*/
+.icon.mytextwithicon.work.xero:before {
+	content: "\f121";
+
+}
+
+.icon.mytextwithicon.work.olympic:before {
+	content: "\f091";
+
+}
+
+.icon.mytextwithicon.work.nextlevel:before {
+	content: "\f135";
+
+}
+
+.icon.mytextwithicon.work.social:before {
+	content: "\f0d0";
+
+}
+
+/* PIVOTAL icon overrides  -------------------------------*/
+.icon.mytextwithicon.pivotal.longshot:before {
+	content: "\f0e7";
+
+}
+
+.icon.mytextwithicon.pivotal.hero:before {
+	content: "\f19d";
+
+}
+
+.icon.mytextwithicon.pivotal.bucket:before {
+	content: "\f1fd";
+
+}
+
+/* PASSION icon overrides  -------------------------------*/
+.icon.mytextwithicon.passion.monz:before {
+	content: "";
+}
+
+.icon.mytextwithicon.passion.whak:before {
+	content: "";
+}
+
+.icon.mytextwithicon.passion.oxfam:before {
+	content: "";
+}
+.icon.mytextwithicon.passion.colab:before {
+	content: "\f0e7";
+}
+.icon.mytextwithicon.passion.makercrate:before {
+	content: "\f0e7";
+}
+.icon.mytextwithicon.passion.makertorium:before {
+	content: "\f0e7";
+}
+.icon.mytextwithicon.passion.1mill:before {
+	content: "\f0e7";
+}
 
 .item>img {
 	height: 230px;
