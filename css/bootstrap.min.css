@@ -3808,13 +3808,13 @@ fieldset[disabled] .btn-default:hover {
 .btn-primary:focus {
     color: #fff;
     background-color: #286090;
-    border-color: #122b40
+    border-color: #286090
 }
 
 .btn-primary:hover {
     color: #fff;
     background-color: #286090;
-    border-color: #204d74
+    border-color: #286090
 }
 
 .btn-primary.active,
@@ -3822,7 +3822,7 @@ fieldset[disabled] .btn-default:hover {
 .open>.dropdown-toggle.btn-primary {
     color: #fff;
     background-color: #286090;
-    border-color: #204d74
+    border-color: #286090
 }
 
 .btn-primary.active.focus,
