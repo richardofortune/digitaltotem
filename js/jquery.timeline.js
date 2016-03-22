@@ -43,9 +43,9 @@
                 'itemOpenClass': '.item_open', // class used for item details
                 'openTriggerClass': '.item', // class of read more element (default uses whole item to trigger open event)
                 'closeText': 'x', // text of close button in open item
-                'itemMargin': 5, // spacing between items
-                'scrollSpeed': 500, // animation speed
-                'startItem': '11/08/1978', // timeline start item id, 'last' or 'first' can be used insted
+                'itemMargin': 1, // spacing between items
+                'scrollSpeed': 300, // animation speed
+                'startItem': '02/02/1978', // timeline start item id, 'last' or 'first' can be used insted
                 'easing': 'easeOutSine', // jquery.easing function for animations,
                 'categories': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], // categories shown above timeline (months are default)
                 'nuberOfSegments': [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], // number of elements per category (number of days)
@@ -53,7 +53,7 @@
                 // 'nuberOfSegments'        : [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6], // number of elements per category (number of days)
                 'yearsOn': true, // show years (can be any number you use in data-id (elementNumber/category/yearOrSomeOtherNumber))
                 'swipeOn': false, // turn on swipe moving function
-                'hideTimeline': isMobile, //hides the timeline line
+                'hideTimeline': true,//isMobile, //hides the timeline line
                 'hideControles': false, //hides the prev/next controles
                 'closeItemOnTransition': true, //if ture, closes the item after transition
                 'ajaxFailMessage': 'Ajax request has failed.'

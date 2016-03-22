@@ -666,8 +666,12 @@
     position:relative;
 }
 
+.icon.mytextwithicon.basic.fin:before {
+	content: "\f000";
+}
+
 /* LIFE icon overrides -------------------------------*/
-.icon.mytextwithicon.life.begin:before {
+.icon.mytextwithicon.life.peace:before {
 	content: "\f004";
 }
 
@@ -679,9 +683,16 @@
 	content: "\f050";
 }
 
+.icon.mytextwithicon.life.bucket:before {
+	content: "\f145";
+
+}
+
 .icon.mytextwithicon.life.marriage:before {
 	content: "\f219";
 }
+
+
 
 .icon.mytextwithicon.life.break:before {
 	content: "\f00f";
