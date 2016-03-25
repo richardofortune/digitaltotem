@@ -1375,7 +1375,7 @@ body {
 }
 .ukie-icons {
     color: #ffffff;
-    border-color: #286090;
+    /*border-color: #286090;*/
     background-color: #00b6f9;
 }
 .ukie-icons:hover{
