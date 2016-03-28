@@ -42,9 +42,9 @@
                 'itemClass': '.item', // class used for timeline items
                 'itemOpenClass': '.item_open', // class used for item details
                 'openTriggerClass': '.item', // class of read more element (default uses whole item to trigger open event)
-                'closeText': 'x', // text of close button in open item
+                'closeText': '', // text of close button in open item
                 'itemMargin': 1, // spacing between items
-                'scrollSpeed': 300, // animation speed
+                'scrollSpeed': 500, // animation speed
                 'startItem': '02/02/1978', // timeline start item id, 'last' or 'first' can be used insted
                 'easing': 'easeOutSine', // jquery.easing function for animations,
                 'categories': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], // categories shown above timeline (months are default)
@@ -53,7 +53,7 @@
                 // 'nuberOfSegments'        : [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6], // number of elements per category (number of days)
                 'yearsOn': true, // show years (can be any number you use in data-id (elementNumber/category/yearOrSomeOtherNumber))
                 'swipeOn': false, // turn on swipe moving function
-                'hideTimeline': true,//isMobile, //hides the timeline line
+                'hideTimeline': false,//isMobile, //hides the timeline line
                 'hideControles': false, //hides the prev/next controles
                 'closeItemOnTransition': true, //if ture, closes the item after transition
                 'ajaxFailMessage': 'Ajax request has failed.'
@@ -128,7 +128,7 @@
             });
 
             $itemsOpen.each(function () {
-                $(this).prepend('<div class="t_close" data-count="' + $(this).attr('data-count') + '" data-id="' + $(this).attr('data-id') + '">' + settings.closeText + '</div>');
+                $(this).prepend('<div class="t_close" data-count="' + $(this).attr('data-count') + '" data-id="' + $(this).attr('data-id') + '">' + '</div>');
                 $(this).wrapInner('<div class="' + settings.itemOpenClass.substr(1) + '_cwrapper"  />').find('div:first').css({position: 'relative'});
                 $(this).css({width: 0, padding: 0, margin: 0, float: 'left', display: 'none', position: 'relative', overflow: 'hidden'});
             });
