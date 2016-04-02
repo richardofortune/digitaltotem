@@ -692,6 +692,10 @@
 	content: "\f219";
 }
 
+.icon.mytextwithicon.life.dad:before {
+	content: "\f119";
+}
+
 
 
 .icon.mytextwithicon.life.break:before {
