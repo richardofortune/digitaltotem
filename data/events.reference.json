@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-15T19:31:47.621Z",
+  "generatedAt": "2025-12-05T08:29:07.763183Z",
   "timeline": {
     "id": "richard-fortune",
     "title": "Getting to know Richard Fortune",
@@ -19,10 +19,7 @@
       "timelineId": "richard-fortune",
       "dateIso": "1978-02-02",
       "order": 0,
-      "body": "## How-To\n\n## Filtering the themes\n\n The story panels are divided into themes. You can filter them using the buttons on the main page.\n\n - [&#9679;] Life Events\n\n - [&#9679;] Work Achievements\n\n - [&#9679;] Pivotal Life Experiences\n\n - [&#9679;] Passion Projects\n\n## Navigation\n\n## Navigating via the Story Panels\n\n You can use the left() and right() keys on your\n keyboard to quickly navigate through the Story Panels.\n\n## Navigating using the Timeline\n\n Click on a node(red dot) in the timeline to skip to that Story Panel. Use the left and right \"arrows\" to advance\n the timeline. (This doesn't work as well as I'd like, and for this I have much [shame](http://distractify.com/animals/2014/06/15/30-pets-who-really-arent-feeling-the-cone-of-shame-1197735457) but I did want to maintain a sense of timing through the stories, so it stayed in, in it's less than perfect form.) \n\n## Navigating on a mobile device\n\n You can use your mobile device to browse and view the content. However this experience was built to be enjoyed on desktop and as a result the mobile version may be less than optimal. (In a perfect world this would work across all platforms. However perfect is the enemy of done, so maybe next time!) :)",
-      "media": {
-        "image": "images/flat/default/key_experience.jpg"
-      }
+      "body": "## How-To\n\n## Filtering the themes\n\n The story panels are divided into themes. You can filter them using the buttons on the main page.\n\n - [&#9679;] Life Events\n\n - [&#9679;] Work Achievements\n\n - [&#9679;] Pivotal Life Experiences\n\n - [&#9679;] Passion Projects\n\n## Navigation\n\n## Navigating via the Story Panels\n\n You can use the left() and right() keys on your\n keyboard to quickly navigate through the Story Panels.\n\n## Navigating using the Timeline\n\n Click on a node(red dot) in the timeline to skip to that Story Panel. Use the left and right \"arrows\" to advance\n the timeline. (This doesn't work as well as I'd like, and for this I have much [shame](http://distractify.com/animals/2014/06/15/30-pets-who-really-arent-feeling-the-cone-of-shame-1197735457) but I did want to maintain a sense of timing through the stories, so it stayed in, in it's less than perfect form.) \n\n## Navigating on a mobile device\n\n You can use your mobile device to browse and view the content. However this experience was built to be enjoyed on desktop and as a result the mobile version may be less than optimal. (In a perfect world this would work across all platforms. However perfect is the enemy of done, so maybe next time!) :)"
     },
     {
       "id": "11/08/1978",
@@ -49,23 +46,10 @@
       "dateIso": "1981-09-05",
       "order": 2,
       "body": "## Pioneering educators!\n\n In 1981, when it came to sending me to school my parents wanted me be to be in the ~4% of Irish people who could speak our native tongue fluently.\n As luck would have it a pioneering young woman named Br\u00ecd DeRoiste had decided to set up a Gaelic school in my home town. Taking a\n chance my parents enrolled me in this new venture. This decision set me on an educational path very different from many others in my town. Because of our success at the school, a subsequent pioneering educator was given the chance to setup a Gaelic highschool in our town. This translated into many great experiences such as meeting the president of Ireland (twice!) and the opportunity to leave school speaking 4 languages. I won't go so far as to say I loved school, I actually found aspects of it very difficult, but I on reflection I definitely love the experience I had.\n\n (If you\u2019re curious, I\u2019m the blond goofball on the far left)",
-      "media": {
-        "image": "images/flat/default/2.jpg"
-      },
-      "location": {
-        "name": "Ireland",
-        "lat": 52.4,
-        "lng": -7.1
-      },
-      "tags": [
-        "education",
-        "language",
-        "ireland",
-        "childhood"
-      ],
-      "people": [
-        "Br\u00edd DeRoiste"
-      ],
+      "media": { "image": "images/flat/default/2.jpg" },
+      "location": { "name": "Ireland", "lat": 52.4, "lng": -7.1 },
+      "tags": ["education", "language", "ireland", "childhood"],
+      "people": ["Bríd DeRoiste"],
       "valence": 0.7,
       "impact": 0.9
     },
@@ -81,21 +65,9 @@
       "dateIso": "1998-04-01",
       "order": 3,
       "body": "## Fish out of water\n\n In 1998, I spent a year studying in Brittany, France for my Dipl\u00f4me Universitaire de Technologie.\n As part of that qualification I needed to undertake work experience with a French company.\n Through some luck and a bit of grafting, I was fortunate enough to land a placement working\n for the French military in one of their research academies. This meant that I got to live and work\n on a naval base for 4 months.\n\n My key projects whilst there were to build a secure intranet portal for the school so that students could work remotely\n and to investigate 3d modelling tools for students to use in their modelling classes. Pretty much my dream job;\n working on the web and learning about 3d modelling! \n\n Fun fact: On the weekends I'd get to leave the base. On more than one occasion when returning to base on a Monday morning\n our naval shuttle was caught in a \"traffic jam\" behind an aircraft carrier or a submarine. This was a time before selfies,\n although I did try to get a photo with my film camera. I only have a wobbly photo to show for it. Not very James Bond of me. :)",
-      "media": {
-        "image": "images/flat/default/3.jpg"
-      },
-      "location": {
-        "name": "Brest, France",
-        "lat": 48.3904,
-        "lng": -4.4861
-      },
-      "tags": [
-        "education",
-        "travel",
-        "technology",
-        "france",
-        "career"
-      ]
+      "media": { "image": "images/flat/default/3.jpg" },
+      "location": { "name": "Brest, France", "lat": 48.3904, "lng": -4.4861 },
+      "tags": ["education", "travel", "technology", "france", "career"]
     },
     {
       "id": "04/12/2000",
@@ -109,21 +81,9 @@
       "dateIso": "2000-12-04",
       "order": 4,
       "body": "## 2001 - Microsoft\n\n In 2000 I landed my dream job working for Havas interactive(AKA Blizzard) testing video games such as Echo the Dolphin and Counterstrike.\n It was a fantastic experience, as much fun as you'd expect, but unfortunately the role quickly began to feel like it lacked direction (there are only so many ways to make a Dolphin backflip)\n and so I began looking for an environment where I could grow. \n\n Nowadays Microsoft might not have a name for being cutting edge. However, in 2001 MSN was doing really great things on the web and in Ireland the team were taking\n the MSN product and making it fit for consumption in 32 markets across the globe. I had found an opportunity to move from paddling in a comfortable\n stream to building strength in a roaring torrent, and as such I made the leap from the world of video games into the world of Microsoft Inc.\n\n In my time at MSN I worked on various web and mobile projects, I managed vendor teams in Asia and it was under my watch that we deployed the\n Scandinavian version of MSN News to our French market. Not a fun morning in the office. We had made the assumption our non-european colleagues\n could inherently recognise the difference between French and Swedish, but we quickly learned and soon after, I implemented language cheetsheets\n for our offsite teams.\n\n Whilst there I had the opportunity to setup the first automated mobile testing environment in our region and lead the technical side of our partnership between Vodafone DE and MSN.\n This partnership went on to win internal awards thanks to the test processes I put in place.\n\n My time as a Quality Analyst at MSN was a blast. I loved applying my view of quality beyond localisation to other areas of our work.\n For instance, I felt our test infrastructure was not as good as it could be; it was fragile and retrograde. I championed and led the setup of our\n virtualisation environment, which not only saved us the equivalent of a years salary, but also massively expedited our test cycles.\n One of those projects that seems delightfully obvious in retrospect!\n\n Microsoft took a great interest in developing its people. Thanks to this I was able to invest in my own growth, heavily using the internal library and access to personal development programmes during my time there.\n As a result, this really was a foundational time for me, resolving the belief that I could always grow a bit more! Ultimately it was this desire to grow that led me to my next adventure with MSN EMEA News Team.",
-      "media": {
-        "image": "images/flat/default/workw.jpg"
-      },
-      "location": {
-        "name": "Dublin, Ireland",
-        "lat": 53.3498,
-        "lng": -6.2603
-      },
-      "tags": [
-        "technology",
-        "career",
-        "testing",
-        "gaming",
-        "ireland"
-      ]
+      "media": { "image": "images/flat/default/workw.jpg" },
+      "location": { "name": "Dublin, Ireland", "lat": 53.3498, "lng": -6.2603 },
+      "tags": ["technology", "career", "testing", "gaming", "ireland"]
     },
     {
       "id": "01/09/2001",
@@ -137,20 +97,9 @@
       "dateIso": "2001-09-01",
       "order": 5,
       "body": "## Hiking in Venezuela\n\n In 2001 two friends and I decided to visit Venezuela. Overall, it was the trip of a lifetime with so many great experiences. One stand out memory for me was an experience I had whilst\n on a 5 day hike in the Canaima National Park.",
-      "media": {
-        "image": "images/flat/default/venezuela.jpg"
-      },
-      "location": {
-        "name": "Canaima National Park, Venezuela",
-        "lat": 6.2304,
-        "lng": -62.8644
-      },
-      "tags": [
-        "travel",
-        "adventure",
-        "nature",
-        "challenge"
-      ],
+      "media": { "image": "images/flat/default/venezuela.jpg" },
+      "location": { "name": "Canaima National Park, Venezuela", "lat": 6.2304, "lng": -62.8644 },
+      "tags": ["travel", "adventure", "nature", "challenge"],
       "valence": 0.8,
       "impact": 0.6
     },
@@ -166,18 +115,9 @@
       "dateIso": "2003-06-12",
       "order": 6,
       "body": "In 2006, I was just randomly browsing in a bookshop in Dublin. I don't recall why it caught my\n attention (the cover was brown and pretty dull), but I ended up stumbling across a book called Design for the Real World by Victor Papanek.\n As I flicked through the pages, something about the language resonated with me and so I bought it. It was the first ever book on\n Industrial design that I'd bought. Once I began reading it, it felt more like a book about\n humanity than anything else. There were no shiny designs here, just chapter after chapter of wonderfully human insights.\n\n So much of what was presented in that book has permeated my thinking that it's nearly impossible to guage how many paths it has taken me on since reading.\n As it turns out the book is a design classic, and even now in a world where sustainability is very much part of our vernacular, it contains potent messages that can help to inform us.\n\n I still get goosebumps when I think of the serendipity of the moment I found the book that would go on to give me the language to articulate some of my greatest passions.\n\n If I've peaked your curiosity you can read more about Victor Papanek here [here](http://www.nytimes.com/2011/05/16/arts/16iht-design16.html), [here](http://www.metropolismag.com/November-2012/Rereading-Design-for-the-Real-World/) and [here](http://www.jstor.org/stable/pdf/1316095.pdf?seq=1#page_scan_tab_contents).",
-      "media": {
-        "image": "images/flat/default/papanek.jpg"
-      },
-      "tags": [
-        "design",
-        "creativity",
-        "inspiration",
-        "education"
-      ],
-      "people": [
-        "Victor Papanek"
-      ]
+      "media": { "image": "images/flat/default/papanek.jpg" },
+      "tags": ["design", "creativity", "inspiration", "education"],
+      "people": ["Victor Papanek"]
     },
     {
       "id": "12/06/2006",
@@ -191,21 +131,9 @@
       "dateIso": "2006-06-12",
       "order": 7,
       "body": "While with MSN Ireland, I began working on a cross country initiative to performance test\n some tools that were being built in other regions. Through this I made contact with the UK based\n EMEA News team, who were working on some really neat projects. I seconded to the UK for a while\n and pretty much immediately felt that moving to a city like London would be a good move both\n personally and professionally. \n\n While with MSN UK, I worked on developing features for our news portals. It was there that I\n first came into contact with Agile methodologies. Many aspects of agile gelled immediately;\n I loved the efficiency gained by delivering the smallest functional piece to your stakeholder\n as soon as possible so that you could receive feedback and calibrate. I *loved* the candid\n feedback we gave each other, something that took trust, but once in place felt radically liberating.\n\n Aside from my business as usual work, I took on the role of accessibility champion. I loved the direct human need that\n was met through this work. Some of the flagship projects delivered during this time were: inclusion\n of onsite accessibility testing on our regular release cycles, (less frequent) offsite accessibility test cycles\n by visually impaired consultants and additional navigation aides baked into the portals we controlled.\n\n My time in London definitely taught me a lot. Professionally, it was definitely the right move and ultimately,\n personally, it was the right move, too. I learned whilst living in London that big cities are probably not my\n cup of tea, which prompted me to listen to my restless head and plan out the next phase of my life, Bucket list before 30!",
-      "media": {
-        "image": "images/flat/default/msnuk.jpg"
-      },
-      "location": {
-        "name": "London, England",
-        "lat": 51.5074,
-        "lng": -0.1278
-      },
-      "tags": [
-        "technology",
-        "career",
-        "london",
-        "accessibility",
-        "testing"
-      ]
+      "media": { "image": "images/flat/default/msnuk.jpg" },
+      "location": { "name": "London, England", "lat": 51.5074, "lng": -0.1278 },
+      "tags": ["technology", "career", "london", "accessibility", "testing"]
     },
     {
       "id": "14/05/2008",
@@ -219,21 +147,9 @@
       "dateIso": "2008-05-14",
       "order": 8,
       "body": "I spent most of my 20's following the usual pattern of playing hard and working hard. Over time this life began to lose its lustre.\n I appreciated all that I had, but also felt this deep sense of dissatisfaction that I couldn't ignore.\n\n Although I didn't know what direction was best, rather than shy away from the problem I decided to map out my bucket list and see how much of it I could action in one trip.\n There were many items on the list, but a few bubbled to the top and formed a cohesive journey. These were: \n\n - Hear Mongolian throat singing in person\n\n - Travel on the Trans Siberian Railway\n\n - Live in New Zealand for a year\n\n - Leave IT and try something completely different. (I ended up making a line of designer hoodies!)\n\n Leaving my friends and my career in IT left me with gaps in my identity. It was disconcerting at time, but as my journey progressed I faced these gaps, had many adventures and learned so much more about who I am.\n\n Some people consider sights to be the key bucket list items. For me, I've learned it will always be through experiences that we yield the greatest value.",
-      "media": {
-        "image": "images/flat/default/poiw.jpg"
-      },
-      "location": {
-        "name": "London, England",
-        "lat": 51.5074,
-        "lng": -0.1278
-      },
-      "tags": [
-        "travel",
-        "adventure",
-        "self-discovery",
-        "career",
-        "sabbatical"
-      ]
+      "media": { "image": "images/flat/default/poiw.jpg" },
+      "location": { "name": "London, England", "lat": 51.5074, "lng": -0.1278 },
+      "tags": ["travel", "adventure", "self-discovery", "career", "sabbatical"]
     },
     {
       "id": "13/06/2008",
@@ -247,21 +163,9 @@
       "dateIso": "2008-06-13",
       "order": 9,
       "body": "## A grand day for a walk\n\n When I left Ireland to kick off on my bucket list I made a promise to myself that I'd continually seek to push past my comfort zone.\n When I arrived in Mongolia, I was already a little bit stretched and sensing my comfort boundary was near, I decided to undertake an adventure\n that would push me that much further. I hoped that when I returned things would feel comfortable again by comparison. \n\n I decided I would go hiking in the middle of nowhere, so I grabbed a map and found a destination in the heart of the country.\n The destination I selected was called Tsetserleg. It was a 12 hour bus ride through the desert and once there the plan was rest up for a night and then walk into the wilderness and camp out for a night on my own. I would then pack up the next day and return to Ulan Bator with my new found sense of comfort! Easy! :)\n\n The journey to Tsetserleg was really interesting. The foodstops and sights were really something else. The public toilets were an entirely different matter.\n\n Once I arrived, I rested up and got my bearings. The next morning I was able to kick off on my hike. I aimed for the peak that overlooks the town.\n Passing wild dogs, circling birds of prey and mongolian cattle along the way, I found a site a few kilometers away and felt thoroughly great once I'd lit my fire and set up camp.\n Buoyed by my luck so far, I decided to try and climb a natural rock chimney I'd come across earlier that day. (I'm pretty bad with heights) It wasn't until I was about 10 meters up that I truly began to reconsider my choices. Why was I there, what was I trying to prove and what kind of mess would I make if I did take a fall. I managed to\n shimmy down safely and, although initially disappointed by what I considered to be fear, I eventually came to realise that it's all good pushing boundaries, but unless you have a goal in mind and are\n conscious of the impact it can have then you are probably not going to end up in the best possible place. Needless to say, I was glad I didn't make an impact on those rocks and managed to safely make\n it back to Ulan Bator, which seemed much more welcoming on my second return!\n\n Read more about Tsetserleg [here](https://en.wikipedia.org/wiki/Tsetserleg_%28city%29)",
-      "media": {
-        "image": "images/flat/default/tsetserleg.jpg"
-      },
-      "location": {
-        "name": "Tsetserleg, Mongolia",
-        "lat": 47.4664,
-        "lng": 101.4503
-      },
-      "tags": [
-        "travel",
-        "adventure",
-        "nature",
-        "challenge",
-        "self-discovery"
-      ],
+      "media": { "image": "images/flat/default/tsetserleg.jpg" },
+      "location": { "name": "Tsetserleg, Mongolia", "lat": 47.4664, "lng": 101.4503 },
+      "tags": ["travel", "adventure", "nature", "challenge", "self-discovery"],
       "valence": -0.3,
       "impact": 0.8
     },
@@ -277,21 +181,9 @@
       "dateIso": "2009-04-27",
       "order": 10,
       "body": "## The practice of giving thanks\n\n In 2011, I began to notice that I was taking some of the better things in my life for granted and that this, in\n turn, was leaving me feeling unsatisfied. As an antidote, to this I decided to undertake a project of conscious\n giving of thanks. The Maori word for gratitude is Whakawhetai and it seemed fitting to call my practice of thanks\n giving by a local name. \n\n Every day for 30 days I documented my daily gratitude on Tumblr (haha!). I also took a photo each day to\n represent the thing for which I was giving gratitude. This project not only gave me reason to move past my\n previous state of mind, but also stretched me creatively.",
-      "media": {
-        "image": "images/assets/Gratitude.png"
-      },
-      "location": {
-        "name": "Wellington, New Zealand",
-        "lat": -41.2865,
-        "lng": 174.7762
-      },
-      "tags": [
-        "mindfulness",
-        "creativity",
-        "gratitude",
-        "new-zealand",
-        "self-discovery"
-      ]
+      "media": { "image": "images/assets/Gratitude.png" },
+      "location": { "name": "Wellington, New Zealand", "lat": -41.2865, "lng": 174.7762 },
+      "tags": ["mindfulness", "creativity", "gratitude", "new-zealand", "self-discovery"]
     },
     {
       "id": "01/09/2010",
@@ -305,22 +197,9 @@
       "dateIso": "2010-09-01",
       "order": 11,
       "body": "## Xero the Startup\n\n In 2010, I joined Xero as the Quality Engineer on their public facing API. I was employee number 70 in what is now a 1350 person global business.\n From the outset, I focused on automation as the pathway to success for our team. We were the first team at Xero to have end to end automated testing.\n Due to the fact we had a more mature development process we were afforded the time to dig in and work on organisation wide initiatives that\n helped us grow as a company. I led initiatives to select test tools and intranet software. I championed treating our automation as a first class citizen,\n rather than a hack we put in place to buy time. We moved from QA led quality to team led quality and I worked on other team growth initiatives such as\n Olympic Class Quality Engineers and Next Levels, which you can read about elswhere on this site.\n\n Being part of the Xero journey has been the experience of a lifetime. The technical challenges we've had to tackle have been invigorating and the culture\n problems we've dealt with due to nearly 100% year-on-year team expansion, have taught me much about what I love about coming to work. Simply put, technical\n problems can be found almost everywhere, but working with people to solve technical and human problems together is what fires my passion.\n I've learned to think about the team as the product we're building and the software being merely a secondary , albeit valuable output.",
-      "media": {
-        "image": "images/flat/default/workw.jpg"
-      },
-      "location": {
-        "name": "Wellington, New Zealand",
-        "lat": -41.2865,
-        "lng": 174.7762
-      },
-      "tags": [
-        "technology",
-        "career",
-        "startups",
-        "testing",
-        "leadership",
-        "new-zealand"
-      ],
+      "media": { "image": "images/flat/default/workw.jpg" },
+      "location": { "name": "Wellington, New Zealand", "lat": -41.2865, "lng": 174.7762 },
+      "tags": ["technology", "career", "startups", "testing", "leadership", "new-zealand"],
       "valence": 0.6,
       "impact": 0.85
     },
@@ -336,21 +215,9 @@
       "dateIso": "2010-11-20",
       "order": 12,
       "body": "## Makers Org NZ\n\n In 2010, I decided to commit to my love of product design and learn how to create physical objects.\n I noticed pretty quickly that I lacked the skills necessary to take some of my projects to completion so I started a Meetup group to connect with others who might be on a similar path.\n At the Meetup we met and we spoke about the projects we were working on.\n\n It was fun and social, but pretty soon I noted that there were common themes to problems we all faced.\n Usually around skills, access to tools or having a work space. I also noted that people often came to the meetups out of curiosity and a desire to make,\n but never really progressed much further past being observers.\n\n There was a clear problem here for a lot of people and it was at this point that I came up with a theory which I labelled \"People,\n Projects & Place\". I had learned from my meetups that bringing people together in a place only gave them passive enjoyment and in order to bring\n the community together they needed a common goal or a project to focus on. I tested this theory with some small projects. I set up a tiny makerspace where\n people could have a sense of place. I then crowdfunded the purchase of a 3dprinter kit so that we had a common project to work on\n and I continued to run the meetups so that more and more people came to share and learn. We used our community 3dprinter to run free\n public workshops on 3d printing and in our first year we trained 90 people who had never 3d modelled or printed how to use the machine, all for free.\n\nFrom this experience, I noted that this problem wasn't unique to my region, but that we needed more of these spaces nationally. This was happening in parallel with the global maker movement, but in the Northern Hemishpere access to space and tools was a lot cheaper and thus we\nneeded a solution that would work in a New Zealand context. It is here that the origins of Makers Org New Zealand (MoNZ) began. Seeing that our best\nchance of levelling up in this space would be through collaboration and shared effort, MoNZ set about building the tools for open and shared\ninnovation infrastructure in New Zealand.\n\n It has been an amazing journey over the last 5+ years and MoNZ has grown and is making an impact. We have a distributed community of volunteers who are working on some\n amazing initiatives. Sadly, though, I have yet to become the product designer I dreamed I would! :)",
-      "media": {
-        "image": "images/flat/default/makercrate.jpg"
-      },
-      "location": {
-        "name": "Wellington, New Zealand",
-        "lat": -41.2865,
-        "lng": 174.7762
-      },
-      "tags": [
-        "community",
-        "making",
-        "education",
-        "leadership",
-        "new-zealand"
-      ]
+      "media": { "image": "images/flat/default/makercrate.jpg" },
+      "location": { "name": "Wellington, New Zealand", "lat": -41.2865, "lng": 174.7762 },
+      "tags": ["community", "making", "education", "leadership", "new-zealand"]
     },
     {
       "id": "27/03/2011",
@@ -364,24 +231,10 @@
       "dateIso": "2011-03-27",
       "order": 13,
       "body": "## The Oxfam trailwalk\n\n In 2011, my wife and I decided to take part in the Oxfam 100km long distance walk; a \"race\" in which you and your team must complete\n 100km (62miles) in under 36 hours. On the surface, it may not appear to be the most challenging event. However, once we assembled\n our team and began our practice walks, we not only learned about the complexities of walking at a common pace, but also the art of positive\n thinking. The walk itself is an around the clock race so you end up staying up all night when taking part. At 3am in the morning, morale can\n take a bit of a hit. \n\n We had a really wonderful team and in the weeks leading up to the event, our training walks not only helped us prepare physically, but\n also helped us bond as friends. We ended up talking about a world of topics on those training walks!\n Our team, the [Charming Marchers](http://www.oxfam.org.nz/events/teamid4694.html) raised $7736 for charity, something that made\n it all the more worthwhile.\n\n When we crossed the line after 24 hours of walking I told myself \"Never,\n ever again!\", but I think I might be ready to give it another go! :)",
-      "media": {
-        "image": "images/flat/default/swim.jpg"
-      },
-      "location": {
-        "name": "Wellington, New Zealand",
-        "lat": -41.2865,
-        "lng": 174.7762
-      },
-      "tags": [
-        "adventure",
-        "challenge",
-        "community",
-        "charity",
-        "new-zealand"
-      ],
-      "people": [
-        "Molly Fortune"
-      ],
+      "media": { "image": "images/flat/default/swim.jpg" },
+      "location": { "name": "Wellington, New Zealand", "lat": -41.2865, "lng": 174.7762 },
+      "tags": ["adventure", "challenge", "community", "charity", "new-zealand"],
+      "people": ["Molly Fortune"],
       "valence": 0.65,
       "impact": 0.5
     },
@@ -397,21 +250,9 @@
       "dateIso": "2012-05-27",
       "order": 14,
       "body": "## Investing in your vision\n\n In the early days of my adventures in maker community organising, I\n noted the challenges that lay in setting up maker groups. The challenge that\n came up time and time again was the cost involved in setting up a space. Secondary to that was\n the fear around ROI (especially in the case where funding was being sought).\n So, I set about creating a repeatable model that could not only illustrate the\n value and outputs of such spaces, but do so for a budget of $15,000.\n\n After constructing an initial full size prototype in our own makerspace, I came to the conclusion\n that using a shipping container was the best the platform for our needs. It had the right balance between size and portability, demonstrating that a makerspace could work in any school,\n community centre or office.\n\n I purchased a shipping container and a team from our makerspace undertook the\n work to make it usable as a makerspace. We had locally designed open-furniture,\n an opensource lasercutter and of course, opensource 3d-printers!\n It was a thing of beauty! We launched the Makercrate at the Makertorium event\n in 2013 and demonstrated to local council and educators that you don't need a\n massive amount of space to have a makerspace. We also demonstrated what could be achieved with such a reasonable budget.\n\n In 2011, Christchurch experienced a devastating earthquake, which destroyed 50% of the buildings in the city centre.\n By 2013, people in Christchurch were looking to move past the quake, but real estate was at an insane premium.\n I worked with a team down there to deploy the Makercrate as a transitional project to help with the recovery. This installation went on to become the centrepiece\n of a transitional village in Christchurch and the team down there were able to secure $200,000 in funding thanks to the maker\n outreach work they did in the Makercrate.\n\n Now in 2016, the Makercrate has moved to a new home in rural northern New Zealand and is once again acting as the foundation\n project in a new maker hub there. I'm immensely proud of the Makercrate; it was always a bit of a leap of faith, but I think\n it has achieved more than I could have ever hoped for!",
-      "media": {
-        "image": "images/flat/default/makercrate.jpg"
-      },
-      "location": {
-        "name": "Wellington, New Zealand",
-        "lat": -41.2865,
-        "lng": 174.7762
-      },
-      "tags": [
-        "making",
-        "community",
-        "innovation",
-        "design",
-        "new-zealand"
-      ]
+      "media": { "image": "images/flat/default/makercrate.jpg" },
+      "location": { "name": "Wellington, New Zealand", "lat": -41.2865, "lng": 174.7762 },
+      "tags": ["making", "community", "innovation", "design", "new-zealand"]
     },
     {
       "id": "27/11/2012",
@@ -425,19 +266,9 @@
       "dateIso": "2012-11-27",
       "order": 15,
       "body": "## Building a home!\n\n In 2012, my wife-to-be and I started talking about getting a pet.\n Living in a rental, we realised that finding a place we liked that also allowed pets would be difficult.\n The conversation soon turned to buying our own place as we felt it was the sensible next\n step in our relationship. So, after 6 months of looking, we found a house we liked; a tired 85 year old home that only ever had\n two owners. Two sets of families had raised a family here and now it was our turn. We moved in on a Friday and by Sunday\n afternoon we had adopted not one, but two cats (Myrtle & Badger). \n\n Thus we refer to our furry little friends as the most expensive cats in the world.",
-      "media": {
-        "image": "images/flat/default/cats.jpg"
-      },
-      "location": {
-        "name": "Wellington, New Zealand",
-        "lat": -41.2865,
-        "lng": 174.7762
-      },
-      "tags": [
-        "family",
-        "home",
-        "new-zealand"
-      ]
+      "media": { "image": "images/flat/default/cats.jpg" },
+      "location": { "name": "Wellington, New Zealand", "lat": -41.2865, "lng": 174.7762 },
+      "tags": ["family", "home", "new-zealand"]
     },
     {
       "id": "27/04/2013",
@@ -451,21 +282,9 @@
       "dateIso": "2013-04-27",
       "order": 16,
       "body": "## If you build it, they will come, by the thousands!\n\n In 2011, I had a vision to one day run a public maker event that could be used\n to introduce people to this wonderful new movement I felt part of. I'd been to Makerfaire in New York and dreamed of something similar happening here.\n In 2013, myself and a team of others held the first ever national maker event in New Zealand.\n Not only did we manage to secure the national museum as a venue, but we ended\n up hosting around 10,000 people on the day.\n\n It was an amazing event and bless the good people at the museum, but I'm not\n sure they knew what they were letting themselves in for when they let us use their\n space. We had robot sitars, Rube Goldberg machines, sumo wrestling robots, interactive native bird installations; the list goes on and on! \n\n We brought people from all across New Zealand together for the first time. We built connections\n that previously didn't exist and we also managed to help a local team for Wikihouse secure fundng\n to build their first fullscale prototype, which was then shipped back down south inside the MakerCrate! (How meta!)\n Makertorium was a delight and although a huge investment of time, how often in your life do you get handed the master key to a national museum for a night?! (Along with Ben Stiller'esque hilarity!)",
-      "media": {
-        "image": "images/flat/default/wikihouse.jpg"
-      },
-      "location": {
-        "name": "Te Papa Museum, Wellington, New Zealand",
-        "lat": -41.2909,
-        "lng": 174.7756
-      },
-      "tags": [
-        "community",
-        "making",
-        "events",
-        "leadership",
-        "new-zealand"
-      ]
+      "media": { "image": "images/flat/default/wikihouse.jpg" },
+      "location": { "name": "Te Papa Museum, Wellington, New Zealand", "lat": -41.2909, "lng": 174.7756 },
+      "tags": ["community", "making", "events", "leadership", "new-zealand"]
     },
     {
       "id": "06/09/2013",
@@ -479,21 +298,9 @@
       "dateIso": "2013-09-06",
       "order": 17,
       "body": "## Olympic Class Quality Engineers @ Xero\n\n In 2013 at Xero, the gauntlet was thrown and the development team was tasked with preparing our product so it could scale from\n 150,000 to 1 million customers and beyond. In parallel to this we also needed to roll out continuous delivery across the organisation\n in order to keep in step with the feature demands of new and existing customers. \n\n I had observed, not just at Xero, but in other organisations where I'd worked, that QA quite often felt their reason for being was\n to find problems as opposed to creating value.\n\n People in the industry seemed tired; many of them were doing the same work they'd always done. I felt we could inspire QA at Xero\n to look at their role differently, but not only that, we could also use this perspective to attract the kind of talent we wanted, too.\n Thus, the notion of Olympic Class Quality Engineers(QE) was born.\n\n The premise was simple enough; treat our discipline like we would a competitive team sport, where we focused on training together\n and helping each other get to the next level.\n\n We worked as a team to identify and resolve problems in our domain, treating Quality Engineering itself as the product we were delivering. We aimed\n to produce results as early as we could to the rest of the organisation so that we could ensure we were on the right track.\n Initiatives and upskilling in new areas such as security testing/usability testing and more kicked off and we quickly began to see a vibrant energy return to the team again.\n\n The enthusiasm we now see in QE at Xero is unlike any environment I've been in. People are really loving what they do and we're attracting people who are drawn to that.",
-      "media": {
-        "image": "images/flat/default/key_experience.jpg"
-      },
-      "location": {
-        "name": "Wellington, New Zealand",
-        "lat": -41.2865,
-        "lng": 174.7762
-      },
-      "tags": [
-        "technology",
-        "career",
-        "leadership",
-        "testing",
-        "new-zealand"
-      ]
+      "media": { "image": "images/flat/default/key_experience.jpg" },
+      "location": { "name": "Wellington, New Zealand", "lat": -41.2865, "lng": 174.7762 },
+      "tags": ["technology", "career", "leadership", "testing", "new-zealand"]
     },
     {
       "id": "02/02/2014",
@@ -507,21 +314,9 @@
       "dateIso": "2014-02-02",
       "order": 18,
       "body": "It was outside Xero that I first came up with the idea for Next Levels.\n I had dabbled with coaching previously and ever since then I'd always dreamed\n of an online tool that could help remote people work together to reach the next level\n in whatever area of their life they wanted to focus on.\n\n The premise is simple. You identify the themes/areas you want to work on, you imagine the highest level you want to achieve in that area and you\n then map backwards from there, identifying the milestones or behaviours that get you where you want to go.\n I was also conscious that life doesn't happen in isolation and decided that visualing levels in a\n radar graph was a great way to highlight when you might be overinvesting in one area of your life over another.\n I created a version in google docs and used that with a friend and we worked with that for a few iterations.\n While I was at Xero, I saw people and teams spin their wheels a little, losing sight of progress they'd made, or worse still, losing sight of their desintation.\n I introduced the basics of Next levels to the QA team and we as\n a group began to map out the areas we wanted to level up in. We then derived our own individual areas for\n levelling up so that we could contribute to where we wanted to go as a team, but also enabling us to develop as individuals as well.\n\n The initiative was very well received and gave us a framework we could use to not only map\n out a path, but also to see when we'd made progress. This had the added benefit of us being able to identify gaps in our upskilling processes, which we could then address accordingly. I received great feedback from individuals who found it helped them. Ultimately,\n as we exponentially grew as a team, the culture around Next Levels diluted enough for the process to break down and regrettably I didn't\n have the capacity to onboard new people and support it outside of my BAU workload. Next Levels V.02 deserves some energy to circumvent this.",
-      "media": {
-        "image": "images/flat/default/nextlevel.jpg"
-      },
-      "location": {
-        "name": "Wellington, New Zealand",
-        "lat": -41.2865,
-        "lng": 174.7762
-      },
-      "tags": [
-        "leadership",
-        "career",
-        "coaching",
-        "technology",
-        "new-zealand"
-      ]
+      "media": { "image": "images/flat/default/nextlevel.jpg" },
+      "location": { "name": "Wellington, New Zealand", "lat": -41.2865, "lng": 174.7762 },
+      "tags": ["leadership", "career", "coaching", "technology", "new-zealand"]
     },
     {
       "id": "06/06/2014",
@@ -535,21 +330,9 @@
       "dateIso": "2014-06-06",
       "order": 19,
       "body": "## Making it easy for Xero's to live, learn & laugh together. \n\n In 2014, Xero was already well into a phase of hyper-growth. As our staff numbers ballooned I wondered how we could on-board so many people and scale our culture. As a startup, we had a great culture of people just getting on and doing what needed to be done. This attitude obviously extended to social events, too. \n\n I wanted to create a process that helped new people at Xero find their feet and and share their interests with other Xeros.\n Based on my experience with the Maker community, I noted that culture grows at the intersection between curiosity and passion.\n While it was easy for us \"old-timers\" to lead events, it was daunting for those who may never have done that sort of thing before.\n It was also daunting for anyone who was more introverted in nature.\n\n I setup a closed Meetup group for Xeros and began by listing some events I could run. I started with 3d modelling and 3dprinting workshops. Given the public interest in these topics the events filled up quickly. Running them through meetup meant it was a lot less overhead for me to setup and host an event. I could easily communicate with those who were interested in this specific topic rather than clog up our other internal channels.\n All in all, it proved to be a really efficient model for organisiing events. From there I began actively inviting others to organise events, offering my support to make them happen.\n Pretty soon, we had a whole range of events happening, from Sticth and Bitch sessions to Cards Against Humanity to mountain biking to rock climbing. While the early adopters took to the process like ducks to water, I documented the system so that others could get involved, also reducing the need for me to be directly involved in the organising. We then saw other offices show an interest in Xero Social and the spread continued.\n Aside from the core goal of making the organising of events easy, I also wanted to make the experience universal across Xero offices world-wide. That way, anyone visiting a region from another Xero office could easily find out what was on and get to meet other Xero's doing fun things.\n It also gave us a great way to guage interest in specific event types so that our HR team could then provide monetary support for social events in a really targetted way.\n Case in point, the 3d printing sessions I ran were so popular that Xero decided to invest in their own 3d printer. This now has its own group of users who work on projects all the time.\n\n Xero Social continues to grow and I love hearing about new events. I particularly love how some people who were really shy in the begining are now running events for others.\n This hasn't just given people a fun time and a connection, it has also given the organisers confidence and skills in new areas, which gives me great confidence in the future health of Xero's culture.",
-      "media": {
-        "image": "images/flat/default/xerosocial.jpg"
-      },
-      "location": {
-        "name": "Wellington, New Zealand",
-        "lat": -41.2865,
-        "lng": 174.7762
-      },
-      "tags": [
-        "community",
-        "leadership",
-        "career",
-        "events",
-        "new-zealand"
-      ]
+      "media": { "image": "images/flat/default/xerosocial.jpg" },
+      "location": { "name": "Wellington, New Zealand", "lat": -41.2865, "lng": 174.7762 },
+      "tags": ["community", "leadership", "career", "events", "new-zealand"]
     },
     {
       "id": "01/01/2015",
@@ -563,21 +346,9 @@
       "dateIso": "2015-01-01",
       "order": 20,
       "body": "In 2015, I decided to take up the 1000km-in-a-year running challenge. I knew it\n wasn't really an endurance goal (regular runners easily do that when training for a marathon), but more of a commitment goal as I was ok at\n running, just terrible at running regularly. In order to give my running a higher purpose, I mapped the goal onto a project\n I'd wanted to try for some years.\n\n The project's name was A Million Words for Charity. The idea was that I'd\n pick 5 novels that I liked and I'd carry them on with me on every run, essentially carrying 1 million words on behalf of\n those in the world who cannot read.\n Logistically the books were a bit of a pain as my water bladders\n leaked on them more than once, so I ended up replacing them with a 1kg weight (called Puck!) which I brought with me on every run instead.\n\n As the year progressed, I heard of an old school friend of mine who had a charity in Nepal that had been affected by the April quake. I reached out to her and some old classmates to let them know I was doing this running thing and that I wanted to dedicate it to them to try and raise funds to help in any way I could.\n\n Months rolled by and my running was inconsistent, to the point where I had to double my weekly running efforts. By the end it was a Rocky'esque effort where I was running every other day, just Puck and me; doing our thing come rain or hail.\n\n I finished my challenge on 31st Dec; it was a glorious day for a run and a fantastic way to round out the year. I raised a nice sum for my friend's charity too, which felt really great.",
-      "media": {
-        "image": "images/flat/default/million.jpg"
-      },
-      "location": {
-        "name": "Wellington, New Zealand",
-        "lat": -41.2865,
-        "lng": 174.7762
-      },
-      "tags": [
-        "challenge",
-        "mindfulness",
-        "charity",
-        "self-discovery",
-        "new-zealand"
-      ]
+      "media": { "image": "images/flat/default/million.jpg" },
+      "location": { "name": "Wellington, New Zealand", "lat": -41.2865, "lng": 174.7762 },
+      "tags": ["challenge", "mindfulness", "charity", "self-discovery", "new-zealand"]
     },
     {
       "id": "04/04/2015",
@@ -591,23 +362,10 @@
       "dateIso": "2015-04-04",
       "order": 21,
       "body": "In 2014, I married my beautiful wife Molly in a fern house in rural NZ.\n We had close family and friends there to share in the moment and we then spent the rest of the day\n on a friends' sheep shearing farm doing fun stuff like easter egg hunts, dog trials, a table quiz and\n just a little bit of schmalzy speech giving.\n\n It was a wonderful celebration and a memory that I cherish dearly. We're now plotting our next adventure together..stay tuned!",
-      "media": {
-        "image": "images/flat/default/wed2.jpg"
-      },
-      "location": {
-        "name": "Wairarapa, New Zealand",
-        "lat": -40.9591,
-        "lng": 175.5746
-      },
-      "tags": [
-        "family",
-        "love",
-        "milestones",
-        "new-zealand"
-      ],
-      "people": [
-        "Molly Fortune"
-      ],
+      "media": { "image": "images/flat/default/wed2.jpg" },
+      "location": { "name": "Wairarapa, New Zealand", "lat": -40.9591, "lng": 175.5746 },
+      "tags": ["family", "love", "milestones", "new-zealand"],
+      "people": ["Molly Fortune"],
       "valence": 0.95,
       "impact": 0.9
     },
@@ -630,6 +388,96 @@
       "impact": 0.95
     },
     {
+      "id": "mem-001",
+      "type": "memory",
+      "title": "The smell of the ferry terminal",
+      "category": "life",
+      "dateApprox": "Late 1990s",
+      "attachedTo": "01/04/1998",
+      "body": "I remember the smell of diesel and salt water at the Brest ferry terminal. It was early morning, the sky still grey, and I was waiting for the boat home to Ireland after my placement. Standing there with my bag, I felt this strange mix of relief and loss. Relief that I'd survived four months speaking French every day, loss because I wasn't sure I'd ever feel that alive again.\n\nThe terminal was almost empty. A woman was mopping the floor and the sound echoed. I bought a croissant from a vending machine — my last French croissant — and it was terrible. But I ate it anyway, watching the harbour lights blink off one by one as the sun came up.",
+      "valence": 0.4,
+      "impact": 0.3,
+      "order": 50
+    },
+    {
+      "id": "mem-002",
+      "type": "memory",
+      "title": "The silence after the news",
+      "category": "pivotal",
+      "dateIso": "2016-02-01",
+      "attachedTo": "05/02/2016",
+      "body": "What I remember most isn't the moment itself, but the silence that followed. The hospital corridor. The fluorescent lights humming. The way everyone moved around us like we were in a bubble.\n\nDad's notebook was still in my bag. I'd been carrying it around for days, meaning to ask him about some of the quotes he'd collected. Now I couldn't. I pulled it out and sat with it for a long time, just holding it.",
+      "valence": -0.9,
+      "impact": 0.7,
+      "order": 51
+    },
+    {
+      "id": "mem-003",
+      "type": "memory",
+      "title": "A different kind of fear",
+      "category": "pivotal",
+      "dateApprox": "2008",
+      "attachedTo": "13/06/2008",
+      "body": "Halfway up that rock chimney in Mongolia, I stopped being afraid of falling and started being afraid of something else entirely: that I'd been pushing boundaries without knowing why.\n\nI remember my hands shaking, not from the physical strain but from a sudden clarity. The question wasn't 'can I make it to the top?' but 'why am I here alone on a mountain in Mongolia trying to prove something to no one?'\n\nI climbed down. And that felt braver than continuing up.",
+      "valence": -0.2,
+      "impact": 0.6,
+      "order": 52
+    },
+    {
+      "id": "01/06/1985",
+      "type": "prompt",
+      "title": "The youngest of five",
+      "question": "What did growing up as the youngest of five give you that you couldn't have got any other way?",
+      "category": "life",
+      "dateIso": "1985-06-01",
+      "order": 98
+    },
+    {
+      "id": "01/09/1996",
+      "type": "prompt",
+      "title": "Before the path was set",
+      "question": "What did you want to become before life went a different direction?",
+      "category": "pivotal",
+      "dateIso": "1996-09-01",
+      "order": 99
+    },
+    {
+      "id": "01/06/2003",
+      "type": "prompt",
+      "title": "The shelved passion",
+      "question": "Which passion did you put down that deserves a second chapter?",
+      "category": "passion",
+      "dateIso": "2003-06-01",
+      "order": 100
+    },
+    {
+      "id": "01/01/2007",
+      "type": "prompt",
+      "title": "The decision that quietly changed everything",
+      "question": "Which work decision changed your trajectory more than you realised at the time?",
+      "category": "work",
+      "dateIso": "2007-01-01",
+      "order": 101
+    },
+    {
+      "id": "01/01/2011",
+      "type": "prompt",
+      "title": "The people who shaped the decade",
+      "question": "Who shaped the person you became in ways you didn't fully register until later?",
+      "category": "life",
+      "dateIso": "2011-01-01",
+      "order": 102
+    },
+    {
+      "id": "prompt-005",
+      "type": "prompt",
+      "title": "What you'd tell your younger self",
+      "question": "What do you know now that you wish you'd understood at 25?",
+      "category": "pivotal",
+      "dateIso": "2015-01-01",
+      "order": 103
+    },
+    {
       "id": "01/04/2016",
       "title": "Where to next?",
       "description": "Le Fin",
@@ -644,116 +492,6 @@
       "media": {
         "image": "images/flat/default/fin1.jpg"
       }
-    },
-    {
-      "id": "mem-001",
-      "type": "memory",
-      "title": "The smell of the ferry terminal",
-      "category": "life",
-      "dateApprox": "Late 1990s",
-      "attachedTo": "01/04/1998",
-      "body": "I remember the smell of diesel and salt water at the Brest ferry terminal. It was early morning, the sky still grey, and I was waiting for the boat home to Ireland after my placement. Standing there with my bag, I felt this strange mix of relief and loss. Relief that I'd survived four months speaking French every day, loss because I wasn't sure I'd ever feel that alive again.\n\nThe terminal was almost empty. A woman was mopping the floor and the sound echoed. I bought a croissant from a vending machine \u2014 my last French croissant \u2014 and it was terrible. But I ate it anyway, watching the harbour lights blink off one by one as the sun came up.",
-      "valence": 0.4,
-      "impact": 0.3,
-      "order": 24,
-      "dateIso": "",
-      "slug": "the-smell-of-the-ferry-terminal",
-      "timelineId": "richard-fortune"
-    },
-    {
-      "id": "mem-002",
-      "type": "memory",
-      "title": "The silence after the news",
-      "category": "pivotal",
-      "dateIso": "2016-02-01",
-      "attachedTo": "05/02/2016",
-      "body": "What I remember most isn't the moment itself, but the silence that followed. The hospital corridor. The fluorescent lights humming. The way everyone moved around us like we were in a bubble.\n\nDad's notebook was still in my bag. I'd been carrying it around for days, meaning to ask him about some of the quotes he'd collected. Now I couldn't. I pulled it out and sat with it for a long time, just holding it.",
-      "valence": -0.9,
-      "impact": 0.7,
-      "order": 25,
-      "slug": "the-silence-after-the-news",
-      "timelineId": "richard-fortune"
-    },
-    {
-      "id": "mem-003",
-      "type": "memory",
-      "title": "A different kind of fear",
-      "category": "pivotal",
-      "dateApprox": "2008",
-      "attachedTo": "13/06/2008",
-      "body": "Halfway up that rock chimney in Mongolia, I stopped being afraid of falling and started being afraid of something else entirely: that I'd been pushing boundaries without knowing why.\n\nI remember my hands shaking, not from the physical strain but from a sudden clarity. The question wasn't 'can I make it to the top?' but 'why am I here alone on a mountain in Mongolia trying to prove something to no one?'\n\nI climbed down. And that felt braver than continuing up.",
-      "valence": -0.2,
-      "impact": 0.6,
-      "order": 26,
-      "dateIso": "",
-      "slug": "a-different-kind-of-fear",
-      "timelineId": "richard-fortune"
-    },
-    {
-      "id": "01/06/1985",
-      "type": "prompt",
-      "title": "The youngest of five",
-      "question": "What did growing up as the youngest of five give you that you couldn't have got any other way?",
-      "category": "life",
-      "dateIso": "1985-06-01",
-      "order": 27,
-      "slug": "the-youngest-of-five",
-      "timelineId": "richard-fortune"
-    },
-    {
-      "id": "01/09/1996",
-      "type": "prompt",
-      "title": "Before the path was set",
-      "question": "What did you want to become before life went a different direction?",
-      "category": "pivotal",
-      "dateIso": "1996-09-01",
-      "order": 28,
-      "slug": "before-the-path-was-set",
-      "timelineId": "richard-fortune"
-    },
-    {
-      "id": "01/06/2003",
-      "type": "prompt",
-      "title": "The shelved passion",
-      "question": "Which passion did you put down that deserves a second chapter?",
-      "category": "passion",
-      "dateIso": "2003-06-01",
-      "order": 29,
-      "slug": "the-shelved-passion",
-      "timelineId": "richard-fortune"
-    },
-    {
-      "id": "01/01/2007",
-      "type": "prompt",
-      "title": "The decision that quietly changed everything",
-      "question": "Which work decision changed your trajectory more than you realised at the time?",
-      "category": "work",
-      "dateIso": "2007-01-01",
-      "order": 30,
-      "slug": "the-decision-that-quietly-changed-everything",
-      "timelineId": "richard-fortune"
-    },
-    {
-      "id": "01/01/2011",
-      "type": "prompt",
-      "title": "The people who shaped the decade",
-      "question": "Who shaped the person you became in ways you didn't fully register until later?",
-      "category": "life",
-      "dateIso": "2011-01-01",
-      "order": 31,
-      "slug": "the-people-who-shaped-the-decade",
-      "timelineId": "richard-fortune"
-    },
-    {
-      "id": "prompt-005",
-      "type": "prompt",
-      "title": "What you'd tell your younger self",
-      "question": "What do you know now that you wish you'd understood at 25?",
-      "category": "pivotal",
-      "dateIso": "2015-01-01",
-      "order": 32,
-      "slug": "what-you-d-tell-your-younger-self",
-      "timelineId": "richard-fortune"
     }
   ]
 }

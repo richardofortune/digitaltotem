@@ -51,6 +51,18 @@ function readBody(req, callback) {
   req.on('error', callback);
 }
 
+function duplicateIds(events) {
+  const seen = new Set();
+  const duplicates = new Set();
+  events.forEach(event => {
+    const id = String(event && event.id ? event.id : '').trim();
+    if (!id) return;
+    if (seen.has(id)) duplicates.add(id);
+    seen.add(id);
+  });
+  return Array.from(duplicates);
+}
+
 function safeStaticPath(urlPath) {
   const decodedPath = decodeURIComponent(urlPath.split('?')[0]);
   const cleanPath = decodedPath === '/' ? '/index.html' : decodedPath;
@@ -76,6 +88,11 @@ function saveEvents(req, res) {
     }
     if (!parsed || !Array.isArray(parsed.events)) {
       sendJson(res, 400, { ok: false, error: 'JSON must contain an events array.' });
+      return;
+    }
+    const duplicates = duplicateIds(parsed.events);
+    if (duplicates.length) {
+      sendJson(res, 400, { ok: false, error: `Duplicate Timeline IDs: ${duplicates.join(', ')}.` });
       return;
     }
     try {
@@ -130,6 +147,6 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, '127.0.0.1', () => {
-  console.log(`Digital Totem admin server running at http://127.0.0.1:${port}/admin.html`);
+  console.log(`Totem Builder running at http://127.0.0.1:${port}/admin.html`);
   console.log('Save endpoint writes data/events.json in this repo.');
 });

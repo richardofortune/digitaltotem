@@ -1,8 +1,25 @@
 (function ($) {
     var isMobile = (window.matchMedia && window.matchMedia('(max-width: 767px)').matches) || ('ontouchstart' in window && navigator.maxTouchPoints > 0);
+    var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var scrollTopVal = 0;
     var tlineWid = 0;
     var startItemDefault = '11/08/1978';
+
+    var getFilterFromURL = function () {
+        if (!window.URLSearchParams) return null;
+        return new URLSearchParams(window.location.search).get('filter') || null;
+    };
+
+    var setFilterInURL = function (filterClass) {
+        if (!window.history || !window.history.replaceState || !window.URL) return;
+        var url = new URL(window.location.href);
+        if (filterClass && filterClass !== 'all') {
+            url.searchParams.set('filter', filterClass);
+        } else {
+            url.searchParams.delete('filter');
+        }
+        window.history.replaceState(null, '', url.toString());
+    };
 
     var escapeHtml = function (str) {
         return String(str || '')
@@ -68,6 +85,16 @@
 
     var renderTimelineItems = function (data) {
         if (!Array.isArray(data) || !data.length) return;
+        var defaultHeroImages = {
+            basic: 'images/flat/default/key_experience.jpg',
+            life: 'images/flat/default/key_life.jpg',
+            work: 'images/flat/default/key_work.jpg',
+            pivotal: 'images/flat/default/key_experience.jpg',
+            passion: 'images/flat/default/key_passion.jpg'
+        };
+        var defaultHeroForCategory = function (category) {
+            return defaultHeroImages[category] || defaultHeroImages.basic;
+        };
         var $container = $('.timelineFlat .mobile-row');
         if (!$container.length) return;
         $container.empty();
@@ -80,6 +107,10 @@
             } else if (category) {
                 itemClasses.push(category);
             }
+
+            /* Skip prompt entries — handled by the prompt banner above the timeline */
+            if (item.type === 'prompt') return;
+
             var $item = $('<div/>', {
                 'class': itemClasses.join(' '),
                 'data-id': item.id,
@@ -108,10 +139,11 @@
             var detailHtml = item.bodyHtml;
             if (!detailHtml && item.body) {
                 var imageHtml = '';
-                if (item.media && item.media.image) {
-                    var imgTag = '<img class="con_borderImage timeline-hero-image" src="' + escapeHtml(item.media.image) + '" alt=""/>';
+                var heroImage = item.media && item.media.image ? item.media.image : defaultHeroForCategory(category);
+                if (heroImage) {
+                    var imgTag = '<img class="con_borderImage timeline-hero-image" src="' + escapeHtml(heroImage) + '" alt=""/>';
                     // Wrap in lightbox anchor for zoom experience; make it block-level so it spans the card
-                    imageHtml = '<a class="image_rollover_bottom con_borderImage timeline-hero-link" data-description="' + escapeHtml(item.media.description || 'ZOOM IN') + '" href="' + escapeHtml(item.media.image) + '" rel="lightbox[timeline]">' + imgTag + '</a>';
+                    imageHtml = '<a class="image_rollover_bottom con_borderImage timeline-hero-link" data-description="' + escapeHtml((item.media && item.media.description) || 'ZOOM IN') + '" href="' + escapeHtml(heroImage) + '" rel="lightbox[timeline]">' + imgTag + '</a>';
                 }
                 detailHtml = '<div class="timeline_open_content">' + imageHtml + '<div class="timeline-body"><h2 class="no-marg-top">' + escapeHtml(item.detailTitle || item.title || '') + '</h2><span>' + renderMarkdown(item.body) + '</span></div></div>';
             }
@@ -141,11 +173,18 @@
         });
     };
     $.filterMe = function () {
+        var fadeDuration = prefersReducedMotion ? 0 : 450;
         var $btns = $('.btn').click(function () {
             tlineWid = 0;
+            if (window.GalleryView)       window.GalleryView.filter(this.id);
+            if (window.ChaptersView)      window.ChaptersView.filter(this.id);
+            if (window.DecadesView)       window.DecadesView.filter(this.id);
+            if (window.MapView)           window.MapView.filter(this.id);
+            if (window.ConstellationView) window.ConstellationView.filter(this.id);
+            if (window.ValenceView)       window.ValenceView.filter(this.id);
             if (this.id == 'all') {
-                $('.js-filterItem').fadeIn(450);
-                $('.js-filter').fadeIn(450);
+                $('.js-filterItem').fadeIn(fadeDuration);
+                $('.js-filter').fadeIn(fadeDuration);
                 updateNodesForFilter(null);
             } else {
                 var $el = $('.' + this.id);
@@ -157,9 +196,10 @@
                     }
                 });
                 $('.js-filterItem, .js-filter').not($el).hide();
-                $el.fadeIn(450);
+                $el.fadeIn(fadeDuration);
                 updateNodesForFilter(this.id);
             }
+            setFilterInURL(this.id);
             $btns.removeClass('active');
             $(this).addClass('active');
             if (!isMobile) {
@@ -167,6 +207,11 @@
                 $('.tl1').timeline('right');
             }
         });
+        // Apply filter from URL on initial page load
+        var initialFilter = getFilterFromURL();
+        if (initialFilter && initialFilter !== 'all') {
+            $('#' + initialFilter).trigger('click');
+        }
     };
     $.readMore = function (dataid) {
         if (isMobile) {
@@ -181,7 +226,7 @@
                 var $newThis = $(this);
                 if (isMobile) {
                     // Open content and move margin
-                    $(this).stop(true).show().animate({width: '100%', marginLeft: 2.5, marginRight: 2.5}, 500, 'easeOutSine');
+                    $(this).stop(true).show().animate({width: '100%', marginLeft: 2.5, marginRight: 2.5}, prefersReducedMotion ? 0 : 500, 'easeOutSine');
                     if (typeof $(this).attr('data-access') != 'undefined' && $(this).attr('data-access') != '') {
                         var action = $(this).attr('data-access');
                         $.get(action, function (data) {
@@ -293,7 +338,7 @@
             }).addClass('col-xs-11');
             $('.item_open').each(function (index) {
                 $(this).attr('data-count', index);
-                $(this).prepend('<div class="t_close" data-count="' + $(this).attr('data-count') + '" data-id="' + $(this).attr('data-id') + '">X</div>');
+                $(this).prepend('<button class="t_close" aria-label="Close" data-count="' + $(this).attr('data-count') + '" data-id="' + $(this).attr('data-id') + '">&times;</button>');
                 $(this).wrapInner('<div class="item_open_cwrapper"  />').find('div:first').css({position: 'relative'});
                 $(this).css({width: 0, padding: 0, margin: 0, float: 'left', display: 'none', position: 'relative', overflow: 'hidden'});
             });
@@ -303,7 +348,7 @@
                 $.readMore(dataid);
             });
             $('.t_close').click(function () {
-                $('.item_open').fadeOut();
+                $('.item_open').fadeOut(prefersReducedMotion ? 0 : 400);
             });
             $('#photoDiv').removeClass('text-right');
         }
@@ -337,8 +382,21 @@
                     var events = Array.isArray(payload) ? payload : payload.events;
                     if (Array.isArray(events) && events.length) {
                         renderTimelineItems(events);
+                        if (window.GalleryView)       window.GalleryView.init(events);
+                        if (window.ChaptersView)      window.ChaptersView.init(events);
+                        if (window.DecadesView)       window.DecadesView.init(events);
+                        if (window.MapView)           window.MapView.init(events);
+                        if (window.ConstellationView) window.ConstellationView.init(events);
+                        if (window.ValenceView)       window.ValenceView.init(events);
+                        if (window.PromptBanner)      window.PromptBanner.init(events);
                         var startCandidate = (payload.timeline && payload.timeline.defaultStartId) || events[0].id;
                         initializeTimeline(startCandidate || startItemDefault);
+                        if (window.GalleryView)       window.GalleryView.activateFromURL();
+                        if (window.ChaptersView)      window.ChaptersView.activateFromURL();
+                        if (window.DecadesView)       window.DecadesView.activateFromURL();
+                        if (window.MapView)           window.MapView.activateFromURL();
+                        if (window.ConstellationView) window.ConstellationView.activateFromURL();
+                        if (window.ValenceView)       window.ValenceView.activateFromURL();
                         return;
                     }
                     initializeTimeline(startItemDefault);
@@ -347,6 +405,14 @@
         } else {
             initializeTimeline(startItemDefault);
         }
+    });
+
+    /* Keyboard shortcuts: 1–4 switch presentation view */
+    $(document).on('keydown', function (e) {
+        if ($(e.target).is('input, textarea, select, [contenteditable]')) return;
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+        var map = { '1': '#view-timeline', '2': '#view-gallery', '3': '#view-chapters', '4': '#view-decades', '5': '#view-map', '6': '#view-constellation', '7': '#view-valence' };
+        if (map[e.key]) $(map[e.key]).trigger('click');
     });
 })(jQuery);
 })(jQuery);

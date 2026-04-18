@@ -3,37 +3,153 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Digital Totem Admin</title>
+  <meta name="theme-color" content="#f5f7fb">
+  <title>Totem Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: "FontAwesome";
+      src: url("css/fonts/awesome/fontawesome-webfont.eot?v=4.0.3");
+      src: url("css/fonts/awesome/fontawesome-webfont.eot?#iefix&v=4.0.3") format("embedded-opentype"),
+        url("css/fonts/awesome/fontawesome-webfont.woff?v=4.0.3") format("woff"),
+        url("css/fonts/awesome/fontawesome-webfont.ttf?v=4.0.3") format("truetype"),
+        url("css/fonts/awesome/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular") format("svg");
+      font-style: normal;
+      font-weight: normal;
+      font-display: swap;
+    }
+
     :root {
-      --ink: #1f2933;
-      --muted: #52606d;
-      --line: #d9e2ec;
-      --panel: #f8fafc;
-      --accent: #137cbd;
-      --accent-dark: #0b5f8a;
+      --font-display: "Space Grotesk", "Open Sans", system-ui, sans-serif;
+      --font-body: "Inter", "PT Sans", system-ui, sans-serif;
+      --color-bg: #f5f7fb;
+      --color-surface: #ffffff;
+      --color-surface-strong: #eef2fb;
+      --color-surface-hover: #f5f7ff;
+      --color-primary: #2d5bff;
+      --color-primary-strong: #1f44d1;
+      --color-accent: #ff7a59;
+      --color-accent-strong: #ff6a3c;
+      --color-text: #0f172a;
+      --color-muted: #475569;
+      --color-border: #e5e7eb;
+      --shadow-sm: 0 6px 24px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.12);
+      --radius-lg: 18px;
+      --radius-md: 10px;
+      --radius-pill: 999px;
+      --transition-fast: 180ms ease;
+      --bg-cross: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg stroke='%23d5ddff' stroke-width='6' stroke-linecap='round' stroke-opacity='0.75'%3E%3Cpath d='M22 28l20 20m0-20L22 48'/%3E%3Cpath d='M112 18l18 18m0-18L112 36'/%3E%3Cpath d='M62 92l16 16m0-16L62 108'/%3E%3Cpath d='M18 122l14 14m0-14L18 136'/%3E%3Cpath d='M128 124l16 16m0-16L128 140'/%3E%3C/g%3E%3C/svg%3E");
+      --ink: var(--color-text);
+      --muted: var(--color-muted);
+      --soft: var(--color-bg);
+      --panel: var(--color-surface-hover);
+      --line: var(--color-border);
+      --line-strong: #cbd5e1;
+      --accent: var(--color-primary);
+      --accent-dark: var(--color-primary-strong);
+      --accent-soft: #e8ecff;
       --danger: #b42318;
-      --ok: #0f766e;
+      --danger-soft: #fde9e7;
+      --warm: var(--color-accent);
+      --warm-soft: #ffe8dc;
+      --ok: #166f46;
       --white: #ffffff;
+      --shadow: var(--shadow-sm);
     }
 
     * {
       box-sizing: border-box;
     }
 
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .skip-link:focus {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+      padding: 8px 16px;
+      background: var(--color-primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      z-index: 9999;
+      text-decoration: none;
+      border-radius: 0 0 8px 0;
+      outline: 2px solid #fff;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
     body {
       margin: 0;
       color: var(--ink);
-      background: #eef3f8;
-      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 10% 20%, #e8ecff 0, rgba(232, 236, 255, 0) 35%),
+        radial-gradient(circle at 90% 10%, #ffe8dc 0, rgba(255, 232, 220, 0) 28%),
+        var(--soft);
+      font-family: var(--font-body);
       font-size: 16px;
-      line-height: 1.45;
+      line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      inset: -8%;
+      background: var(--bg-cross);
+      background-size: 180px 180px;
+      opacity: 0.55;
+      transform: rotate(-8deg);
+      transform-origin: center;
+    }
+
+    body::after {
+      inset: -10%;
+      background: var(--bg-cross);
+      background-position: 90px 120px;
+      background-size: 200px 200px;
+      opacity: 0.35;
+      transform: rotate(11deg);
+      transform-origin: center;
+    }
+
+    header,
+    main,
+    .top-timeline {
+      position: relative;
+      z-index: 1;
     }
 
     header {
-      background: var(--white);
       border-bottom: 1px solid var(--line);
-      padding: 24px;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
     }
 
     h1,
@@ -44,25 +160,39 @@
     }
 
     h1 {
-      font-size: 32px;
-      margin-bottom: 8px;
+      font-family: var(--font-display);
+      font-size: 42px;
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 10px;
     }
 
     h2 {
-      font-size: 22px;
-      margin-bottom: 16px;
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 6px;
     }
 
     h3 {
-      font-size: 18px;
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
       margin-bottom: 8px;
     }
 
     main {
       display: grid;
-      grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
-      gap: 20px;
-      padding: 20px;
+      grid-template-columns: minmax(280px, 340px) minmax(420px, 1fr) minmax(320px, 420px);
+      gap: 18px;
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    main > * {
+      min-width: 0;
     }
 
     button,
@@ -75,34 +205,46 @@
     button {
       min-height: 40px;
       border: 1px solid var(--line);
-      border-radius: 6px;
-      background: var(--white);
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.72);
       color: var(--ink);
       cursor: pointer;
-      padding: 8px 12px;
+      font-weight: 600;
+      padding: 9px 16px;
+      transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
     }
 
     button:hover,
     button:focus {
       border-color: var(--accent);
+      background: var(--color-surface-hover);
+      box-shadow: var(--shadow-sm);
       outline: none;
+      transform: translateY(-1px);
+    }
+
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
     }
 
     button.primary {
-      background: var(--accent);
-      border-color: var(--accent);
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      border-color: transparent;
       color: var(--white);
+      box-shadow: 0 10px 20px rgba(45, 91, 255, 0.22);
     }
 
     button.primary:hover,
     button.primary:focus {
-      background: var(--accent-dark);
-      border-color: var(--accent-dark);
+      background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+      border-color: transparent;
     }
 
     button.danger {
+      background: var(--danger-soft);
       color: var(--danger);
-      border-color: #f3b8b2;
+      border-color: #efb9b3;
     }
 
     input,
@@ -110,14 +252,22 @@
     textarea {
       width: 100%;
       border: 1px solid var(--line);
-      border-radius: 6px;
+      border-radius: var(--radius-md);
       background: var(--white);
       color: var(--ink);
-      padding: 10px;
+      padding: 12px 13px;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(45, 91, 255, 0.14);
+      outline: none;
     }
 
     textarea {
-      min-height: 240px;
+      min-height: 340px;
       resize: vertical;
     }
 
@@ -133,11 +283,85 @@
       margin-top: 4px;
     }
 
+    .app-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 24px 18px;
+    }
+
+    .app-header > *,
+    .header-actions,
+    .toolbar {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      color: var(--warm);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .header-copy {
+      color: var(--muted);
+      max-width: min(680px, 100%);
+      margin-bottom: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .header-actions {
+      align-content: start;
+      display: grid;
+      gap: 10px;
+      justify-items: end;
+      min-width: 360px;
+    }
+
+    .file-control {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--ink);
+      cursor: pointer;
+      font-weight: 600;
+      padding: 9px 16px;
+      transition: background var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .file-control:hover,
+    .file-control:focus-within {
+      border-color: var(--accent);
+      background: var(--color-surface-hover);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-1px);
+    }
+
+    .file-control input {
+      border: 0;
+      clip: rect(0, 0, 0, 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
     .panel {
       background: var(--white);
       border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 16px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      min-width: 0;
+      padding: 18px;
     }
 
     .toolbar {
@@ -147,85 +371,523 @@
       align-items: center;
     }
 
+    .toolbar > * {
+      min-width: 0;
+    }
+
+    .toolbar.split {
+      justify-content: space-between;
+    }
+
     .stack {
       display: grid;
-      gap: 14px;
+      align-content: start;
+      gap: 16px;
     }
 
     .status {
-      margin-top: 12px;
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.78);
       color: var(--muted);
+      margin: 0;
+      padding: 10px 12px;
     }
 
     .status.ok {
+      background: #e7f5ee;
+      border-color: #b7dfca;
       color: var(--ok);
     }
 
     .status.error {
+      background: var(--danger-soft);
+      border-color: #efb9b3;
       color: var(--danger);
+    }
+
+    .top-timeline {
+      max-width: 1500px;
+      margin: 18px auto 0;
+      width: calc(100% - 36px);
+    }
+
+    .timeline-heading {
+      align-items: baseline;
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .timeline-heading h2 {
+      margin-bottom: 0;
+    }
+
+    .timeline-count {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .timeline-track {
+      align-items: center;
+      display: flex;
+      gap: 13px;
+      overflow-x: auto;
+      padding: 16px 4px 18px;
+      position: relative;
+      scrollbar-gutter: stable;
+    }
+
+    .timeline-track::before {
+      background: var(--line);
+      content: "";
+      height: 2px;
+      left: 14px;
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .timeline-dot {
+      align-items: center;
+      border: 2px solid var(--white);
+      border-radius: 999px;
+      box-shadow: 0 0 0 1px var(--line), 0 3px 8px rgba(15, 23, 42, 0.14);
+      display: inline-flex;
+      flex: 0 0 auto;
+      height: 20px;
+      justify-content: center;
+      min-height: 20px;
+      padding: 0;
+      position: relative;
+      transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+      width: 20px;
+      z-index: 1;
+    }
+
+    .timeline-dot:hover,
+    .timeline-dot:focus {
+      box-shadow: 0 0 0 3px var(--white), 0 0 0 7px rgba(45, 91, 255, 0.16), 0 10px 18px rgba(15, 23, 42, 0.16);
+      transform: translateY(-3px) scale(1.2);
+    }
+
+    .timeline-dot.active {
+      box-shadow: 0 0 0 3px var(--white), 0 0 0 7px rgba(45, 91, 255, 0.2);
+      transform: scale(1.18);
+    }
+
+    .timeline-dot.active:hover,
+    .timeline-dot.active:focus {
+      box-shadow: 0 0 0 3px var(--white), 0 0 0 7px rgba(45, 91, 255, 0.24), 0 10px 18px rgba(15, 23, 42, 0.16);
+      transform: translateY(-3px) scale(1.22);
+    }
+
+    .timeline-dot.life {
+      background: #2ec27e;
+    }
+
+    .timeline-dot.work {
+      background: #2563eb;
+    }
+
+    .timeline-dot.passion {
+      background: #f59e0b;
+    }
+
+    .timeline-dot.pivotal {
+      background: #ef4444;
+    }
+
+    .timeline-dot.basic {
+      background: #aebbb5;
+    }
+
+    .timeline-dot.template {
+      background: var(--color-surface);
+      border: 2px dashed var(--line-strong);
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 18px;
+      max-height: calc(100vh - 36px);
+    }
+
+    .section-intro {
+      color: var(--muted);
+      margin-bottom: 0;
     }
 
     .event-list {
       display: grid;
       gap: 8px;
-      max-height: calc(100vh - 260px);
+      max-height: calc(100vh - 288px);
       overflow: auto;
       padding-right: 4px;
     }
 
     .event-button {
-      display: block;
+      border-radius: var(--radius-md);
       width: 100%;
-      min-height: 0;
+      min-height: 64px;
       text-align: left;
-      padding: 10px;
+      border-color: var(--line);
+      background: var(--color-surface);
+      overflow: hidden;
+      padding: 11px 12px;
+      transform: none;
+    }
+
+    .event-button:hover,
+    .event-button:focus {
+      transform: none;
     }
 
     .event-button.active {
+      border-color: #cbd5e1;
+      background: var(--color-surface-hover);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .event-button.template-entry {
+      border-style: dashed;
+      border-color: var(--line-strong);
+      color: var(--muted);
+      background: var(--panel);
+    }
+
+    .event-button.template-entry.active {
+      border-style: dashed;
       border-color: var(--accent);
-      box-shadow: inset 4px 0 0 var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .event-category-dot {
+      background: #aebbb5;
+      border-radius: 999px;
+      display: inline-block;
+      flex: 0 0 9px;
+      height: 9px;
+      width: 9px;
+    }
+
+    .event-category-dot.life {
+      background: #2ec27e;
+    }
+
+    .event-category-dot.work {
+      background: #2563eb;
+    }
+
+    .event-category-dot.passion {
+      background: #f59e0b;
+    }
+
+    .event-category-dot.pivotal {
+      background: #ef4444;
+    }
+
+    .event-category-dot.basic {
+      background: #aebbb5;
+    }
+
+    .event-summary-row {
+      display: block;
+      min-width: 0;
+    }
+
+    .event-summary-content {
+      display: grid;
+      gap: 5px;
+      min-width: 0;
     }
 
     .event-title {
       display: block;
       font-weight: 700;
+      line-height: 1.25;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .event-meta {
-      display: block;
+      align-items: center;
       color: var(--muted);
+      display: flex;
       font-size: 13px;
-      margin-top: 2px;
+      gap: 7px;
+      line-height: 1.35;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .event-meta span:last-child {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 9px;
+    }
+
+    .pill {
+      border-radius: 999px;
+      background: var(--warm-soft);
+      color: var(--color-accent-strong);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 9px;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      gap: 16px;
     }
 
     .full {
       grid-column: 1 / -1;
     }
 
+    .form-section {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+
+    .form-section:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .section-heading {
+      grid-column: 1 / -1;
+      margin-bottom: 2px;
+    }
+
+    .section-heading h3 {
+      margin-bottom: 4px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .field-cluster {
+      display: grid;
+      gap: 14px;
+    }
+
+    .preview-panel {
+      position: sticky;
+      top: 18px;
+      max-height: calc(100vh - 36px);
+      overflow: auto;
+    }
+
     .preview {
       border: 1px solid var(--line);
-      border-radius: 6px;
-      background: var(--panel);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      display: flow-root;
       padding: 16px;
-      min-height: 180px;
+      min-height: 260px;
+      overflow-wrap: anywhere;
+      margin-bottom: 16px;
+      clear: both;
     }
 
     .preview img {
       max-width: 100%;
       height: auto;
+      border-radius: var(--radius-md);
+    }
+
+    .post-preview {
+      display: grid;
+      gap: 16px;
+    }
+
+    .post-card-preview {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface);
+      box-shadow: var(--shadow-sm);
+      padding: 16px;
+    }
+
+    .post-card-top {
+      align-items: center;
+      display: flex;
+      gap: 12px;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .post-icon {
+      aspect-ratio: 1;
+      background: var(--accent-soft);
+      border: 1px solid #b7dfd8;
+      border-radius: var(--radius-md);
+      flex: 0 0 58px;
+      height: 58px;
+      overflow: hidden;
+      position: relative;
+      width: 58px;
+    }
+
+    .post-icon.mytextwithicon:before {
+      color: var(--white);
+      content: "\f1ae";
+      font-family: FontAwesome;
+      font-size: 28px;
+      left: 50%;
+      opacity: 0.82;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .post-icon.mytextwithicon.basic:before {
+      content: "\f0a4";
+    }
+
+    .post-icon.mytextwithicon.life {
+      background: linear-gradient(135deg, #2ec27e, #4edba7);
+    }
+
+    .post-icon.mytextwithicon.work {
+      background: linear-gradient(135deg, #2563eb, #4c76f2);
+    }
+
+    .post-icon.mytextwithicon.passion {
+      background: linear-gradient(135deg, #f59e0b, #fcb768);
+    }
+
+    .post-icon.mytextwithicon.pivotal {
+      background: linear-gradient(135deg, #ef4444, #f78484);
+    }
+
+    .post-icon.mytextwithicon.basic.fin:before { content: "\f000"; }
+    .post-icon.mytextwithicon.life.peace:before { content: "\f004"; }
+    .post-icon.mytextwithicon.life.home:before { content: "\f015"; }
+    .post-icon.mytextwithicon.life.moveon:before { content: "\f050"; }
+    .post-icon.mytextwithicon.life.bucket:before { content: "\f145"; }
+    .post-icon.mytextwithicon.life.marriage:before { content: "\f219"; }
+    .post-icon.mytextwithicon.life.dad:before { content: "\f119"; }
+    .post-icon.mytextwithicon.life.break:before { content: "\f00f"; }
+    .post-icon.mytextwithicon.work.ecole:before { content: "\f13d"; }
+    .post-icon.mytextwithicon.work.msn:before { content: "\f286"; }
+    .post-icon.mytextwithicon.work.msnuk:before { content: "\f277"; }
+    .post-icon.mytextwithicon.work.xero:before { content: "\f121"; }
+    .post-icon.mytextwithicon.work.olympic:before { content: "\f091"; }
+    .post-icon.mytextwithicon.work.nextlevel:before { content: "\f135"; }
+    .post-icon.mytextwithicon.work.social:before { content: "\f21e"; }
+    .post-icon.mytextwithicon.pivotal.longshot:before { content: "\f0e7"; }
+    .post-icon.mytextwithicon.pivotal.hero:before { content: "\f19d"; }
+    .post-icon.mytextwithicon.pivotal.venezuela:before { content: "\f0b1"; }
+    .post-icon.mytextwithicon.pivotal.mongolia:before { content: "\f127"; }
+    .post-icon.mytextwithicon.pivotal.bucket:before { content: "\f1fd"; }
+    .post-icon.mytextwithicon.passion.monz:before { content: "\f20e"; }
+    .post-icon.mytextwithicon.passion.whak:before { content: "\f075"; }
+    .post-icon.mytextwithicon.passion.oxfam:before { content: "\f0c0"; }
+    .post-icon.mytextwithicon.passion.colab:before { content: "\f0ad"; }
+    .post-icon.mytextwithicon.passion.crate:before { content: "\f0d1"; }
+    .post-icon.mytextwithicon.passion.makertorium:before { content: "\f0ac"; }
+    .post-icon.mytextwithicon.passion.million:before { content: "\f02d"; }
+    .post-icon.mytextwithicon.swim:before { content: "\f5c4"; }
+    .post-icon.mytextwithicon.cats:before { content: "\f6be"; }
+    .post-icon.mytextwithicon.renos:before { content: "\f015"; }
+    .post-icon.mytextwithicon.wiki:before { content: "\f0ac"; }
+    .post-icon.mytextwithicon.dale:before { content: "\f02d"; }
+    .post-icon.mytextwithicon.makercrate:before { content: "\f1b2"; }
+    .post-icon.mytextwithicon.xerosocial:before { content: "\f21e"; }
+    .post-icon.mytextwithicon.nextlevel:before { content: "\f135"; }
+    .post-icon.mytextwithicon.papanek:before { content: "\f19d"; }
+    .post-icon.mytextwithicon.venezuela:before { content: "\f0b1"; }
+    .post-icon.mytextwithicon.mongolia:before { content: "\f127"; }
+    .post-icon.mytextwithicon.million:before { content: "\f02d"; }
+    .post-icon.mytextwithicon.fin:before {
+      content: "\f000";
+    }
+
+    .post-card-preview h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .post-card-preview p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .post-image-preview {
+      aspect-ratio: 16 / 9;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      margin-top: 14px;
+      overflow: hidden;
+    }
+
+    .post-image-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .post-body-preview {
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+
+    .preview-panel .form-section {
+      margin-top: 0;
+      clear: both;
+    }
+
+    .template-section .toolbar {
+      margin-bottom: 12px;
+    }
+
+    .template-preview {
+      display: none;
+    }
+
+    .template-section.is-open .template-preview {
+      display: block;
+    }
+
+    .post-body-preview h4 {
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0;
+      margin: 0 0 12px;
+      text-transform: uppercase;
     }
 
     .output {
-      min-height: 320px;
+      max-width: 100%;
+      min-height: 220px;
+      overflow: auto;
       font-family: Menlo, Consolas, monospace;
       font-size: 13px;
       white-space: pre;
+    }
+
+    .raw-output {
+      display: none;
     }
 
     .sr-only {
@@ -239,9 +901,40 @@
       border: 0;
     }
 
+    @media (max-width: 1180px) {
+      main {
+        grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+      }
+
+      .preview-panel {
+        grid-column: 2;
+        position: static;
+        max-height: none;
+        overflow: visible;
+      }
+    }
+
     @media (max-width: 900px) {
+      .app-header {
+        grid-template-columns: 1fr;
+      }
+
+      .header-actions {
+        justify-items: start;
+        min-width: 0;
+      }
+
       main {
         grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+        max-height: none;
+      }
+
+      .preview-panel {
+        grid-column: auto;
       }
 
       .event-list {
@@ -250,167 +943,754 @@
     }
 
     @media (max-width: 640px) {
-      header,
+      .app-header,
+      .top-timeline,
       main {
         padding: 14px;
+      }
+
+      .top-timeline {
+        margin-top: 0;
+        width: calc(100% - 28px);
+      }
+
+      .header-copy {
+        max-width: calc(100vw - 28px);
+      }
+
+      .header-actions,
+      .header-actions .toolbar {
+        width: calc(100vw - 28px);
+      }
+
+      h1 {
+        font-size: 28px;
       }
 
       .grid {
         grid-template-columns: 1fr;
       }
+
+      textarea {
+        min-height: 260px;
+      }
+
+      .preview,
+      .output {
+        min-height: 180px;
+      }
+
+      .toolbar,
+      .toolbar.split {
+        align-items: stretch;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .toolbar button,
+      .file-control {
+        max-width: 100%;
+        width: 100%;
+        justify-content: center;
+      }
     }
+
+    /* ── Geocode lookup ──────────────────────────────────────────── */
+
+    .geocode-section {
+      margin-bottom: 4px;
+    }
+
+    .geocode-row {
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
+    }
+
+    .geocode-row input {
+      flex: 1;
+    }
+
+    .geocode-row button {
+      flex-shrink: 0;
+      min-width: 90px;
+    }
+
+    .geocode-results {
+      list-style: none;
+      margin: 4px 0 0;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      max-height: 220px;
+      overflow-y: auto;
+      position: relative;
+      z-index: 100;
+    }
+
+    .geocode-result-item {
+      padding: 9px 12px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: 13.5px;
+      color: var(--ink);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: background var(--transition-fast);
+    }
+
+    .geocode-result-item:hover,
+    .geocode-result-item:focus {
+      background: var(--accent-soft);
+      color: var(--accent);
+      outline: none;
+    }
+
+    .geocode-no-results,
+    .geocode-error {
+      padding: 9px 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .geocode-key-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .geocode-key-row[hidden] {
+      display: none;
+    }
+
+    .geocode-key-row input {
+      flex: 1;
+    }
+
+    .geocode-key-row button {
+      flex-shrink: 0;
+      min-width: 80px;
+    }
+
+    .geocode-hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 6px 0 0;
+    }
+
+    .geocode-link {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 12px;
+      min-height: unset;
+      padding: 0;
+      cursor: pointer;
+      font-family: inherit;
+      text-decoration: underline;
+    }
+
+    .geocode-link:hover,
+    .geocode-link:focus {
+      background: none;
+      box-shadow: none;
+      border-color: transparent;
+      color: var(--accent-dark);
+    }
+    /* ── Scoring sliders ────────────────────────────────────────────── */
+
+    .scoring-status {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      vertical-align: middle;
+    }
+
+    .scoring-status.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .score-value {
+      font-weight: 400;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .score-value.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .score-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 5px;
+      border-radius: 99px;
+      background: var(--line-strong);
+      outline: none;
+      border: none;
+      min-height: unset;
+      padding: 0;
+      margin: 8px 0 4px;
+      cursor: pointer;
+    }
+
+    .score-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--line-strong);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .score-slider.active::-webkit-slider-thumb {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(45,91,255,0.15);
+    }
+
+    .score-slider::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--line-strong);
+      cursor: pointer;
+    }
+
+    .score-slider.active::-moz-range-thumb {
+      border-color: var(--accent);
+    }
+
+    .score-track-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ── Settings panel ─────────────────────────────────────────────── */
+
+    .settings-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 12, 20, 0.55);
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      z-index: 500;
+      padding: 70px 24px 24px;
+    }
+
+    .settings-overlay[hidden] {
+      display: none;
+    }
+
+    .settings-box {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .settings-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .settings-header h2 {
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .settings-header button {
+      min-height: unset;
+      padding: 4px 10px;
+      font-size: 20px;
+      line-height: 1;
+      background: none;
+      border: none;
+      color: var(--muted);
+    }
+
+    .settings-body {
+      padding: 20px;
+    }
+
+    .settings-section-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin: 0 0 6px;
+    }
+
+    .settings-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 10px;
+    }
+
+    .settings-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .settings-row input {
+      flex: 1;
+    }
+
+    .settings-row button {
+      flex-shrink: 0;
+      min-width: 60px;
+    }
+
+    .settings-key-status {
+      font-size: 12px;
+      min-height: 18px;
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .settings-key-status.ok    { color: #15803d; }
+    .settings-key-status.error { color: var(--danger); }
+
+    /* Remove the unused geocode-key-row styles */
+    .geocode-key-row { display: none; }
+
+    /* ── Toast notifications ─────────────────────────────────────────── */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none;
+    }
+
+    .toast {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-lg);
+      font-weight: 500;
+      pointer-events: auto;
+      transform: translateX(120%);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .toast.show {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .toast.success {
+      border-color: #b7dfca;
+      background: linear-gradient(135deg, #e7f5ee 0%, #ffffff 100%);
+    }
+
+    .toast.success .toast-icon {
+      background: linear-gradient(135deg, #2ec27e, #4edba7);
+    }
+
+    .toast.error {
+      border-color: #efb9b3;
+      background: linear-gradient(135deg, #fde9e7 0%, #ffffff 100%);
+    }
+
+    .toast.error .toast-icon {
+      background: linear-gradient(135deg, #ef4444, #f78484);
+    }
+
+    .toast-icon {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 16px;
+    }
+
+    .toast-content {
+      flex: 1;
+    }
+
+    .toast-title {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    .toast-message {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .toast {
+        transition: none;
+      }
+    }
+
   </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
   <header>
-    <h1>Digital Totem Admin</h1>
-    <p>Edit timeline content, then download a replacement <strong>data/events.json</strong>.</p>
-    <div class="toolbar">
-      <button type="button" id="load-json">Reload current JSON</button>
-      <label>
-        <span class="sr-only">Import JSON</span>
-        <input type="file" id="import-json" accept="application/json,.json">
-      </label>
-      <button type="button" class="primary" id="save-json">Save to data/events.json</button>
-      <button type="button" class="primary" id="download-json">Download events.json</button>
-      <button type="button" id="copy-json">Copy JSON</button>
+    <div class="app-header">
+      <div>
+        <p class="eyebrow">Local timeline editor</p>
+        <h1>Totem Builder</h1>
+        <p class="header-copy">Edit timeline entries, preview story content, and save updates back to <strong>data/events.json</strong>.</p>
+      </div>
+      <div class="header-actions">
+        <div class="toolbar">
+          <button type="button" id="load-json">Reload JSON</button>
+          <label class="file-control">
+            Import JSON
+            <input type="file" id="import-json" accept="application/json,.json">
+          </label>
+          <button type="button" class="primary" id="save-json">Save file</button>
+          <button type="button" id="download-json">Download</button>
+          <button type="button" id="copy-json">Copy</button>
+          <button type="button" id="openSettings" title="Settings">&#9881; Settings</button>
+        </div>
+        <p class="status" id="status">Loading data/events.json...</p>
+      </div>
     </div>
-    <p class="status" id="status">Loading data/events.json...</p>
   </header>
 
-  <main>
-    <aside class="panel stack">
+  <section class="panel top-timeline" aria-labelledby="timeline-heading">
+    <div class="timeline-heading">
+      <h2 id="timeline-heading">Timeline</h2>
+      <span class="timeline-count" id="timeline-count">0 entries</span>
+    </div>
+    <div class="timeline-track" id="entry-timeline" aria-label="Timeline entry dots"></div>
+  </section>
+
+  <main id="main-content">
+    <aside class="panel stack sidebar">
       <div>
-        <h2>Entries</h2>
-        <div class="toolbar">
+        <div class="toolbar split">
+          <div>
+            <h2>Entries</h2>
+            <p class="section-intro">Choose a story to edit.</p>
+          </div>
           <button type="button" class="primary" id="add-event">Add entry</button>
-          <button type="button" id="duplicate-event">Duplicate</button>
-          <button type="button" class="danger" id="delete-event">Delete</button>
         </div>
       </div>
       <div>
         <label for="search">Search</label>
         <input id="search" type="search" placeholder="Title, summary, category">
       </div>
+      <div class="toolbar">
+        <button type="button" id="duplicate-event">Duplicate</button>
+        <button type="button" class="danger" id="delete-event">Delete</button>
+      </div>
       <div class="event-list" id="event-list" aria-label="Timeline entries"></div>
     </aside>
 
     <section class="panel stack">
       <div>
-        <h2>Content</h2>
-        <p>Fields marked with generated values can be edited, but the helper buttons keep the usual timeline format consistent.</p>
+        <h2>Story content</h2>
+        <p class="section-intro">Capture the story first, add media when it is ready, then tidy the timeline details before saving.</p>
       </div>
 
-      <form id="event-form" class="grid">
-        <div>
-          <label for="title">Title</label>
-          <input id="title" name="title" required>
+      <form id="event-form" class="stack">
+        <div class="grid form-section">
+          <div class="section-heading">
+            <h3>Story</h3>
+            <p>Write the entry in the shape you want people to read it.</p>
+          </div>
+
+          <div>
+            <label for="entryType">Entry type</label>
+            <select id="entryType" name="entryType">
+              <option value="event">Event</option>
+              <option value="memory">Memory</option>
+              <option value="prompt">Prompt</option>
+            </select>
+            <small id="entryTypeHint">Events are factual records. Memories are reflections. Prompts are unanswered questions.</small>
+          </div>
+
+          <div>
+            <label for="title">Title</label>
+            <input id="title" name="title" required>
+          </div>
+
+          <div>
+            <label for="dateIso">Date</label>
+            <input id="dateIso" name="dateIso" type="date" required>
+            <small>Used to generate the timeline ID and sorting order.</small>
+          </div>
+
+          <div id="dateApproxWrapper" style="display:none">
+            <label for="dateApprox">Approximate date (optional)</label>
+            <input id="dateApprox" name="dateApprox" placeholder="Late 1990s, Summer of 2008">
+            <small>For memories without a precise date.</small>
+          </div>
+
+          <div id="attachedToWrapper" style="display:none">
+            <label for="attachedTo">Attached to event (optional)</label>
+            <select id="attachedTo" name="attachedTo">
+              <option value="">— None —</option>
+            </select>
+            <small>Link this memory to an existing event.</small>
+          </div>
+
+          <div id="questionWrapper" style="display:none">
+            <label for="question">Question</label>
+            <input id="question" name="question" placeholder="What was the bravest thing you did?">
+            <small>The prompt text that invites a response.</small>
+          </div>
+
+          <div class="full">
+            <label for="summary">Card summary</label>
+            <input id="summary" name="summary">
+          </div>
         </div>
 
-        <div>
-          <label for="dateIso">Date</label>
-          <input id="dateIso" name="dateIso" type="date" required>
-          <small>Used to generate the timeline ID and sorting order.</small>
-        </div>
-
-        <div>
-          <label for="id">Timeline ID</label>
-          <input id="id" name="id" required>
-          <small>Expected format: MM/DD/YYYY.</small>
-        </div>
-
-        <div>
-          <label for="order">Order</label>
-          <input id="order" name="order" type="number" step="1">
-        </div>
-
-        <div>
-          <label for="category">Category</label>
-          <select id="category" name="category">
-            <option value="life">life</option>
-            <option value="work">work</option>
-            <option value="pivotal">pivotal</option>
-            <option value="passion">passion</option>
-            <option value="basic">basic</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="icon">Icon class</label>
-          <input id="icon" name="icon" placeholder="xero, peace, basic">
-        </div>
-
-        <div>
-          <label for="description">Node description</label>
-          <input id="description" name="description" placeholder="Career, Passion, Live Event">
-        </div>
-
-        <div>
-          <label for="slug">Slug</label>
-          <input id="slug" name="slug">
-        </div>
-
-        <div class="full">
-          <label for="summary">Card summary</label>
-          <input id="summary" name="summary">
-        </div>
-
-        <div>
-          <label for="mediaImage">Hero image</label>
-          <input id="mediaImage" name="mediaImage" placeholder="images/flat/default/example.jpg">
-        </div>
-
-        <div>
-          <label for="mediaDescription">Image zoom label</label>
-          <input id="mediaDescription" name="mediaDescription" placeholder="ZOOM IN">
-        </div>
-
-        <div class="full">
+        <div class="form-section field-cluster">
+          <div class="section-heading">
+            <h3>Body</h3>
+            <p>Add the full story. Formatting support is intentionally simple.</p>
+          </div>
           <label for="body">Body</label>
           <textarea id="body" name="body" placeholder="Markdown-like story text"></textarea>
           <small>Supports headings, lists, links, images, bold, italic, and raw HTML embeds.</small>
         </div>
 
-        <div class="full toolbar">
+        <div class="grid form-section">
+          <div class="section-heading">
+            <h3>Media</h3>
+            <p>Add a hero image now, or leave it blank and the category default will be used.</p>
+          </div>
+
+          <div>
+            <label for="mediaImage">Hero image</label>
+            <input id="mediaImage" name="mediaImage" placeholder="images/flat/default/example.jpg">
+          </div>
+
+          <div>
+            <label for="mediaDescription">Image zoom label</label>
+            <input id="mediaDescription" name="mediaDescription" placeholder="ZOOM IN">
+          </div>
+        </div>
+
+        <div class="grid form-section">
+          <div class="section-heading">
+            <h3>Processing details</h3>
+            <p>Use these fields to place, classify, and publish the entry cleanly.</p>
+          </div>
+
+          <div>
+            <label for="category">Category</label>
+            <select id="category" name="category">
+              <option value="life">life</option>
+              <option value="work">work</option>
+              <option value="pivotal">pivotal</option>
+              <option value="passion">passion</option>
+              <option value="basic">basic</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="icon">Icon class</label>
+            <input id="icon" name="icon" placeholder="xero, peace, basic">
+          </div>
+
+          <div>
+            <label for="description">Node description</label>
+            <input id="description" name="description" placeholder="Career, Passion, Live Event">
+          </div>
+
+          <div>
+            <label for="slug">Slug</label>
+            <input id="slug" name="slug">
+          </div>
+
+          <div>
+            <label for="id">Timeline ID</label>
+            <input id="id" name="id" required>
+            <small>Expected format: MM/DD/YYYY.</small>
+          </div>
+
+          <div>
+            <label for="order">Order</label>
+            <input id="order" name="order" type="number" step="1">
+          </div>
+        </div>
+
+        <div class="grid form-section">
+          <div class="section-heading">
+            <h3>Discovery</h3>
+            <p>Powers the Map and Constellation views. All fields are optional.</p>
+          </div>
+
+          <div class="full geocode-section">
+            <label for="geocodeSearch">Find location</label>
+            <div class="geocode-row">
+              <input id="geocodeSearch" type="text" placeholder="e.g. Paris, France or Fitzroy, Melbourne" autocomplete="off" autocorrect="off" spellcheck="false">
+              <button type="button" id="geocodeLookupBtn">Look up</button>
+            </div>
+            <ul id="geocodeResults" class="geocode-results" role="listbox" aria-label="Location results" style="display:none"></ul>
+            <p class="geocode-hint">Fills Location name, Latitude and Longitude below &middot; key in <button type="button" id="geocodeKeyToggle" class="geocode-link">Settings</button></p>
+          </div>
+
+          <div>
+            <label for="locationName">Location name</label>
+            <input id="locationName" name="locationName" placeholder="Brest, France">
+          </div>
+
+          <div>
+            <label for="locationLat">Latitude</label>
+            <input id="locationLat" name="locationLat" type="number" step="any" placeholder="48.3904">
+          </div>
+
+          <div>
+            <label for="locationLng">Longitude</label>
+            <input id="locationLng" name="locationLng" type="number" step="any" placeholder="-4.4861">
+          </div>
+
+          <div class="full">
+            <label for="tags">Tags</label>
+            <input id="tags" name="tags" placeholder="travel, education, technology">
+            <small>Comma-separated. Shared tags between events create edges in the Constellation view.</small>
+          </div>
+
+          <div class="full">
+            <label for="people">People</label>
+            <input id="people" name="people" placeholder="Bríd DeRoiste, Victor Papanek">
+            <small>Comma-separated. Shared people also create constellation edges.</small>
+          </div>
+        </div>
+
+        <div class="grid form-section">
+          <div class="section-heading">
+            <h3>Scoring <span class="scoring-status" id="scoringStatus"></span></h3>
+            <p>Optional emotional fingerprint. Powers the Valence view.</p>
+          </div>
+
+          <div>
+            <label for="valence">Valence &mdash; <span class="score-value" id="valenceValue">not scored</span></label>
+            <input id="valence" type="range" min="-1" max="1" step="0.05" value="0" class="score-slider">
+            <div class="score-track-labels"><span>Very negative</span><span>Neutral</span><span>Very positive</span></div>
+          </div>
+
+          <div>
+            <label for="impact">Impact &mdash; <span class="score-value" id="impactValue">not scored</span></label>
+            <input id="impact" type="range" min="0" max="1" step="0.05" value="0.5" class="score-slider">
+            <div class="score-track-labels"><span>Minor</span><span>&nbsp;</span><span>Defining</span></div>
+          </div>
+
+          <div class="full">
+            <button type="button" id="clearScoring">Clear scoring</button>
+            <small style="margin-left:10px">Once you move a slider, scoring is active for this entry.</small>
+          </div>
+        </div>
+
+        <div class="toolbar">
           <button type="button" id="generate-id">Generate ID from date</button>
           <button type="button" id="generate-slug">Generate slug from title</button>
           <button type="submit" class="primary">Save entry</button>
         </div>
       </form>
 
-      <div>
-        <h2>Preview</h2>
-        <div class="preview" id="preview"></div>
-      </div>
+    </section>
 
-      <div>
-        <h2>Generated JSON</h2>
+    <aside class="panel stack preview-panel">
+      <div class="toolbar split">
+        <h2>Preview</h2>
+        <button type="button" class="raw-toggle" id="open-raw">Open raw</button>
+      </div>
+      <p class="section-intro">Check how the story will read as you write.</p>
+      <div class="preview" id="preview"></div>
+
+      <div class="form-section raw-output" id="raw-output">
+        <h2>Raw JSON</h2>
         <textarea class="output" id="json-output" readonly></textarea>
       </div>
-    </section>
+    </aside>
   </main>
+
+  <!-- Settings panel -->
+  <div id="settingsPanel" class="settings-overlay" hidden>
+    <div class="settings-box" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <div class="settings-header">
+        <h2 id="settingsTitle">Settings</h2>
+        <button type="button" id="closeSettings" aria-label="Close settings">&times;</button>
+      </div>
+      <div class="settings-body">
+        <h3 class="settings-section-title">Location lookup</h3>
+        <p class="settings-desc">API key for <a href="https://geocode.maps.co" target="_blank" rel="noopener">geocode.maps.co</a>. Enter once — stored locally in your browser.</p>
+        <div class="settings-row">
+          <input id="geocodeApiKey" type="password" placeholder="Paste your geocode.maps.co API key" autocomplete="off">
+          <button type="button" id="geocodeSaveKey">Save</button>
+        </div>
+        <p class="settings-key-status" id="geocodeKeyStatus"></p>
+      </div>
+    </div>
+  </div>
 
   <script>
     (function () {
-      var state = {
-        payload: null,
-        selectedIndex: 0,
-        canWriteLocal: false
-      };
+	      var state = {
+	        payload: null,
+	        selectedIndex: 0,
+	        canWriteLocal: false,
+	        isDirty: false,
+	        templateSelected: false,
+	        scoringActive: false
+	      };
 
       var els = {
         status: document.getElementById('status'),
+        timeline: document.getElementById('entry-timeline'),
+        timelineCount: document.getElementById('timeline-count'),
         eventList: document.getElementById('event-list'),
         form: document.getElementById('event-form'),
         search: document.getElementById('search'),
         preview: document.getElementById('preview'),
-        output: document.getElementById('json-output')
+        output: document.getElementById('json-output'),
+        rawOutput: document.getElementById('raw-output'),
+        openRaw: document.getElementById('open-raw')
       };
       var saveButton = document.getElementById('save-json');
 
       var fields = [
+        'entryType',
         'title',
         'dateIso',
+        'dateApprox',
+        'attachedTo',
+        'question',
         'id',
         'order',
         'category',
@@ -420,11 +1700,53 @@
         'summary',
         'mediaImage',
         'mediaDescription',
-        'body'
+        'body',
+        'locationName',
+        'locationLat',
+        'locationLng',
+        'tags',
+        'people'
       ].reduce(function (acc, id) {
         acc[id] = document.getElementById(id);
         return acc;
       }, {});
+
+      /* Toggle memory/prompt-specific fields based on entry type */
+      var updateEntryTypeUI = function () {
+        var typeEl = fields.entryType || document.getElementById('entryType');
+        if (!typeEl) return;
+        var type = typeEl.value;
+        var isMemory = type === 'memory';
+        var isPrompt = type === 'prompt';
+        document.getElementById('dateApproxWrapper').style.display = isMemory ? '' : 'none';
+        document.getElementById('attachedToWrapper').style.display = isMemory ? '' : 'none';
+        document.getElementById('questionWrapper').style.display = isPrompt ? '' : 'none';
+      };
+      if (fields.entryType) {
+        fields.entryType.addEventListener('change', updateEntryTypeUI);
+      } else {
+        /* Fallback: try direct getElementById */
+        var entryTypeEl = document.getElementById('entryType');
+        if (entryTypeEl) {
+          fields.entryType = entryTypeEl;
+          entryTypeEl.addEventListener('change', updateEntryTypeUI);
+        }
+      }
+
+      /* Populate attachedTo dropdown with existing events */
+      var populateAttachedTo = function () {
+        var events = currentEvents();
+        var select = fields.attachedTo || document.getElementById('attachedTo');
+        if (!select) return;
+        select.innerHTML = '<option value="">— None —</option>';
+        events.forEach(function (ev) {
+          if (ev.type === 'prompt' || ev.type === 'memory') return;
+          var opt = document.createElement('option');
+          opt.value = ev.id;
+          opt.textContent = ev.title || ev.id;
+          select.appendChild(opt);
+        });
+      };
 
       var setStatus = function (message, type) {
         els.status.textContent = message;
@@ -465,10 +1787,96 @@
           .replace(/"/g, '&quot;');
       };
 
+      var safeClassName = function (str) {
+        return String(str || '').trim().replace(/[^a-zA-Z0-9_-]/g, '');
+      };
+
       var stringifyJson = function (payload) {
         return JSON.stringify(payload, null, 2).replace(/[\u007f-\uffff]/g, function (char) {
           return '\\u' + char.charCodeAt(0).toString(16).padStart(4, '0');
         }) + '\n';
+      };
+
+      var defaultHeroImages = {
+        basic: 'images/flat/default/key_experience.jpg',
+        life: 'images/flat/default/key_life.jpg',
+        work: 'images/flat/default/key_work.jpg',
+        pivotal: 'images/flat/default/key_experience.jpg',
+        passion: 'images/flat/default/key_passion.jpg'
+      };
+
+      var defaultIconClasses = {
+        basic: 'basic',
+        life: 'life',
+        work: 'work',
+        pivotal: 'pivotal',
+        passion: 'passion'
+      };
+
+      var defaultHeroForCategory = function (category) {
+        return defaultHeroImages[category] || defaultHeroImages.basic;
+      };
+
+      var defaultIconForCategory = function (category) {
+        return defaultIconClasses[category] || defaultIconClasses.basic;
+      };
+
+      var templateEvent = {
+        id: '04/13/2026',
+        title: 'Template: A Story That Uses Every Field',
+        description: 'Template',
+        category: 'pivotal',
+        icon: 'pivotal',
+        summary: 'Shows how title, summary, category, and media combine in the card.',
+        slug: 'template-event',
+        timelineId: 'richard-fortune',
+        dateIso: '2026-04-13',
+        order: 0,
+        media: {
+          image: 'images/flat/default/key_experience.jpg',
+          description: 'Hero image example'
+        },
+        body: [
+          '# Story hook',
+          'A strong opener sets the scene in one or two sentences.',
+          '',
+          '## What works well',
+          '- Use headings to structure long stories.',
+          '- Add a short list for quick highlights.',
+          '- Link out to references when it helps.',
+          '',
+          '[Reference link](https://example.com)',
+          '',
+          '![Alternate media](images/flat/default/key_life.jpg)',
+          '',
+          '<blockquote>Raw HTML embeds are supported when you need them.</blockquote>'
+        ].join('\n')
+      };
+
+      var isDefaultHero = function (path) {
+        return Object.keys(defaultHeroImages).some(function (key) {
+          return defaultHeroImages[key] === path;
+        });
+      };
+
+      var isDefaultIcon = function (icon) {
+        return Object.keys(defaultIconClasses).some(function (key) {
+          return defaultIconClasses[key] === icon;
+        });
+      };
+
+      var syncHeroImageForCategory = function () {
+        var currentImage = fields.mediaImage.value.trim();
+        if (!currentImage || isDefaultHero(currentImage)) {
+          fields.mediaImage.value = defaultHeroForCategory(fields.category.value);
+        }
+      };
+
+      var syncIconForCategory = function () {
+        var currentIcon = fields.icon.value.trim();
+        if (!currentIcon || isDefaultIcon(currentIcon)) {
+          fields.icon.value = defaultIconForCategory(fields.category.value);
+        }
       };
 
       var renderMarkdown = function (md) {
@@ -552,27 +1960,67 @@
         return next;
       };
 
-      var sortEvents = function () {
-        currentEvents().sort(function (a, b) {
-          var aOrder = typeof a.order === 'number' ? a.order : 9999;
-          var bOrder = typeof b.order === 'number' ? b.order : 9999;
-          if (aOrder !== bOrder) return aOrder - bOrder;
-          return String(a.dateIso || '').localeCompare(String(b.dateIso || ''));
-        });
-      };
+	      var sortEvents = function () {
+	        currentEvents().sort(function (a, b) {
+	          var aOrder = typeof a.order === 'number' ? a.order : 9999;
+	          var bOrder = typeof b.order === 'number' ? b.order : 9999;
+	          if (aOrder !== bOrder) return aOrder - bOrder;
+	          return String(a.dateIso || '').localeCompare(String(b.dateIso || ''));
+	        });
+	      };
 
-      var serialize = function () {
-        if (!state.payload) return '';
-        state.payload.generatedAt = new Date().toISOString();
-        sortEvents();
-        currentEvents().forEach(function (event, index) {
-          event.order = index;
-        });
-        return stringifyJson(state.payload);
-      };
+	      var sortEventArray = function (events) {
+	        events.sort(function (a, b) {
+	          var aOrder = typeof a.order === 'number' ? a.order : 9999;
+	          var bOrder = typeof b.order === 'number' ? b.order : 9999;
+	          if (aOrder !== bOrder) return aOrder - bOrder;
+	          return String(a.dateIso || '').localeCompare(String(b.dateIso || ''));
+	        });
+	      };
+
+	      var payloadForOutput = function () {
+	        var payload;
+	        if (!state.payload) return null;
+	        payload = JSON.parse(JSON.stringify(state.payload));
+	        payload.generatedAt = new Date().toISOString();
+	        if (Array.isArray(payload.events)) {
+	          sortEventArray(payload.events);
+	          payload.events.forEach(function (event, index) {
+	            event.order = index;
+	          });
+	        }
+	        return payload;
+	      };
+
+	      var duplicateIds = function (payload) {
+	        var seen = {};
+	        var duplicates = [];
+	        (payload && Array.isArray(payload.events) ? payload.events : []).forEach(function (event) {
+	          var id = String(event.id || '').trim();
+	          if (!id) return;
+	          if (seen[id] && duplicates.indexOf(id) === -1) duplicates.push(id);
+	          seen[id] = true;
+	        });
+	        return duplicates;
+	      };
+
+	      var validatePayload = function (payload) {
+	        var duplicates = duplicateIds(payload);
+	        if (duplicates.length) {
+	          return 'Duplicate Timeline IDs: ' + duplicates.join(', ') + '.';
+	        }
+	        return '';
+	      };
+
+	      var serialize = function () {
+	        var payload = payloadForOutput();
+	        return payload ? stringifyJson(payload) : '';
+	      };
 
       var formToEvent = function () {
         var timelineId = state.payload && state.payload.timeline ? state.payload.timeline.id : 'richard-fortune';
+        var entryTypeEl = fields.entryType || document.getElementById('entryType');
+        var entryType = entryTypeEl ? entryTypeEl.value : 'event';
         var event = {
           id: fields.id.value.trim(),
           title: fields.title.value.trim(),
@@ -586,19 +2034,65 @@
           order: Number(fields.order.value || 0),
           body: fields.body.value
         };
-        var mediaImage = fields.mediaImage.value.trim();
-        var mediaDescription = fields.mediaDescription.value.trim();
-        if (mediaImage) {
-          event.media = { image: mediaImage };
-          if (mediaDescription) event.media.description = mediaDescription;
+
+        /* Entry type (event is default, so omit if event) */
+        if (entryType === 'memory') {
+          event.type = 'memory';
+          var dateApprox = fields.dateApprox.value.trim();
+          if (dateApprox) event.dateApprox = dateApprox;
+          var attachedTo = fields.attachedTo.value.trim();
+          if (attachedTo) event.attachedTo = attachedTo;
+        } else if (entryType === 'prompt') {
+          event.type = 'prompt';
+          var question = fields.question.value.trim();
+          if (question) event.question = question;
         }
+
+        var mediaImage = fields.mediaImage.value.trim() || defaultHeroForCategory(event.category);
+        var mediaDescription = fields.mediaDescription.value.trim();
+        event.media = { image: mediaImage };
+        if (mediaDescription) event.media.description = mediaDescription;
+
+        /* Discovery fields */
+        var locName = fields.locationName.value.trim();
+        var locLat  = parseFloat(fields.locationLat.value);
+        var locLng  = parseFloat(fields.locationLng.value);
+        if (locName || (!isNaN(locLat) && !isNaN(locLng))) {
+          event.location = {};
+          if (locName) event.location.name = locName;
+          if (!isNaN(locLat)) event.location.lat = locLat;
+          if (!isNaN(locLng)) event.location.lng = locLng;
+        }
+        var tagsStr = fields.tags.value.trim();
+        if (tagsStr) event.tags = tagsStr.split(',').map(function (t) { return t.trim(); }).filter(Boolean);
+        var peopleStr = fields.people.value.trim();
+        if (peopleStr) event.people = peopleStr.split(',').map(function (p) { return p.trim(); }).filter(Boolean);
+
+        /* Scoring fields */
+        if (state.scoringActive) {
+          event.valence = parseFloat(parseFloat(document.getElementById('valence').value).toFixed(2));
+          event.impact  = parseFloat(parseFloat(document.getElementById('impact').value).toFixed(2));
+        }
+
         return event;
       };
 
-      var eventToForm = function (event) {
-        fields.title.value = event.title || '';
-        fields.dateIso.value = event.dateIso || isoFromId(event.id) || '';
-        fields.id.value = event.id || idFromIso(event.dateIso) || '';
+	      var eventToForm = function (event) {
+	        /* Entry type */
+	        var entryTypeEl = fields.entryType || document.getElementById('entryType');
+	        if (entryTypeEl) entryTypeEl.value = event.type || 'event';
+	        updateEntryTypeUI();
+	        populateAttachedTo();
+	        var dateApproxEl = fields.dateApprox || document.getElementById('dateApprox');
+	        var attachedToEl = fields.attachedTo || document.getElementById('attachedTo');
+	        var questionEl = fields.question || document.getElementById('question');
+	        if (dateApproxEl) dateApproxEl.value = event.dateApprox || '';
+	        if (attachedToEl) attachedToEl.value = event.attachedTo || '';
+	        if (questionEl) questionEl.value = event.question || '';
+
+	        fields.title.value = event.title || '';
+	        fields.dateIso.value = event.dateIso || isoFromId(event.id) || '';
+	        fields.id.value = event.id || idFromIso(event.dateIso) || '';
         fields.order.value = typeof event.order === 'number' ? event.order : '';
         fields.category.value = event.category || 'basic';
         fields.icon.value = event.icon || '';
@@ -608,64 +2102,259 @@
         fields.mediaImage.value = event.media && event.media.image ? event.media.image : '';
         fields.mediaDescription.value = event.media && event.media.description ? event.media.description : '';
         fields.body.value = event.body || '';
+        fields.locationName.value = event.location ? (event.location.name || '') : '';
+        fields.locationLat.value  = event.location && event.location.lat != null ? event.location.lat : '';
+        fields.locationLng.value  = event.location && event.location.lng != null ? event.location.lng : '';
+        fields.tags.value   = Array.isArray(event.tags)   ? event.tags.join(', ')   : '';
+        fields.people.value = Array.isArray(event.people) ? event.people.join(', ') : '';
+
+        /* Scoring fields */
+        var hasScoring = (event.valence != null && event.impact != null);
+        state.scoringActive = hasScoring;
+        document.getElementById('valence').value = hasScoring ? event.valence : 0;
+        document.getElementById('impact').value  = hasScoring ? event.impact  : 0.5;
+        updateScoringUI();
       };
+
+	      var clearForm = function () {
+	        Object.keys(fields).forEach(function (key) {
+	          fields[key].value = key === 'category' ? 'basic' : '';
+	        });
+	        state.isDirty = false;
+	        els.preview.innerHTML = '<p class="section-intro">No entries yet. Add an entry to start building the timeline.</p>';
+	        els.output.value = serialize();
+	      };
+
+	      var commitCurrentForm = function () {
+	        var events = currentEvents();
+	        var event;
+	        if (state.templateSelected) { state.isDirty = false; return null; }
+	        if (!events.length || state.selectedIndex < 0 || state.selectedIndex >= events.length) {
+	          state.isDirty = false;
+	          return null;
+	        }
+	        event = formToEvent();
+	        events[state.selectedIndex] = event;
+	        state.isDirty = false;
+	        return event;
+	      };
+
+	      var commitAndSortCurrentForm = function () {
+	        var event = commitCurrentForm();
+	        if (!event) return null;
+	        sortEvents();
+	        state.selectedIndex = currentEvents().indexOf(event);
+	        if (state.selectedIndex < 0) state.selectedIndex = 0;
+	        return event;
+	      };
 
       var updatePreview = function () {
-        var event = formToEvent();
-        var image = event.media && event.media.image ? '<p><img src="' + escapeHtml(event.media.image) + '" alt=""></p>' : '';
-        els.preview.innerHTML =
-          '<h3>' + escapeHtml(event.title || 'Untitled') + '</h3>' +
-          '<p><strong>' + escapeHtml(event.category || 'basic') + '</strong> · ' + escapeHtml(event.dateIso || event.id || '') + '</p>' +
-          '<p>' + escapeHtml(event.summary || '') + '</p>' +
-          image +
-          renderMarkdown(event.body || '');
+        els.preview.innerHTML = buildPreviewHtml(formToEvent());
       };
 
-      var updateOutput = function () {
-        els.output.value = serialize();
+      var buildPreviewHtml = function (event) {
+        var category = escapeHtml(event.category || 'basic');
+        var date = escapeHtml(event.dateIso || event.id || '');
+        var iconClass = iconClassForEvent(event, 'post-icon');
+        var summary = escapeHtml(event.summary || 'No card summary yet.');
+        var title = escapeHtml(event.title || 'Untitled');
+        var imageSrc = event.media && event.media.image ? event.media.image : defaultHeroForCategory(event.category);
+        var image = '<div class="post-image-preview"><img src="' + escapeHtml(imageSrc) + '" alt=""></div>';
+        return (
+          '<div class="post-preview">' +
+            '<div class="post-card-preview">' +
+              '<div class="post-card-top">' +
+                '<div class="' + escapeHtml(iconClass) + '" aria-label="' + escapeHtml(event.icon || event.category || 'Icon') + '"></div>' +
+                '<div class="meta-row"><span class="pill">' + category + '</span><span class="pill">' + date + '</span></div>' +
+              '</div>' +
+              '<h3>' + title + '</h3>' +
+              '<p>' + summary + '</p>' +
+              image +
+            '</div>' +
+            '<div class="post-body-preview">' +
+              '<h4>Expanded post</h4>' +
+              renderMarkdown(event.body || 'Add body content to preview the expanded post.') +
+            '</div>' +
+          '</div>'
+        );
       };
 
-      var renderList = function () {
-        var events = currentEvents();
+	      var updateOutput = function () {
+	        els.output.value = serialize();
+	      };
+
+
+      var iconClassForEvent = function (event, baseClass) {
+        return [
+          baseClass,
+          'mytextwithicon',
+          safeClassName(event.category || 'basic'),
+          safeClassName(event.icon || defaultIconForCategory(event.category))
+        ].join(' ');
+      };
+
+	      var renderTimeline = function () {
+	        var events = currentEvents();
+	        var templateDot;
+	        els.timeline.innerHTML = '';
+	        els.timelineCount.textContent = events.length + (events.length === 1 ? ' entry' : ' entries');
+	        templateDot = document.createElement('button');
+	        templateDot.type = 'button';
+	        templateDot.className = 'timeline-dot template' + (state.templateSelected ? ' active' : '');
+	        templateDot.setAttribute('aria-label', 'View template entry');
+	        templateDot.title = 'Template entry \u2013 reference for all fields';
+	        templateDot.addEventListener('click', selectTemplate);
+	        els.timeline.appendChild(templateDot);
+        events.forEach(function (event, index) {
+          var dot = document.createElement('button');
+          var category = safeClassName(event.category || 'basic');
+          dot.type = 'button';
+          dot.className = 'timeline-dot ' + category + (index === state.selectedIndex && !state.templateSelected ? ' active' : '');
+          dot.setAttribute('aria-label', 'Edit ' + (event.title || 'untitled entry') + ', ' + (event.dateIso || event.id || 'undated'));
+          dot.title = (event.dateIso || event.id || '') + ' - ' + (event.title || 'Untitled');
+          dot.addEventListener('click', function () {
+            selectEvent(index);
+          });
+          els.timeline.appendChild(dot);
+	        });
+	      };
+
+	      var hasTimelineId = function (id) {
+	        return currentEvents().some(function (event) {
+	          return event.id === id;
+	        });
+	      };
+
+	      var addDays = function (iso, days) {
+	        var date = new Date(iso + 'T00:00:00');
+	        date.setDate(date.getDate() + days);
+	        return date.toISOString().slice(0, 10);
+	      };
+
+	      var uniqueIsoFrom = function (iso) {
+	        var nextIso = iso;
+	        while (hasTimelineId(idFromIso(nextIso))) {
+	          nextIso = addDays(nextIso, 1);
+	        }
+	        return nextIso;
+	      };
+
+	      var renderList = function () {
+	        var events = currentEvents();
         var query = els.search.value.trim().toLowerCase();
         els.eventList.innerHTML = '';
+        var templateBtn = document.createElement('button');
+        templateBtn.type = 'button';
+        templateBtn.className = 'event-button template-entry' + (state.templateSelected ? ' active' : '');
+        templateBtn.innerHTML =
+          '<span class="event-summary-row">' +
+            '<span class="event-summary-content">' +
+              '<span class="event-title">Template entry</span>' +
+              '<span class="event-meta"><span class="event-category-dot pivotal"></span>' +
+              '<span>Reference &middot; All fields</span></span>' +
+            '</span>' +
+          '</span>';
+        templateBtn.addEventListener('click', selectTemplate);
+        els.eventList.appendChild(templateBtn);
         events.forEach(function (event, index) {
           var text = [event.title, event.summary, event.category, event.dateIso, event.id].join(' ').toLowerCase();
           var button;
+          var category = safeClassName(event.category || 'basic');
           if (query && text.indexOf(query) === -1) return;
           button = document.createElement('button');
           button.type = 'button';
           button.className = 'event-button' + (index === state.selectedIndex ? ' active' : '');
           button.innerHTML =
-            '<span class="event-title">' + escapeHtml(event.title || 'Untitled') + '</span>' +
-            '<span class="event-meta">' + escapeHtml(event.dateIso || event.id || '') + ' · ' + escapeHtml(event.category || 'basic') + '</span>';
+            '<span class="event-summary-row">' +
+              '<span class="event-summary-content">' +
+                '<span class="event-title">' + escapeHtml(event.title || 'Untitled') + '</span>' +
+                '<span class="event-meta"><span class="event-category-dot ' + category + '"></span><span>' + escapeHtml(event.dateIso || event.id || '') + ' - ' + escapeHtml(event.category || 'basic') + '</span></span>' +
+              '</span>' +
+            '</span>';
           button.addEventListener('click', function () {
-            state.selectedIndex = index;
-            eventToForm(event);
-            renderList();
-            updatePreview();
-            updateOutput();
+            selectEvent(index);
           });
           els.eventList.appendChild(button);
         });
       };
 
-      var selectEvent = function (index) {
-        var events = currentEvents();
-        if (!events.length) return;
-        state.selectedIndex = Math.max(0, Math.min(index, events.length - 1));
-        eventToForm(events[state.selectedIndex]);
+      var renderNavigation = function () {
+        renderTimeline();
         renderList();
-        updatePreview();
-        updateOutput();
       };
 
-      var loadPayload = function (payload) {
-        state.payload = normalizePayload(payload);
-        sortEvents();
-        selectEvent(0);
-        setStatus('Loaded ' + currentEvents().length + ' entries.', 'ok');
-      };
+	      var selectEvent = function (index) {
+	        var events = currentEvents();
+	        if (!events.length) {
+	          state.selectedIndex = 0;
+	          state.templateSelected = false;
+	          renderNavigation();
+	          clearForm();
+	          return;
+	        }
+	        if (state.isDirty) {
+	          commitCurrentForm();
+	        }
+	        state.templateSelected = false;
+	        state.selectedIndex = Math.max(0, Math.min(index, events.length - 1));
+	        eventToForm(events[state.selectedIndex]);
+	        state.isDirty = false;
+	        renderNavigation();
+	        updatePreview();
+	        updateOutput();
+	      };
+
+	      var selectTemplate = function () {
+	        if (state.isDirty) {
+	          commitCurrentForm();
+	        }
+	        state.templateSelected = true;
+	        eventToForm(templateEvent);
+	        state.isDirty = false;
+	        renderNavigation();
+	        updatePreview();
+	        updateOutput();
+	        setStatus('Viewing template entry. Changes here are not saved.', '');
+	      };
+
+	      var applyPromptPrefill = function () {
+	        var SESSION_KEY = 'totem_prompt_response';
+	        var raw;
+	        try { raw = sessionStorage.getItem(SESSION_KEY); } catch (e) { return; }
+	        if (!raw) return;
+	        try { sessionStorage.removeItem(SESSION_KEY); } catch (e) { /* ignore */ }
+	        var data;
+	        try { data = JSON.parse(raw); } catch (e) { return; }
+	        if (!data || !data.title) return;
+
+	        var events = currentEvents();
+	        var baseIso = data.dateIso || new Date().toISOString().slice(0, 10);
+	        var iso = uniqueIsoFrom(baseIso);
+	        var event = {
+	          id:          idFromIso(iso),
+	          dateIso:     iso,
+	          title:       data.title || '',
+	          description: 'Life Event',
+	          category:    data.category || 'basic',
+	          icon:        'icon-star',
+	          summary:     '',
+	          slug:        slugify(data.title || ''),
+	          body:        data.body || '',
+	          order:       events.length
+	        };
+	        events.push(event);
+	        selectEvent(events.length - 1);
+	        setStatus('Pre-filled from prompt: "' + (data.question || data.title) + '". Edit and save when ready.', 'ok');
+	      };
+
+	      var loadPayload = function (payload) {
+	        state.payload = normalizePayload(payload);
+	        sortEvents();
+	        state.isDirty = false;
+	        selectEvent(0);
+	        setStatus('Loaded ' + currentEvents().length + ' entries.', 'ok');
+	        applyPromptPrefill();
+	      };
 
       var loadRemote = function () {
         setStatus('Loading data/events.json...');
@@ -709,12 +2398,16 @@
           .catch(function (err) { setStatus('Import failed: ' + err.message, 'error'); });
       });
 
-      document.getElementById('add-event').addEventListener('click', function () {
-        var events = currentEvents();
-        var now = new Date();
-        var iso = now.toISOString().slice(0, 10);
-        var event = {
-          id: idFromIso(iso),
+	      document.getElementById('add-event').addEventListener('click', function () {
+	        var events = currentEvents();
+	        var now = new Date();
+	        var iso;
+	        if (state.isDirty) {
+	          commitCurrentForm();
+	        }
+	        iso = uniqueIsoFrom(now.toISOString().slice(0, 10));
+	        var event = {
+	          id: idFromIso(iso),
           title: 'New entry',
           description: 'Life Event',
           category: 'life',
@@ -726,49 +2419,73 @@
           order: events.length,
           body: ''
         };
-        events.push(event);
-        selectEvent(events.length - 1);
-        setStatus('Added a new entry. Edit it, then save.', 'ok');
-      });
+	        events.push(event);
+	        selectEvent(events.length - 1);
+	        setStatus('Added a new entry. Edit it, then save.', 'ok');
+	      });
 
-      document.getElementById('duplicate-event').addEventListener('click', function () {
-        var events = currentEvents();
-        var source = events[state.selectedIndex];
-        var copy;
-        if (!source) return;
-        copy = JSON.parse(JSON.stringify(source));
-        copy.title = copy.title + ' copy';
-        copy.slug = slugify(copy.title);
-        copy.order = events.length;
-        events.splice(state.selectedIndex + 1, 0, copy);
-        selectEvent(state.selectedIndex + 1);
+	      document.getElementById('duplicate-event').addEventListener('click', function () {
+	        var events = currentEvents();
+	        var baseIso;
+	        var source = events[state.selectedIndex];
+	        var copy;
+	        if (state.isDirty) {
+	          source = commitCurrentForm();
+	          events = currentEvents();
+	        }
+	        if (!source) return;
+	        copy = JSON.parse(JSON.stringify(source));
+	        copy.title = copy.title + ' copy';
+	        copy.slug = slugify(copy.title);
+	        baseIso = copy.dateIso || isoFromId(copy.id) || new Date().toISOString().slice(0, 10);
+	        copy.dateIso = uniqueIsoFrom(addDays(baseIso, 1));
+	        copy.id = idFromIso(copy.dateIso);
+	        copy.order = events.length;
+	        events.splice(state.selectedIndex + 1, 0, copy);
+	        selectEvent(state.selectedIndex + 1);
         setStatus('Duplicated the selected entry.', 'ok');
       });
 
-      document.getElementById('delete-event').addEventListener('click', function () {
-        var events = currentEvents();
-        var event = events[state.selectedIndex];
-        if (!event) return;
-        if (!window.confirm('Delete "' + (event.title || 'this entry') + '"?')) return;
-        events.splice(state.selectedIndex, 1);
-        selectEvent(state.selectedIndex);
-        setStatus('Deleted the entry.', 'ok');
-      });
+	      document.getElementById('delete-event').addEventListener('click', function () {
+	        var events = currentEvents();
+	        var event = events[state.selectedIndex];
+	        if (!event) return;
+	        if (!window.confirm('Delete "' + (event.title || 'this entry') + '"?')) return;
+	        events.splice(state.selectedIndex, 1);
+	        state.isDirty = false;
+	        selectEvent(state.selectedIndex);
+	        setStatus('Deleted the entry.', 'ok');
+	      });
 
-      document.getElementById('generate-id').addEventListener('click', function () {
-        fields.id.value = idFromIso(fields.dateIso.value);
-        updatePreview();
-      });
+	      document.getElementById('generate-id').addEventListener('click', function () {
+	        fields.id.value = idFromIso(fields.dateIso.value);
+	        state.isDirty = true;
+	        updatePreview();
+	      });
 
-      document.getElementById('generate-slug').addEventListener('click', function () {
-        fields.slug.value = slugify(fields.title.value);
-        updatePreview();
-      });
+	      document.getElementById('generate-slug').addEventListener('click', function () {
+	        fields.slug.value = slugify(fields.title.value);
+	        state.isDirty = true;
+	        updatePreview();
+	      });
 
-      document.getElementById('download-json').addEventListener('click', function () {
-        var blob = new Blob([serialize()], { type: 'application/json' });
-        var url = URL.createObjectURL(blob);
-        var link = document.createElement('a');
+	      document.getElementById('download-json').addEventListener('click', function () {
+	        var payload;
+	        var validationError;
+	        var text;
+	        commitAndSortCurrentForm();
+	        payload = payloadForOutput();
+	        validationError = validatePayload(payload);
+	        if (validationError) {
+	          setStatus(validationError + ' Fix these before downloading.', 'error');
+	          return;
+	        }
+	        text = stringifyJson(payload);
+	        els.output.value = text;
+	        renderNavigation();
+	        var blob = new Blob([text], { type: 'application/json' });
+	        var url = URL.createObjectURL(blob);
+	        var link = document.createElement('a');
         link.href = url;
         link.download = 'events.json';
         document.body.appendChild(link);
@@ -776,16 +2493,35 @@
         link.remove();
         URL.revokeObjectURL(url);
         setStatus('Downloaded events.json. Replace data/events.json, then commit and push.', 'ok');
-      });
+	      });
 
-      saveButton.addEventListener('click', function () {
-        var text = serialize();
-        if (!state.canWriteLocal) {
-          setStatus('Direct save is only available through the local admin server.', 'error');
-          return;
-        }
-        fetch('/__admin/save-events', {
-          method: 'POST',
+	      saveButton.addEventListener('click', function () {
+	        var payload;
+	        var validationError;
+	        var text;
+	        commitAndSortCurrentForm();
+	        if (!state.canWriteLocal) {
+	          setStatus('Direct save is only available through the local admin server.', 'error');
+	          return;
+	        }
+	        payload = payloadForOutput();
+	        validationError = validatePayload(payload);
+	        if (validationError) {
+	          setStatus(validationError + ' Fix these before saving.', 'error');
+	          if (window.showToast) {
+	            window.showToast({
+	              type: 'error',
+	              title: 'Validation error',
+	              message: validationError
+	            });
+	          }
+	          return;
+	        }
+	        text = stringifyJson(payload);
+	        els.output.value = text;
+	        renderNavigation();
+	        fetch('/__admin/save-events', {
+	          method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: text
         })
@@ -799,16 +2535,42 @@
           })
           .then(function (payload) {
             setStatus('Saved ' + payload.entries + ' entries to ' + payload.path + '.', 'ok');
+            if (window.showToast) {
+              window.showToast({
+                type: 'success',
+                title: 'Changes saved',
+                message: payload.entries + ' entries written to ' + payload.path
+              });
+            }
           })
           .catch(function (err) {
             setStatus('Save failed: ' + err.message, 'error');
+            if (window.showToast) {
+              window.showToast({
+                type: 'error',
+                title: 'Save failed',
+                message: err.message
+              });
+            }
           });
-      });
+	      });
 
-      document.getElementById('copy-json').addEventListener('click', function () {
-        var text = serialize();
-        if (!navigator.clipboard) {
-          els.output.select();
+	      document.getElementById('copy-json').addEventListener('click', function () {
+	        var payload;
+	        var validationError;
+	        var text;
+	        commitAndSortCurrentForm();
+	        payload = payloadForOutput();
+	        validationError = validatePayload(payload);
+	        if (validationError) {
+	          setStatus(validationError + ' Fix these before copying.', 'error');
+	          return;
+	        }
+	        text = stringifyJson(payload);
+	        els.output.value = text;
+	        renderNavigation();
+	        if (!navigator.clipboard) {
+	          els.output.select();
           document.execCommand('copy');
           setStatus('Copied JSON from the output field.', 'ok');
           return;
@@ -818,21 +2580,21 @@
           .catch(function (err) { setStatus('Copy failed: ' + err.message, 'error'); });
       });
 
-      els.form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        currentEvents()[state.selectedIndex] = formToEvent();
-        sortEvents();
-        state.selectedIndex = currentEvents().findIndex(function (item) {
-          return item.id === fields.id.value.trim() && item.title === fields.title.value.trim();
-        });
-        if (state.selectedIndex < 0) state.selectedIndex = 0;
-        selectEvent(state.selectedIndex);
-        setStatus('Saved the entry in this editor. Download the JSON when ready.', 'ok');
-      });
+	      els.form.addEventListener('submit', function (event) {
+	        event.preventDefault();
+	        commitAndSortCurrentForm();
+	        selectEvent(state.selectedIndex);
+	        setStatus('Saved the entry in this editor. Download the JSON when ready.', 'ok');
+	      });
 
-      els.form.addEventListener('input', function (event) {
-        if (event.target === fields.dateIso && !fields.id.value) {
-          fields.id.value = idFromIso(fields.dateIso.value);
+	      els.form.addEventListener('input', function (event) {
+	        state.isDirty = true;
+	        if (event.target === fields.dateIso) {
+	          fields.id.value = idFromIso(fields.dateIso.value);
+	        }
+        if (event.target === fields.category) {
+          syncHeroImageForCategory();
+          syncIconForCategory();
         }
         if (event.target === fields.title && !fields.slug.value) {
           fields.slug.value = slugify(fields.title.value);
@@ -840,11 +2602,335 @@
         updatePreview();
       });
 
+	      fields.dateIso.addEventListener('change', function () {
+	        fields.id.value = idFromIso(fields.dateIso.value);
+	        state.isDirty = true;
+	        updatePreview();
+	      });
+
+	      fields.category.addEventListener('change', function () {
+	        syncHeroImageForCategory();
+	        syncIconForCategory();
+	        state.isDirty = true;
+	        updatePreview();
+	      });
+
       els.search.addEventListener('input', renderList);
 
       saveButton.hidden = true;
+      els.rawOutput.style.display = 'none';
+      els.openRaw.addEventListener('click', function () {
+        var payload;
+        var validationError;
+        var text;
+        commitAndSortCurrentForm();
+        payload = payloadForOutput();
+        validationError = validatePayload(payload);
+        if (validationError) {
+          setStatus(validationError + ' Fix these before opening raw.', 'error');
+          return;
+        }
+        text = stringifyJson(payload);
+        els.output.value = text;
+        try {
+          localStorage.setItem('totemRawJson', text);
+          localStorage.setItem('totemRawUpdatedAt', new Date().toISOString());
+        } catch (err) {
+          // Ignore storage failures; raw page can still fetch from disk.
+        }
+        window.open('raw.html', '_blank', 'noopener');
+      });
+
+      /* ── Scoring sliders ────────────────────────────────────────────── */
+      var updateScoringUI = function () {
+        var valenceEl  = document.getElementById('valence');
+        var impactEl   = document.getElementById('impact');
+        var valLabel   = document.getElementById('valenceValue');
+        var impLabel   = document.getElementById('impactValue');
+        var statusEl   = document.getElementById('scoringStatus');
+
+        if (!state.scoringActive) {
+          valLabel.textContent = 'not scored';
+          valLabel.className   = 'score-value';
+          impLabel.textContent = 'not scored';
+          impLabel.className   = 'score-value';
+          statusEl.textContent = '';
+          statusEl.className   = 'scoring-status';
+          valenceEl.classList.remove('active');
+          impactEl.classList.remove('active');
+          return;
+        }
+
+        var v = parseFloat(valenceEl.value);
+        var i = parseFloat(impactEl.value);
+
+        var VALENCE_LABELS = [
+          [-1.0, 'Very negative'],
+          [-0.6, 'Negative'],
+          [-0.2, 'Slightly negative'],
+          [ 0.2, 'Neutral'],
+          [ 0.6, 'Slightly positive'],
+          [ 0.8, 'Positive'],
+          [ 1.1, 'Very positive']
+        ];
+        var vLabel = 'Neutral';
+        for (var vi = 0; vi < VALENCE_LABELS.length; vi++) {
+          if (v < VALENCE_LABELS[vi][0]) { vLabel = VALENCE_LABELS[vi][1]; break; }
+        }
+        if (v >= 0.8) vLabel = 'Very positive';
+
+        valLabel.textContent = vLabel + ' (' + (v >= 0 ? '+' : '') + v.toFixed(2) + ')';
+        valLabel.className   = 'score-value active';
+        impLabel.textContent = (i >= 0.8 ? 'Defining' : i >= 0.5 ? 'Significant' : i >= 0.3 ? 'Moderate' : 'Minor') +
+                               ' (' + i.toFixed(2) + ')';
+        impLabel.className   = 'score-value active';
+        statusEl.textContent = 'scored';
+        statusEl.className   = 'scoring-status active';
+        valenceEl.classList.add('active');
+        impactEl.classList.add('active');
+      };
+
+      document.getElementById('valence').addEventListener('input', function () {
+        state.scoringActive = true;
+        state.isDirty       = true;
+        updateScoringUI();
+      });
+
+      document.getElementById('impact').addEventListener('input', function () {
+        state.scoringActive = true;
+        state.isDirty       = true;
+        updateScoringUI();
+      });
+
+      document.getElementById('clearScoring').addEventListener('click', function () {
+        state.scoringActive = false;
+        state.isDirty       = true;
+        document.getElementById('valence').value = 0;
+        document.getElementById('impact').value  = 0.5;
+        updateScoringUI();
+      });
+
+      /* ── Settings panel ─────────────────────────────────────────────── */
+      (function () {
+        var openBtn   = document.getElementById('openSettings');
+        var panel     = document.getElementById('settingsPanel');
+        var closeBtn  = document.getElementById('closeSettings');
+        var keyInput  = document.getElementById('geocodeApiKey');
+        var saveBtn   = document.getElementById('geocodeSaveKey');
+        var keyStatus = document.getElementById('geocodeKeyStatus');
+        var GEOCODE_KEY = 'totem_geocode_key';
+
+        function openPanel() {
+          var saved = localStorage.getItem(GEOCODE_KEY) || '';
+          keyInput.value = saved;
+          keyStatus.textContent = saved ? 'Key saved.' : '';
+          keyStatus.className   = saved ? 'settings-key-status ok' : 'settings-key-status';
+          panel.hidden = false;
+          keyInput.focus();
+        }
+
+        function closePanel() {
+          panel.hidden = true;
+          if (openBtn) openBtn.focus();
+        }
+
+        openBtn.addEventListener('click', openPanel);
+        closeBtn.addEventListener('click', closePanel);
+
+        /* Also open from "Settings" link in the geocode hint */
+        document.addEventListener('click', function (e) {
+          if (e.target && e.target.id === 'geocodeKeyToggle') openPanel();
+        });
+
+        panel.addEventListener('click', function (e) {
+          if (e.target === panel) closePanel();
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && !panel.hidden) closePanel();
+        });
+
+        saveBtn.addEventListener('click', function () {
+          var val = keyInput.value.trim();
+          if (val) {
+            try { localStorage.setItem(GEOCODE_KEY, val); } catch (e) { /* ignore */ }
+            keyStatus.textContent = 'Key saved.';
+            keyStatus.className   = 'settings-key-status ok';
+          } else {
+            try { localStorage.removeItem(GEOCODE_KEY); } catch (e) { /* ignore */ }
+            keyStatus.textContent = 'Key cleared.';
+            keyStatus.className   = 'settings-key-status';
+          }
+        });
+      })();
+
+      /* ── Geocode location lookup ────────────────────────────────────────── */
+      (function () {
+        var GEOCODE_KEY = 'totem_geocode_key';
+        var API_BASE    = 'https://geocode.maps.co/search';
+
+        var searchEl  = document.getElementById('geocodeSearch');
+        var lookupBtn = document.getElementById('geocodeLookupBtn');
+        var resultsEl = document.getElementById('geocodeResults');
+
+        if (!searchEl || !lookupBtn) return;
+
+        var getKey = function () {
+          try { return localStorage.getItem(GEOCODE_KEY) || ''; } catch (e) { return ''; }
+        };
+
+        lookupBtn.addEventListener('click', performLookup);
+        searchEl.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') { e.preventDefault(); performLookup(); }
+          if (e.key === 'Escape') { hideResults(); }
+        });
+
+        /* Arrow-key navigation within results */
+        resultsEl.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') { hideResults(); searchEl.focus(); return; }
+          var items = Array.from(resultsEl.querySelectorAll('.geocode-result-item'));
+          var idx   = items.indexOf(document.activeElement);
+          if (e.key === 'ArrowDown') { e.preventDefault(); (items[idx + 1] || items[0]).focus(); }
+          if (e.key === 'ArrowUp')   { e.preventDefault(); (items[idx - 1] || items[items.length - 1]).focus(); }
+        });
+
+        document.addEventListener('click', function (e) {
+          if (!resultsEl.contains(e.target) && e.target !== searchEl && e.target !== lookupBtn) {
+            hideResults();
+          }
+        });
+
+        function performLookup() {
+          var q = searchEl.value.trim();
+          if (!q) return;
+          var key = getKey();
+          if (!key) {
+            document.getElementById('geocodeKeyToggle').click();
+            return;
+          }
+          lookupBtn.disabled    = true;
+          lookupBtn.textContent = 'Looking up\u2026';
+          hideResults();
+
+          var url = API_BASE + '?q=' + encodeURIComponent(q) + '&api_key=' + encodeURIComponent(key) + '&limit=5';
+
+          fetch(url)
+            .then(function (r) {
+              if (!r.ok) throw new Error('API error (' + r.status + ')');
+              return r.json();
+            })
+            .then(function (data) {
+              lookupBtn.disabled    = false;
+              lookupBtn.textContent = 'Look up';
+              showResults(Array.isArray(data) ? data.slice(0, 5) : []);
+            })
+            .catch(function (err) {
+              lookupBtn.disabled    = false;
+              lookupBtn.textContent = 'Look up';
+              var li = document.createElement('li');
+              li.className = 'geocode-error';
+              li.textContent = 'Lookup failed: ' + err.message;
+              resultsEl.appendChild(li);
+              resultsEl.style.display = 'block';
+            });
+        }
+
+        function showResults(items) {
+          resultsEl.innerHTML = '';
+          if (items.length === 0) {
+            var li = document.createElement('li');
+            li.className   = 'geocode-no-results';
+            li.textContent = 'No results found.';
+            resultsEl.appendChild(li);
+            resultsEl.style.display = 'block';
+            return;
+          }
+          items.forEach(function (item) {
+            var li       = document.createElement('li');
+            li.className = 'geocode-result-item';
+            li.tabIndex  = 0;
+            li.role      = 'option';
+            var parts    = (item.display_name || '').split(',');
+            li.textContent = parts.slice(0, 3).join(',').trim();
+            li.title       = item.display_name || '';
+            li.addEventListener('click', function () { applyResult(item); });
+            li.addEventListener('keydown', function (e) {
+              if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); applyResult(item); }
+            });
+            resultsEl.appendChild(li);
+          });
+          resultsEl.style.display = 'block';
+          var first = resultsEl.querySelector('.geocode-result-item');
+          if (first) first.focus();
+        }
+
+        function applyResult(item) {
+          var parts     = (item.display_name || '').split(',');
+          var shortName = parts.slice(0, 2).join(',').trim();
+
+          fields.locationName.value = shortName;
+          fields.locationLat.value  = parseFloat(item.lat).toFixed(6);
+          fields.locationLng.value  = parseFloat(item.lon).toFixed(6);
+          state.isDirty = true;
+          updatePreview();
+
+          hideResults();
+          searchEl.value = '';
+          setStatus('Location filled: ' + shortName, 'ok');
+        }
+
+        function hideResults() {
+          resultsEl.style.display = 'none';
+          resultsEl.innerHTML     = '';
+        }
+      })();
+
       detectLocalWrite().then(loadRemote);
     })();
   </script>
+
+  <!-- Toast container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <script>
+    /* ── Toast notifications ──────────────────────────────────────────── */
+    (function () {
+      var container = document.getElementById('toastContainer');
+
+      window.showToast = function (options) {
+        var type = options.type || 'success';
+        var title = options.title || '';
+        var message = options.message || '';
+        var duration = options.duration || 4000;
+
+        var toast = document.createElement('div');
+        toast.className = 'toast ' + type;
+        toast.setAttribute('role', 'alert');
+
+        var icon = type === 'success' ? '✓' : '✕';
+
+        toast.innerHTML =
+          '<div class="toast-icon">' + icon + '</div>' +
+          '<div class="toast-content">' +
+            '<div class="toast-title">' + title + '</div>' +
+            (message ? '<div class="toast-message">' + message + '</div>' : '') +
+          '</div>';
+
+        container.appendChild(toast);
+
+        /* Trigger reflow then add show class for animation */
+        toast.offsetHeight;
+        toast.classList.add('show');
+
+        setTimeout(function () {
+          toast.classList.remove('show');
+          setTimeout(function () {
+            if (toast.parentNode) toast.parentNode.removeChild(toast);
+          }, 300);
+        }, duration);
+      };
+    })();
+  </script>
+
 </body>
 </html>

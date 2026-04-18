@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <!--
 ('-. .-.                .-') _    ('-. .-.   ('-.  _  .-')     ('-.
 ( OO )  /               (  OO) )  ( OO )  / _(  OO)( \( -O )  _(  OO)
@@ -15,25 +15,32 @@ If you're curious enough to be looking at this then we'll probably have fun work
 
 -->
 
-<html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
     <title>Getting to know Richard Fortune</title>
     <meta name="description" content="Getting to know Richard Fortune">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f7fb">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Open%20Sans' rel='stylesheet' type='text/css'>
-    <link href="css/flat.css" rel="stylesheet" type="text/css"/>
-    <link href="css/style.css" rel="stylesheet" type="text/css"/>
-    <link href="css/lightbox.css" rel="stylesheet" type="text/css"/>
-    <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css"/>
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <!-- <link href="css/rotate.css" rel="stylesheet" type="text/css"/> -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" type="text/css">
+    <link href="css/flat.css?v=20260412" rel="stylesheet" type="text/css"/>
+    <link href="css/style.css?v=20260412" rel="stylesheet" type="text/css"/>
+    <link href="css/lightbox.css?v=20260412" rel="stylesheet" type="text/css"/>
+    <link href="css/jquery.mCustomScrollbar.css?v=20260412" rel="stylesheet" type="text/css"/>
+    <link href="css/bootstrap.min.css?v=20260412" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
-    <!-- <script src="https://use.fonticons.com/0836f0e9.js"></script> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Leaflet (map view) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <!-- D3 v7 (constellation view) -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 
     <!--[if lt IE 9]>
-    <link href="css/ie8fix.css" rel="stylesheet" type="text/css"/>
+    <link href="css/ie8fix.css?v=20260412" rel="stylesheet" type="text/css"/>
     <![endif]-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/jquery.mCustomScrollbar.js"></script>
@@ -42,8 +49,15 @@ If you're curious enough to be looking at this then we'll probably have fun work
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/image.js"></script>
     <script type="text/javascript" src="js/lightbox.js"></script>
+    <script type="text/javascript" src="js/views/gallery.js"></script>
+    <script type="text/javascript" src="js/views/chapters.js"></script>
+    <script type="text/javascript" src="js/views/decades.js"></script>
+    <script type="text/javascript" src="js/views/map.js"></script>
+    <script type="text/javascript" src="js/views/constellation.js"></script>
+    <script type="text/javascript" src="js/views/valence.js"></script>
+    <script type="text/javascript" src="js/prompt-banner.js"></script>
+    <script type="text/javascript" src="js/prompt-modal.js"></script>
     <script type="text/javascript" src="js/filter.js"></script>
-    <!-- <script type="text/javascript" src="js/rotate.js"></script> -->
     <!-- Privacy-friendly analytics by Plausible -->
     <script async src="https://plausible.io/js/pa-KQYPnzG0_q1rgy90hyIUO.js"></script>
     <script>
@@ -58,6 +72,7 @@ If you're curious enough to be looking at this then we'll probably have fun work
 </head>
 
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <section class="home-header padding-block">
     <!-- start container -->
@@ -69,7 +84,7 @@ If you're curious enough to be looking at this then we'll probably have fun work
                 <div class="foto">
                     <script>
                         var images = ["me.jpg", "me2.jpg", "me3.jpg", "me5.jpg"];
-                        $('<img onload="$(this).fadeIn(1000);" src="images/assets/' + images[Math.floor(Math.random() * images.length)] + '">').appendTo('.home-header .foto');
+                        $('<img alt="Richard Fortune" width="160" height="160" src="images/assets/' + images[Math.floor(Math.random() * images.length)] + '">').appendTo('.home-header .foto');
                     </script>
                 </div>
                 <!-- end your foto -->
@@ -78,19 +93,19 @@ If you're curious enough to be looking at this then we'll probably have fun work
                 <!-- Your Name -->
                 <h1 class="title">Richard Fortune</h1>
                 <!-- Your Profession -->
-                <h3 class="sub-title">Builder, optimist, lifelong learner</h3>
+                <h2 class="sub-title">Builder, optimist, lifelong learner</h2>
                 <!-- social icon -->
                 <div class="social">
                     <ul class="animated fadeIn visible" data-animation="fadeIn" data-animation-delay="600">
                         <!-- social icons -->
                         <li>
-                            <a class="ukie-icons hover-animate" style="padding-top: 9px;" href="https://nz.linkedin.com/in/richardofortune" alt="Spam me on LinkedIn">
-                                <i class="fa fa-linkedin"></i>
+                            <a class="ukie-icons hover-animate" href="https://nz.linkedin.com/in/richardofortune" aria-label="LinkedIn profile">
+                                <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li>
-                            <a class="ukie-icons hover-animate" style="padding-top: 9px;" href="mailto:xyz@cuckoobydesign.mozmail.com"  alt="Or email me, because, why not?! ">
-                                <i class="fa fa-envelope"></i>
+                            <a class="ukie-icons hover-animate" href="mailto:xyz@cuckoobydesign.mozmail.com" aria-label="Send me an email">
+                                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                             </a>
                         </li>
                     </ul>
@@ -103,17 +118,9 @@ If you're curious enough to be looking at this then we'll probably have fun work
     <!-- end container -->
 </section>
 
-<!-- <div class="bg"> -->
-<!-- <div class="header">
-    <h2>Richard Fortune</h2>
-</div> -->
-<!-- </div> -->
-
-<div class="container">
+<div id="main-content" class="container">
     <div class="row">
         <div class="col-xs-12 col-lg-12 col-xs-offset-0 col-lg-offset-0">
-            <!-- <div class="col-xs-10 col-lg-5 col-xs-offset-1 col-lg-offset-1"> -->
-          
           <p>
             Dive into the moments that shaped me. Scroll the timeline, filter by the themes that resonate, and open the tiles to see the stories, lessons, and experiments behind each milestone.
           </p>
@@ -163,8 +170,11 @@ If you're curious enough to be looking at this then we'll probably have fun work
 </div>
 <div style="margin-top:10px"></div>
 
+<!-- Prompt banner — featured question, cycles through prompt entries -->
+<div id="promptBanner" class="prompt-banner" role="complementary" aria-label="Prompt" style="display:none"></div>
+
 <div class="timelineLoader">
-    <img src="images/timeline/loadingAnimation.gif"/>
+    <img src="images/timeline/loadingAnimation.gif" alt="Loading timeline&#8230;"/>
 </div>
 <!-- BEGIN TIMELINE -->
 <div class="timelineFlat tl1" id="timelineFlat">
@@ -173,6 +183,47 @@ If you're curious enough to be looking at this then we'll probably have fun work
     </div>
 </div>
 <!-- /END TIMELINE -->
+
+<!-- BEGIN GALLERY VIEW -->
+<div id="galleryView" class="gallery-view js-view-container" style="display:none" aria-label="Gallery view">
+    <div class="container">
+        <div id="galleryGrid" class="gallery-grid"></div>
+    </div>
+</div>
+<!-- /END GALLERY VIEW -->
+
+<!-- BEGIN CHAPTERS VIEW -->
+<div id="chaptersView" class="chapters-view js-view-container" style="display:none" aria-label="Chapters view">
+    <div id="chaptersList"></div>
+</div>
+<!-- /END CHAPTERS VIEW -->
+
+<!-- BEGIN DECADES VIEW -->
+<div id="decadesView" class="decades-view js-view-container" style="display:none" aria-label="Decades view">
+    <div class="container">
+        <div id="decadesList"></div>
+    </div>
+</div>
+<!-- /END DECADES VIEW -->
+
+<!-- BEGIN MAP VIEW -->
+<div id="mapView" class="map-view js-view-container" style="display:none" aria-label="Map view">
+    <div id="mapCanvas" class="map-canvas"></div>
+</div>
+<!-- /END MAP VIEW -->
+
+<!-- BEGIN CONSTELLATION VIEW -->
+<div id="constellationView" class="constellation-view js-view-container" style="display:none" aria-label="Constellation view">
+    <div id="constellationCanvas" class="constellation-canvas"></div>
+</div>
+<!-- /END CONSTELLATION VIEW -->
+
+<!-- BEGIN VALENCE VIEW -->
+<div id="valenceView" class="valence-view js-view-container" style="display:none" aria-label="Valence view">
+    <div id="valenceCanvas" class="valence-canvas"></div>
+</div>
+<!-- /END VALENCE VIEW -->
+
 <div style="margin-top:30px"></div>
 <div class="container">
     <div class="row">
@@ -191,17 +242,18 @@ If you're curious enough to be looking at this then we'll probably have fun work
     <div class="container">
         <div class="row fun-footer-content">
             <div class="col-xs-12 col-lg-6">
-                <p class="footer-title">Let’s build something meaningful.</p>
-                <p class="footer-sub">I’m always keen to swap stories, sketch ideas, or plan the next experiment.</p>
+                <p class="footer-title">Let's build something meaningful.</p>
+                <p class="footer-sub">I'm always keen to swap stories, sketch ideas, or plan the next experiment.</p>
                 <div class="footer-actions">
                     <a href="mailto:richard.fortune@gmail.com" class="footer-chip">Email</a>
-                    <a href="https://nz.linkedin.com/in/richardofortune" class="footer-chip">LinkedIn</a>                </div>
+                    <a href="https://nz.linkedin.com/in/richardofortune" class="footer-chip">LinkedIn</a>
+                </div>
             </div>
             <div class="col-xs-12 col-lg-6">
                 <div class="footer-cards">
                     <div class="footer-card">
                         <span class="footer-card-label">Now</span>
-                        <p class="footer-card-text">Exploring what’s next at the intersection of product, people, and impact.</p>
+                        <p class="footer-card-text">Exploring what's next at the intersection of product, people, and impact.</p>
                     </div>
                     <div class="footer-card">
                         <span class="footer-card-label">Open to</span>
@@ -212,5 +264,43 @@ If you're curious enough to be looking at this then we'll probably have fun work
         </div>
     </div>
 </footer>
+<!-- Presentation view switcher — fixed bottom-right, separate from content filters -->
+<nav class="view-switcher" aria-label="Presentation style">
+    <button class="view-btn view-switcher-btn view-btn-active" id="view-timeline"
+            title="Timeline  [1]" aria-label="Timeline view (press 1)">
+        <i class="fa-solid fa-list" aria-hidden="true"></i>
+        <span class="sr-only">Timeline</span>
+    </button>
+    <button class="view-btn view-switcher-btn" id="view-gallery"
+            title="Gallery  [2]" aria-label="Gallery view (press 2)">
+        <i class="fa-solid fa-grip" aria-hidden="true"></i>
+        <span class="sr-only">Gallery</span>
+    </button>
+    <button class="view-btn view-switcher-btn" id="view-chapters"
+            title="Chapters  [3]" aria-label="Chapters view (press 3)">
+        <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+        <span class="sr-only">Chapters</span>
+    </button>
+    <button class="view-btn view-switcher-btn" id="view-decades"
+            title="Decades  [4]" aria-label="Decades view (press 4)">
+        <i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i>
+        <span class="sr-only">Decades</span>
+    </button>
+    <button class="view-btn view-switcher-btn" id="view-map"
+            title="Map  [5]" aria-label="Map view (press 5)">
+        <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+        <span class="sr-only">Map</span>
+    </button>
+    <button class="view-btn view-switcher-btn" id="view-constellation"
+            title="Constellation  [6]" aria-label="Constellation view (press 6)">
+        <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+        <span class="sr-only">Constellation</span>
+    </button>
+    <button class="view-btn view-switcher-btn" id="view-valence"
+            title="Valence  [7]" aria-label="Valence view (press 7)">
+        <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+        <span class="sr-only">Valence</span>
+    </button>
+</nav>
 </body>
 </html>
