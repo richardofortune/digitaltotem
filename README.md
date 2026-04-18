@@ -13,6 +13,20 @@ Static personal timeline site built with plain HTML, CSS, and JavaScript.
 ## Edit content
 All story entries live in `data/events.json`.
 
+For easier editing, run the local admin server:
+
+```sh
+node scripts/admin-server.js
+```
+
+Then open `http://127.0.0.1:4100/admin.html`. It loads `data/events.json`,
+gives you a form for adding and editing entries, and can save changes directly
+back to `data/events.json`.
+
+If you open `admin.html` on the published GitHub Pages site, it cannot write to
+the repo. In that mode, use the download or copy buttons and commit the updated
+JSON manually.
+
 Key fields:
 - `timeline.defaultStartId`: the initial timeline item ID to focus on.
 - `events[].id`: a unique date string in `MM/DD/YYYY` format (used by the timeline).

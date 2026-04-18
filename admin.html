@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digital Totem Admin</title>
+  <style>
+    :root {
+      --ink: #1f2933;
+      --muted: #52606d;
+      --line: #d9e2ec;
+      --panel: #f8fafc;
+      --accent: #137cbd;
+      --accent-dark: #0b5f8a;
+      --danger: #b42318;
+      --ok: #0f766e;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #eef3f8;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      padding: 24px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+      gap: 20px;
+      padding: 20px;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--white);
+      color: var(--ink);
+      cursor: pointer;
+      padding: 8px 12px;
+    }
+
+    button:hover,
+    button:focus {
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+    }
+
+    button.primary:hover,
+    button.primary:focus {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+    }
+
+    button.danger {
+      color: var(--danger);
+      border-color: #f3b8b2;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--white);
+      color: var(--ink);
+      padding: 10px;
+    }
+
+    textarea {
+      min-height: 240px;
+      resize: vertical;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    small {
+      display: block;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .status {
+      margin-top: 12px;
+      color: var(--muted);
+    }
+
+    .status.ok {
+      color: var(--ok);
+    }
+
+    .status.error {
+      color: var(--danger);
+    }
+
+    .event-list {
+      display: grid;
+      gap: 8px;
+      max-height: calc(100vh - 260px);
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .event-button {
+      display: block;
+      width: 100%;
+      min-height: 0;
+      text-align: left;
+      padding: 10px;
+    }
+
+    .event-button.active {
+      border-color: var(--accent);
+      box-shadow: inset 4px 0 0 var(--accent);
+    }
+
+    .event-title {
+      display: block;
+      font-weight: 700;
+    }
+
+    .event-meta {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    .preview {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--panel);
+      padding: 16px;
+      min-height: 180px;
+    }
+
+    .preview img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .output {
+      min-height: 320px;
+      font-family: Menlo, Consolas, monospace;
+      font-size: 13px;
+      white-space: pre;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      .event-list {
+        max-height: 320px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      header,
+      main {
+        padding: 14px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Digital Totem Admin</h1>
+    <p>Edit timeline content, then download a replacement <strong>data/events.json</strong>.</p>
+    <div class="toolbar">
+      <button type="button" id="load-json">Reload current JSON</button>
+      <label>
+        <span class="sr-only">Import JSON</span>
+        <input type="file" id="import-json" accept="application/json,.json">
+      </label>
+      <button type="button" class="primary" id="save-json">Save to data/events.json</button>
+      <button type="button" class="primary" id="download-json">Download events.json</button>
+      <button type="button" id="copy-json">Copy JSON</button>
+    </div>
+    <p class="status" id="status">Loading data/events.json...</p>
+  </header>
+
+  <main>
+    <aside class="panel stack">
+      <div>
+        <h2>Entries</h2>
+        <div class="toolbar">
+          <button type="button" class="primary" id="add-event">Add entry</button>
+          <button type="button" id="duplicate-event">Duplicate</button>
+          <button type="button" class="danger" id="delete-event">Delete</button>
+        </div>
+      </div>
+      <div>
+        <label for="search">Search</label>
+        <input id="search" type="search" placeholder="Title, summary, category">
+      </div>
+      <div class="event-list" id="event-list" aria-label="Timeline entries"></div>
+    </aside>
+
+    <section class="panel stack">
+      <div>
+        <h2>Content</h2>
+        <p>Fields marked with generated values can be edited, but the helper buttons keep the usual timeline format consistent.</p>
+      </div>
+
+      <form id="event-form" class="grid">
+        <div>
+          <label for="title">Title</label>
+          <input id="title" name="title" required>
+        </div>
+
+        <div>
+          <label for="dateIso">Date</label>
+          <input id="dateIso" name="dateIso" type="date" required>
+          <small>Used to generate the timeline ID and sorting order.</small>
+        </div>
+
+        <div>
+          <label for="id">Timeline ID</label>
+          <input id="id" name="id" required>
+          <small>Expected format: MM/DD/YYYY.</small>
+        </div>
+
+        <div>
+          <label for="order">Order</label>
+          <input id="order" name="order" type="number" step="1">
+        </div>
+
+        <div>
+          <label for="category">Category</label>
+          <select id="category" name="category">
+            <option value="life">life</option>
+            <option value="work">work</option>
+            <option value="pivotal">pivotal</option>
+            <option value="passion">passion</option>
+            <option value="basic">basic</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="icon">Icon class</label>
+          <input id="icon" name="icon" placeholder="xero, peace, basic">
+        </div>
+
+        <div>
+          <label for="description">Node description</label>
+          <input id="description" name="description" placeholder="Career, Passion, Live Event">
+        </div>
+
+        <div>
+          <label for="slug">Slug</label>
+          <input id="slug" name="slug">
+        </div>
+
+        <div class="full">
+          <label for="summary">Card summary</label>
+          <input id="summary" name="summary">
+        </div>
+
+        <div>
+          <label for="mediaImage">Hero image</label>
+          <input id="mediaImage" name="mediaImage" placeholder="images/flat/default/example.jpg">
+        </div>
+
+        <div>
+          <label for="mediaDescription">Image zoom label</label>
+          <input id="mediaDescription" name="mediaDescription" placeholder="ZOOM IN">
+        </div>
+
+        <div class="full">
+          <label for="body">Body</label>
+          <textarea id="body" name="body" placeholder="Markdown-like story text"></textarea>
+          <small>Supports headings, lists, links, images, bold, italic, and raw HTML embeds.</small>
+        </div>
+
+        <div class="full toolbar">
+          <button type="button" id="generate-id">Generate ID from date</button>
+          <button type="button" id="generate-slug">Generate slug from title</button>
+          <button type="submit" class="primary">Save entry</button>
+        </div>
+      </form>
+
+      <div>
+        <h2>Preview</h2>
+        <div class="preview" id="preview"></div>
+      </div>
+
+      <div>
+        <h2>Generated JSON</h2>
+        <textarea class="output" id="json-output" readonly></textarea>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var state = {
+        payload: null,
+        selectedIndex: 0,
+        canWriteLocal: false
+      };
+
+      var els = {
+        status: document.getElementById('status'),
+        eventList: document.getElementById('event-list'),
+        form: document.getElementById('event-form'),
+        search: document.getElementById('search'),
+        preview: document.getElementById('preview'),
+        output: document.getElementById('json-output')
+      };
+      var saveButton = document.getElementById('save-json');
+
+      var fields = [
+        'title',
+        'dateIso',
+        'id',
+        'order',
+        'category',
+        'icon',
+        'description',
+        'slug',
+        'summary',
+        'mediaImage',
+        'mediaDescription',
+        'body'
+      ].reduce(function (acc, id) {
+        acc[id] = document.getElementById(id);
+        return acc;
+      }, {});
+
+      var setStatus = function (message, type) {
+        els.status.textContent = message;
+        els.status.className = 'status' + (type ? ' ' + type : '');
+      };
+
+      var pad = function (num) {
+        return String(num).padStart(2, '0');
+      };
+
+      var idFromIso = function (iso) {
+        if (!iso) return '';
+        var parts = iso.split('-');
+        if (parts.length !== 3) return '';
+        return pad(parts[1]) + '/' + pad(parts[2]) + '/' + parts[0];
+      };
+
+      var isoFromId = function (id) {
+        if (!id) return '';
+        var parts = id.split('/');
+        if (parts.length !== 3) return '';
+        return parts[2] + '-' + pad(parts[0]) + '-' + pad(parts[1]);
+      };
+
+      var slugify = function (text) {
+        return String(text || '')
+          .toLowerCase()
+          .replace(/&/g, ' and ')
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '');
+      };
+
+      var escapeHtml = function (str) {
+        return String(str || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      };
+
+      var stringifyJson = function (payload) {
+        return JSON.stringify(payload, null, 2).replace(/[\u007f-\uffff]/g, function (char) {
+          return '\\u' + char.charCodeAt(0).toString(16).padStart(4, '0');
+        }) + '\n';
+      };
+
+      var renderMarkdown = function (md) {
+        if (!md) return '';
+        var formatInline = function (text) {
+          return text
+            .replace(/!\[([^\]]*)\]\(([^\)]+)\)/g, '<img src="$2" alt="$1">')
+            .replace(/\[([^\]]+)\]\(([^\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+            .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+        };
+        var html = [];
+        var inList = false;
+        md.split(/\r?\n/).forEach(function (rawLine) {
+          var line = rawLine.trim();
+          var heading;
+          if (!line) {
+            if (inList) {
+              html.push('</ul>');
+              inList = false;
+            }
+            return;
+          }
+          heading = line.match(/^(#{1,6})\s+(.*)$/);
+          if (heading) {
+            if (inList) {
+              html.push('</ul>');
+              inList = false;
+            }
+            html.push('<h' + heading[1].length + '>' + formatInline(escapeHtml(heading[2])) + '</h' + heading[1].length + '>');
+            return;
+          }
+          if (line.indexOf('- ') === 0) {
+            if (!inList) {
+              html.push('<ul>');
+              inList = true;
+            }
+            html.push('<li>' + formatInline(escapeHtml(line.slice(2))) + '</li>');
+            return;
+          }
+          if (inList) {
+            html.push('</ul>');
+            inList = false;
+          }
+          if (line[0] === '<' && line[line.length - 1] === '>') {
+            html.push(line);
+            return;
+          }
+          html.push('<p>' + formatInline(escapeHtml(line)) + '</p>');
+        });
+        if (inList) html.push('</ul>');
+        return html.join('');
+      };
+
+      var currentEvents = function () {
+        return state.payload && Array.isArray(state.payload.events) ? state.payload.events : [];
+      };
+
+      var normalizePayload = function (payload) {
+        var next = Array.isArray(payload) ? {
+          version: 1,
+          generatedAt: new Date().toISOString(),
+          timeline: {
+            id: 'richard-fortune',
+            title: 'Getting to know Richard Fortune',
+            defaultStartId: '11/08/1978',
+            defaultStartIso: '1978-08-11'
+          },
+          events: payload
+        } : payload;
+        if (!next || !Array.isArray(next.events)) {
+          throw new Error('JSON must contain an events array.');
+        }
+        next.events.forEach(function (event, index) {
+          if (!event.dateIso && event.id) event.dateIso = isoFromId(event.id);
+          if (!event.id && event.dateIso) event.id = idFromIso(event.dateIso);
+          if (!event.slug) event.slug = slugify(event.title);
+          if (typeof event.order !== 'number') event.order = index;
+          if (!event.timelineId && next.timeline && next.timeline.id) event.timelineId = next.timeline.id;
+        });
+        return next;
+      };
+
+      var sortEvents = function () {
+        currentEvents().sort(function (a, b) {
+          var aOrder = typeof a.order === 'number' ? a.order : 9999;
+          var bOrder = typeof b.order === 'number' ? b.order : 9999;
+          if (aOrder !== bOrder) return aOrder - bOrder;
+          return String(a.dateIso || '').localeCompare(String(b.dateIso || ''));
+        });
+      };
+
+      var serialize = function () {
+        if (!state.payload) return '';
+        state.payload.generatedAt = new Date().toISOString();
+        sortEvents();
+        currentEvents().forEach(function (event, index) {
+          event.order = index;
+        });
+        return stringifyJson(state.payload);
+      };
+
+      var formToEvent = function () {
+        var timelineId = state.payload && state.payload.timeline ? state.payload.timeline.id : 'richard-fortune';
+        var event = {
+          id: fields.id.value.trim(),
+          title: fields.title.value.trim(),
+          description: fields.description.value.trim(),
+          category: fields.category.value,
+          icon: fields.icon.value.trim(),
+          summary: fields.summary.value.trim(),
+          slug: fields.slug.value.trim(),
+          timelineId: timelineId,
+          dateIso: fields.dateIso.value,
+          order: Number(fields.order.value || 0),
+          body: fields.body.value
+        };
+        var mediaImage = fields.mediaImage.value.trim();
+        var mediaDescription = fields.mediaDescription.value.trim();
+        if (mediaImage) {
+          event.media = { image: mediaImage };
+          if (mediaDescription) event.media.description = mediaDescription;
+        }
+        return event;
+      };
+
+      var eventToForm = function (event) {
+        fields.title.value = event.title || '';
+        fields.dateIso.value = event.dateIso || isoFromId(event.id) || '';
+        fields.id.value = event.id || idFromIso(event.dateIso) || '';
+        fields.order.value = typeof event.order === 'number' ? event.order : '';
+        fields.category.value = event.category || 'basic';
+        fields.icon.value = event.icon || '';
+        fields.description.value = event.description || '';
+        fields.slug.value = event.slug || slugify(event.title);
+        fields.summary.value = event.summary || '';
+        fields.mediaImage.value = event.media && event.media.image ? event.media.image : '';
+        fields.mediaDescription.value = event.media && event.media.description ? event.media.description : '';
+        fields.body.value = event.body || '';
+      };
+
+      var updatePreview = function () {
+        var event = formToEvent();
+        var image = event.media && event.media.image ? '<p><img src="' + escapeHtml(event.media.image) + '" alt=""></p>' : '';
+        els.preview.innerHTML =
+          '<h3>' + escapeHtml(event.title || 'Untitled') + '</h3>' +
+          '<p><strong>' + escapeHtml(event.category || 'basic') + '</strong> · ' + escapeHtml(event.dateIso || event.id || '') + '</p>' +
+          '<p>' + escapeHtml(event.summary || '') + '</p>' +
+          image +
+          renderMarkdown(event.body || '');
+      };
+
+      var updateOutput = function () {
+        els.output.value = serialize();
+      };
+
+      var renderList = function () {
+        var events = currentEvents();
+        var query = els.search.value.trim().toLowerCase();
+        els.eventList.innerHTML = '';
+        events.forEach(function (event, index) {
+          var text = [event.title, event.summary, event.category, event.dateIso, event.id].join(' ').toLowerCase();
+          var button;
+          if (query && text.indexOf(query) === -1) return;
+          button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'event-button' + (index === state.selectedIndex ? ' active' : '');
+          button.innerHTML =
+            '<span class="event-title">' + escapeHtml(event.title || 'Untitled') + '</span>' +
+            '<span class="event-meta">' + escapeHtml(event.dateIso || event.id || '') + ' · ' + escapeHtml(event.category || 'basic') + '</span>';
+          button.addEventListener('click', function () {
+            state.selectedIndex = index;
+            eventToForm(event);
+            renderList();
+            updatePreview();
+            updateOutput();
+          });
+          els.eventList.appendChild(button);
+        });
+      };
+
+      var selectEvent = function (index) {
+        var events = currentEvents();
+        if (!events.length) return;
+        state.selectedIndex = Math.max(0, Math.min(index, events.length - 1));
+        eventToForm(events[state.selectedIndex]);
+        renderList();
+        updatePreview();
+        updateOutput();
+      };
+
+      var loadPayload = function (payload) {
+        state.payload = normalizePayload(payload);
+        sortEvents();
+        selectEvent(0);
+        setStatus('Loaded ' + currentEvents().length + ' entries.', 'ok');
+      };
+
+      var loadRemote = function () {
+        setStatus('Loading data/events.json...');
+        fetch('data/events.json', { cache: 'no-store' })
+          .then(function (response) {
+            if (!response.ok) throw new Error('Could not load data/events.json.');
+            return response.json();
+          })
+          .then(loadPayload)
+          .catch(function (err) {
+            setStatus(err.message + ' Use the file picker to import events.json.', 'error');
+          });
+      };
+
+      var detectLocalWrite = function () {
+        return fetch('/__admin/status', { cache: 'no-store' })
+          .then(function (response) {
+            return response.ok ? response.json() : null;
+          })
+          .then(function (payload) {
+            state.canWriteLocal = Boolean(payload && payload.ok && payload.mode === 'local-write');
+            saveButton.hidden = !state.canWriteLocal;
+            if (state.canWriteLocal) {
+              setStatus('Local write mode is available. Changes can be saved directly to data/events.json.', 'ok');
+            }
+          })
+          .catch(function () {
+            state.canWriteLocal = false;
+            saveButton.hidden = true;
+          });
+      };
+
+      document.getElementById('load-json').addEventListener('click', loadRemote);
+
+      document.getElementById('import-json').addEventListener('change', function (event) {
+        var file = event.target.files[0];
+        if (!file) return;
+        file.text()
+          .then(function (text) { return JSON.parse(text); })
+          .then(loadPayload)
+          .catch(function (err) { setStatus('Import failed: ' + err.message, 'error'); });
+      });
+
+      document.getElementById('add-event').addEventListener('click', function () {
+        var events = currentEvents();
+        var now = new Date();
+        var iso = now.toISOString().slice(0, 10);
+        var event = {
+          id: idFromIso(iso),
+          title: 'New entry',
+          description: 'Life Event',
+          category: 'life',
+          icon: 'life',
+          summary: '',
+          slug: 'new-entry',
+          timelineId: state.payload && state.payload.timeline ? state.payload.timeline.id : 'richard-fortune',
+          dateIso: iso,
+          order: events.length,
+          body: ''
+        };
+        events.push(event);
+        selectEvent(events.length - 1);
+        setStatus('Added a new entry. Edit it, then save.', 'ok');
+      });
+
+      document.getElementById('duplicate-event').addEventListener('click', function () {
+        var events = currentEvents();
+        var source = events[state.selectedIndex];
+        var copy;
+        if (!source) return;
+        copy = JSON.parse(JSON.stringify(source));
+        copy.title = copy.title + ' copy';
+        copy.slug = slugify(copy.title);
+        copy.order = events.length;
+        events.splice(state.selectedIndex + 1, 0, copy);
+        selectEvent(state.selectedIndex + 1);
+        setStatus('Duplicated the selected entry.', 'ok');
+      });
+
+      document.getElementById('delete-event').addEventListener('click', function () {
+        var events = currentEvents();
+        var event = events[state.selectedIndex];
+        if (!event) return;
+        if (!window.confirm('Delete "' + (event.title || 'this entry') + '"?')) return;
+        events.splice(state.selectedIndex, 1);
+        selectEvent(state.selectedIndex);
+        setStatus('Deleted the entry.', 'ok');
+      });
+
+      document.getElementById('generate-id').addEventListener('click', function () {
+        fields.id.value = idFromIso(fields.dateIso.value);
+        updatePreview();
+      });
+
+      document.getElementById('generate-slug').addEventListener('click', function () {
+        fields.slug.value = slugify(fields.title.value);
+        updatePreview();
+      });
+
+      document.getElementById('download-json').addEventListener('click', function () {
+        var blob = new Blob([serialize()], { type: 'application/json' });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = 'events.json';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+        setStatus('Downloaded events.json. Replace data/events.json, then commit and push.', 'ok');
+      });
+
+      saveButton.addEventListener('click', function () {
+        var text = serialize();
+        if (!state.canWriteLocal) {
+          setStatus('Direct save is only available through the local admin server.', 'error');
+          return;
+        }
+        fetch('/__admin/save-events', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: text
+        })
+          .then(function (response) {
+            return response.json().then(function (payload) {
+              if (!response.ok || !payload.ok) {
+                throw new Error(payload.error || 'Save failed.');
+              }
+              return payload;
+            });
+          })
+          .then(function (payload) {
+            setStatus('Saved ' + payload.entries + ' entries to ' + payload.path + '.', 'ok');
+          })
+          .catch(function (err) {
+            setStatus('Save failed: ' + err.message, 'error');
+          });
+      });
+
+      document.getElementById('copy-json').addEventListener('click', function () {
+        var text = serialize();
+        if (!navigator.clipboard) {
+          els.output.select();
+          document.execCommand('copy');
+          setStatus('Copied JSON from the output field.', 'ok');
+          return;
+        }
+        navigator.clipboard.writeText(text)
+          .then(function () { setStatus('Copied JSON to clipboard.', 'ok'); })
+          .catch(function (err) { setStatus('Copy failed: ' + err.message, 'error'); });
+      });
+
+      els.form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        currentEvents()[state.selectedIndex] = formToEvent();
+        sortEvents();
+        state.selectedIndex = currentEvents().findIndex(function (item) {
+          return item.id === fields.id.value.trim() && item.title === fields.title.value.trim();
+        });
+        if (state.selectedIndex < 0) state.selectedIndex = 0;
+        selectEvent(state.selectedIndex);
+        setStatus('Saved the entry in this editor. Download the JSON when ready.', 'ok');
+      });
+
+      els.form.addEventListener('input', function (event) {
+        if (event.target === fields.dateIso && !fields.id.value) {
+          fields.id.value = idFromIso(fields.dateIso.value);
+        }
+        if (event.target === fields.title && !fields.slug.value) {
+          fields.slug.value = slugify(fields.title.value);
+        }
+        updatePreview();
+      });
+
+      els.search.addEventListener('input', renderList);
+
+      saveButton.hidden = true;
+      detectLocalWrite().then(loadRemote);
+    })();
+  </script>
+</body>
+</html>
