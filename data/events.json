@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-19T10:42:26.026Z",
+  "generatedAt": "2026-04-20T07:54:26.551Z",
   "timeline": {
     "id": "richard-fortune",
     "title": "Getting to know Richard Fortune",
@@ -13,7 +13,7 @@
       "title": "Getting Started",
       "description": "Guide",
       "category": "basic",
-      "icon": "iconify:fa6-solid:mountain",
+      "icon": "iconify:fa7-regular:hand-point-right",
       "summary": "Welcome to the timeline of my life. Here you will find life events, experiences and achievements that I felt were worth sharing with you all",
       "slug": "getting-started",
       "timelineId": "richard-fortune",

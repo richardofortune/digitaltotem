@@ -5,6 +5,7 @@
     { value: 'iconify:fa6-solid:mountain', label: 'Mountain', set: 'Font Awesome', category: 'basic', tags: ['intro', 'journey', 'challenge', 'outdoors'] },
     { value: 'iconify:fa6-solid:star', label: 'Star', set: 'Font Awesome', category: 'basic', tags: ['highlight', 'favorite', 'milestone'] },
     { value: 'iconify:fa6-solid:heart', label: 'Heart', set: 'Font Awesome', category: 'life', tags: ['love', 'family', 'care'] },
+    { value: 'iconify:fa7-regular:hand-point-right', label: 'Hand Point Right', set: 'Font Awesome 7', category: 'basic', tags: ['point', 'pointer', 'direction', 'next', 'intro'] },
     { value: 'iconify:fa6-solid:lightbulb', label: 'Lightbulb', set: 'Font Awesome', category: 'pivotal', tags: ['idea', 'learning', 'insight'] },
     { value: 'iconify:fa6-solid:graduation-cap', label: 'Graduation Cap', set: 'Font Awesome', category: 'work', tags: ['school', 'education', 'learning'] },
     { value: 'iconify:fa6-solid:book', label: 'Book', set: 'Font Awesome', category: 'passion', tags: ['reading', 'writing', 'knowledge'] },
