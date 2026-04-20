@@ -116,10 +116,23 @@
                 'data-id': item.id,
                 'data-description': item.description || ''
             });
-            var iconClasses = ['icon', 'mytextwithicon'];
-            if (category) iconClasses.push(category);
-            if (item.icon) iconClasses.push(item.icon);
-            var $icon = $('<div/>', {'class': iconClasses.join(' ')});
+            var $icon;
+            if (item.icon && typeof item.icon === 'string' && item.icon.startsWith('iconify:')) {
+                var iconClasses = ['icon', 'mytextwithicon', 'has-iconify'];
+                if (category) iconClasses.push(category);
+                $icon = $('<div/>', {'class': iconClasses.join(' ')});
+                $icon.append($('<span/>', {
+                    'class': 'timeline-card-icon iconify-inline',
+                    'data-icon': item.icon.replace('iconify:', ''),
+                    'data-width': 96,
+                    'data-height': 96
+                }));
+            } else {
+                var iconClasses = ['icon', 'mytextwithicon'];
+                if (category) iconClasses.push(category);
+                if (item.icon) iconClasses.push(item.icon);
+                $icon = $('<div/>', {'class': iconClasses.join(' ')});
+            }
             if (item.lightbox && item.lightbox.href) {
                 var $anchor = $('<a/>', {
                     'class': 'image_rollover_bottom con_borderImage',
@@ -158,6 +171,10 @@
 
             $container.append($item, $open);
         });
+        // Force Iconify to scan the container for new icons
+        if (window.Iconify && typeof window.Iconify.scan === 'function') {
+            window.Iconify.scan($container[0]);
+        }
     };
     var updateNodesForFilter = function (filterClass) {
         var $nodes = $('.tl1 .t_line_node');
@@ -388,6 +405,7 @@
                         if (window.MapView)           window.MapView.init(events);
                         if (window.ConstellationView) window.ConstellationView.init(events);
                         if (window.ValenceView)       window.ValenceView.init(events);
+                        if (window.VaseView)          window.VaseView.init(events);
                         if (window.PromptBanner)      window.PromptBanner.init(events);
                         var startCandidate = (payload.timeline && payload.timeline.defaultStartId) || events[0].id;
                         initializeTimeline(startCandidate || startItemDefault);

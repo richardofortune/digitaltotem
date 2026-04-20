@@ -1,3 +1,16 @@
+/* Iconify timeline icons sit inside the same colored panel as legacy icons. */
+.timelineFlat .item .timeline-card-icon {
+	width: 96px;
+	height: 96px;
+	font-size: 96px;
+	opacity: 0.72;
+	color: #fff;
+	flex: 0 0 auto;
+}
+
+.timelineFlat .item .icon.mytextwithicon.has-iconify:before {
+	content: none !important;
+}
 @font-face {
 	font-family: 'FontAwesome';
 	src: url('fonts/awesome/fontawesome-webfont.eot?v=4.0.3');
@@ -205,7 +218,8 @@
 .timelineFlat .timeline_line {
  	margin-top:10px;
  	margin-bottom:10px;
- 	width:900px;
+ 	width: 100%;
+ 	max-width:900px;
  }
 
 /* full (including months that are not shown) line holder */
@@ -219,7 +233,8 @@
 /* 2 months are stored in one view */
 .timelineFlat .t_line_view {
  	height:20px;
- 	width:900px;
+ 	width: 100%;
+ 	max-width:900px;
  }
 
 
@@ -230,14 +245,16 @@
  	height:10px;
  	border-left:1px solid transparent;
  	border-right:1px solid #cbd5e1;
- 	width:448px;
+ 	width: 50%;
+ 	max-width:448px;
  	background: var(--color-border);
  }
 
 /* month on the right side - has left set at 459 so border would overlap border from first element (to evade duplicated borders) */
 .timelineFlat .t_line_m.right {
  	left:449px;
- 	width:449px;
+ 	width: 50%;
+ 	max-width:449px;
  	border-left:1px solid #cbd5e1;
  	border-right:1px solid transparent;
  }
@@ -728,6 +745,9 @@
 	content: "\f1ae";
 	font-family: FontAwesome;
 	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 	font-size: 120px;
 	opacity: .5;
 	color:#fff;
@@ -738,6 +758,9 @@
 	color:#fff;
 	font-family: FontAwesome;
 	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 	font-size: 120px;
 	opacity: .5;
 }
@@ -765,9 +788,12 @@
 }
 
 .icon.mytextwithicon {
-  position:relative;
-	width:100%;
-	height:230px;
+position: relative;
+width: 100%;
+height: 230px;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
 .icon.mytextwithicon1 {
@@ -902,10 +928,7 @@
 }
 
 @media (min-width:601px) {
-	.icon.mytextwithicon:before {
-		margin-top: 25%;
-		margin-left: 39%;
-	}
+	/* Remove margin overrides for centering, flexbox now handles centering */
 }
 
 /* Modern timeline overrides */
@@ -1027,8 +1050,7 @@
 
 @media (max-width:600px) {
 	.icon.mytextwithicon:before {
-		margin-top: 29%;
-		margin-left: -13%;
+		font-size: 90px;
 	}
 }
 
@@ -1043,36 +1065,36 @@
 /* --- 768px --- */
 @media screen and (max-width:980px) {
 	.timelineFlat .timeline_line {
-		width:680px;
+		max-width:680px;
 	}
 
 	.timelineFlat .t_line_view {
-		width:680px;
+		max-width:680px;
 	}
 
 	.timelineFlat .t_line_m {
-		width: 338px;
+		max-width: 338px;
 	}
 	.timelineFlat .t_line_m.right {
 		left: 339px;
-		width: 339px;
+		max-width: 339px;
 	}
 }
 
 /* --- 610px --- */
 @media screen and (max-width:767px) {
 	.timelineFlat .timeline_line {
-		width:530px;
+		max-width:530px;
 	}
 	.timelineFlat .t_line_view {
-		width:1060px;
+		max-width:1060px;
 	}
 	.timelineFlat .t_line_m {
-		width: 528px;
+		max-width: 528px;
 	}
 	.timelineFlat .t_line_m.right {
 		left: 530px;
-		width: 528px;
+		max-width: 528px;
 	}
 	.timelineFlat .t_line_node span {
 
@@ -1089,30 +1111,32 @@
 /* --- 300px --- */
 @media screen and (max-width:609px) {
 	.timelineFlat .timeline_line {
-		width:240px;
+		max-width:240px;
 	}
 
 	.timelineFlat .t_line_view {
-		width:480px;
+		max-width:480px;
 	}
 
 	.timelineFlat .t_line_m {
-		width: 238px;
+		max-width: 238px;
 	}
 	.timelineFlat .t_line_m.right {
 		left: 240px;
-		width: 238px;
+		max-width: 238px;
 	}
 
 	.timelineFlat .item_open {
-		width:280px;
+		width: 100%;
+		max-width:280px;
 		height:390px;
 	}
 	.timelineFlat .item_open img {
 		max-width:280px;
 	}
 	.timelineFlat .item_open_cwrapper {
-		width:280px;
+		width: 100%;
+		max-width:280px;
 	}
 }
 

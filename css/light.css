@@ -12,7 +12,8 @@
 .timelineLight .timeline_line {
 	margin-top:10px;
 	margin-bottom:10px;
-	width:900px;
+	width: 100%;
+	max-width:900px;
 }
 
 /* full (including months that are not shown) line holder */
@@ -24,7 +25,8 @@
 /* 2 months are stored in one view */
 .timelineLight .t_line_view {
 	height:20px;
-	width:900px;
+	width: 100%;
+	max-width:900px;
 }
 
 
@@ -35,13 +37,15 @@
 	height:10px;
 	border-left:1px solid #545454;
 	border-right:1px solid #545454;
-	width:448px;
+	width: 50%;
+	max-width:448px;
 }
 
 /* month on the right side - has left set at 459 so border would overlap border from first element (to evade duplicated borders) */
 .timelineLight .t_line_m.right {
 	left:449px;
-	width:449px;
+	width: 50%;
+	max-width:449px;
 }
 
 /* month caption */
@@ -263,19 +267,19 @@
 @media screen and (max-width:980px) {
 	
 	.timelineLight .timeline_line {
-		width:680px;
+		max-width:680px;
 	}
 	
 	.timelineLight .t_line_view {
-		width:680px;
+		max-width:680px;
 	}
 	
 	.timelineLight .t_line_m {
-		width: 338px;
+		max-width: 338px;
 	}
 	.timelineLight .t_line_m.right {
 		left: 339px;
-		width: 339px;
+		max-width: 339px;
 	}
 }
 
@@ -284,19 +288,19 @@
 @media screen and (max-width:767px) {
 	
 	.timelineLight .timeline_line {
-		width:530px;
+		max-width:530px;
 	}
 	
 	.timelineLight .t_line_view {
-		width:1060px;
+		max-width:1060px;
 	}
 	
 	.timelineLight .t_line_m {
-		width: 528px;
+		max-width: 528px;
 	}
 	.timelineLight .t_line_m.right {
 		left: 530px;
-		width: 528px;
+		max-width: 528px;
 	}
 	
 	.timelineLight .t_line_node span {
@@ -315,30 +319,32 @@
 /* --- 300px --- */
 @media screen and (max-width:609px) {
 	.timelineLight .timeline_line {
-		width:240px;
+		max-width:240px;
 	}
 	
 	.timelineLight .t_line_view {
-		width:480px;
+		max-width:480px;
 	}
 	
 	.timelineLight .t_line_m {
-		width: 238px;
+		max-width: 238px;
 	}
 	.timelineLight .t_line_m.right {
 		left: 240px;
-		width: 238px;
+		max-width: 238px;
 	}
 	
 	.timelineLight .item_open {
-		width:280px;
+		width: 100%;
+		max-width:280px;
 		height:390px;
 	}
 	.timelineLight .item_open img {
 		max-width:280px;
 	} 
 	.timelineLight .item_open_cwrapper {
-		width:280px;
+		width: 100%;
+		max-width:280px;
 	}
 }
 

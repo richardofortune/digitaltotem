@@ -97,6 +97,7 @@ function saveEvents(req, res) {
     }
     try {
       fs.writeFileSync(eventsPath, stringifyJson(parsed));
+      console.log('[SAVE] Wrote ' + parsed.events.length + ' entries to ' + eventsPath + ' at ' + new Date().toISOString());
       sendJson(res, 200, {
         ok: true,
         path: path.relative(root, eventsPath),
@@ -130,11 +131,15 @@ function serveStatic(req, res) {
 }
 
 const server = http.createServer((req, res) => {
+  if (req.method === 'POST') {
+    console.log('[REQUEST] ' + req.method + ' ' + req.url);
+  }
   if (req.method === 'GET' && req.url === '/__admin/status') {
     sendJson(res, 200, { ok: true, mode: 'local-write' });
     return;
   }
   if (req.method === 'POST' && req.url === '/__admin/save-events') {
+    console.log('[SAVE] Processing save request...');
     saveEvents(req, res);
     return;
   }

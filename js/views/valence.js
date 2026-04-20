@@ -377,15 +377,16 @@
             .attr('stroke', 'rgba(255,255,255,0.08)');
 
         /* Rolling average trend line */
-        var avgData = calculateRollingAverage(plotData, 730); /* 2 years */
-        if (avgData.length >= 2) {
+        /* Smooth curve through scored events */
+        var scoredData = plotData.filter(function (d) { return d.isScored; });
+        if (scoredData.length >= 2) {
             var lineGen = d3.line()
                 .x(function (d) { return xScale(d.date); })
-                .y(function (d) { return yScale(d.average); })
+                .y(function (d) { return yScale(d.valence); })
                 .curve(d3.curveCatmullRom);
 
             chartG.append('path')
-                .datum(avgData)
+                .datum(scoredData)
                 .attr('class', 'valence-trend-line')
                 .attr('d', lineGen);
         }

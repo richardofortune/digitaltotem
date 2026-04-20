@@ -8,6 +8,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="js/iconify.min.js"></script>
+  <!-- Feature flags: set to false to disable admin UI for public -->
+  <script>
+    window.FEATURE_FLAGS = window.FEATURE_FLAGS || {};
+    window.FEATURE_FLAGS.admin = window.FEATURE_FLAGS.admin !== false;
+    if (!window.FEATURE_FLAGS.admin) {
+      document.addEventListener('DOMContentLoaded', function() {
+        document.body.innerHTML = '<div style="padding:40px;text-align:center;font-size:1.3em;color:#888;">Admin features are disabled in this deployment.</div>';
+      });
+    }
+  </script>
   <style>
     @font-face {
       font-family: "FontAwesome";
@@ -283,6 +294,106 @@
       margin-top: 4px;
     }
 
+    .icon-picker {
+      display: grid;
+      gap: 10px;
+    }
+
+    .icon-picker-preview {
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--accent);
+      display: inline-flex;
+      flex: 0 0 48px;
+      height: 48px;
+      justify-content: center;
+      width: 48px;
+    }
+
+    .icon-picker-controls {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: minmax(0, 1fr) minmax(140px, 180px);
+    }
+
+    .icon-picker-manual {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: 48px minmax(0, 1fr);
+    }
+
+    .icon-picker-grid {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(auto-fill, minmax(82px, 1fr));
+      max-height: 260px;
+      overflow: auto;
+      padding: 8px;
+    }
+
+    .icon-choice {
+      align-items: center;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      display: grid;
+      gap: 6px;
+      justify-items: center;
+      min-height: 78px;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .icon-choice:hover,
+    .icon-choice:focus {
+      background: var(--color-surface-hover);
+      border-color: var(--accent);
+      transform: none;
+    }
+
+    .icon-choice.active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(45, 91, 255, 0.12);
+    }
+
+    .icon-choice svg,
+    .icon-choice .iconify {
+      color: var(--accent);
+      font-size: 24px;
+    }
+
+    .icon-choice-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+
+    .icon-picker-empty {
+      color: var(--muted);
+      grid-column: 1 / -1;
+      margin: 0;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .icon-picker-help {
+      margin-top: 0;
+    }
+
+    @media (max-width: 640px) {
+      .icon-picker-controls,
+      .icon-picker-manual {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .app-header {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
@@ -290,6 +401,15 @@
       max-width: 1500px;
       margin: 0 auto;
       padding: 24px 18px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
 
     .app-header > *,
@@ -548,22 +668,31 @@
     }
 
     .event-button.active {
-      border-color: #cbd5e1;
-      background: var(--color-surface-hover);
-      box-shadow: var(--shadow-sm);
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      box-shadow: 0 0 0 2px var(--accent-soft), var(--shadow-sm);
     }
 
     .event-button.template-entry {
       border-style: dashed;
-      border-color: var(--line-strong);
+      border-color: var(--line);
       color: var(--muted);
-      background: var(--panel);
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--panel),
+        var(--panel) 8px,
+        transparent 8px,
+        transparent 12px
+      );
+      opacity: 0.75;
     }
 
     .event-button.template-entry.active {
       border-style: dashed;
-      border-color: var(--accent);
-      background: var(--accent-soft);
+      border-color: var(--muted);
+      background: var(--panel);
+      opacity: 1;
+      box-shadow: none;
     }
 
     .event-category-dot {
@@ -735,12 +864,16 @@
     }
 
     .post-icon {
+      align-items: center;
       aspect-ratio: 1;
       background: var(--accent-soft);
       border: 1px solid #b7dfd8;
       border-radius: var(--radius-md);
+      color: var(--accent);
+      display: flex;
       flex: 0 0 58px;
       height: 58px;
+      justify-content: center;
       overflow: hidden;
       position: relative;
       width: 58px;
@@ -992,6 +1125,32 @@
         max-width: 100%;
         width: 100%;
         justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .app-header,
+      .top-timeline,
+      main {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      .event-list {
+        max-height: 240px;
+      }
+
+      textarea {
+        min-height: 200px;
+        font-size: 13px;
+      }
+
+      .preview,
+      .output {
+        min-height: 140px;
       }
     }
 
@@ -1342,6 +1501,32 @@
       flex: 1;
     }
 
+    .unsaved-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #92400e;
+      background: #fefce8;
+      border: 1px solid #e5e7eb;
+      border-radius: var(--radius-pill);
+      padding: 3px 10px;
+      opacity: 0.85;
+      animation: pulse-badge 1.5s ease-in-out 3;
+    }
+
+    .unsaved-badge::before {
+      content: '\25CF';
+      color: #d97706;
+      font-size: 8px;
+    }
+
+    @keyframes pulse-badge {
+      0%, 100% { opacity: 0.85; }
+      50% { opacity: 0.5; }
+    }
+
     .toast-title {
       font-weight: 700;
       font-size: 14px;
@@ -1378,6 +1563,7 @@
             <input type="file" id="import-json" accept="application/json,.json">
           </label>
           <button type="button" class="primary" id="save-json">Save file</button>
+          <span class="unsaved-badge" id="unsavedBadge" hidden>Unsaved changes</span>
           <button type="button" id="download-json">Download</button>
           <button type="button" id="copy-json">Copy</button>
           <button type="button" id="openSettings" title="Settings">&#9881; Settings</button>
@@ -1522,8 +1708,22 @@
           </div>
 
           <div>
-            <label for="icon">Icon class</label>
-            <input id="icon" name="icon" placeholder="xero, peace, basic">
+            <label for="icon">Icon</label>
+            <div class="icon-picker" id="iconPicker">
+              <div class="icon-picker-controls">
+                <input id="iconSearch" type="search" placeholder="Search icons by name, tag, or set" autocomplete="off" spellcheck="false">
+                <select id="iconSetFilter" aria-label="Icon set filter">
+                  <option value="">All sets</option>
+                </select>
+              </div>
+              <div class="icon-picker-grid" id="iconResults" role="listbox" aria-label="Icon choices"></div>
+              <div class="icon-picker-manual">
+                <span id="iconPreview" class="icon-picker-preview" aria-hidden="true"></span>
+                <input id="iconManual" type="text" placeholder="iconify:mdi:rocket">
+              </div>
+              <small class="icon-picker-help">Pick from the curated grid or paste any Iconify value manually.</small>
+            </div>
+            <input id="icon" name="icon" type="hidden">
           </div>
 
           <div>
@@ -1658,6 +1858,7 @@
       </div>
     </div>
   </div>
+<script src="js/fa-icons.js"></script>
 
   <script>
     (function () {
@@ -1666,6 +1867,7 @@
 	        selectedIndex: 0,
 	        canWriteLocal: false,
 	        isDirty: false,
+	        fileDirty: false,
 	        templateSelected: false,
 	        scoringActive: false
 	      };
@@ -1683,6 +1885,16 @@
         openRaw: document.getElementById('open-raw')
       };
       var saveButton = document.getElementById('save-json');
+      var unsavedBadge = document.getElementById('unsavedBadge');
+
+      var markFileDirty = function () {
+        state.fileDirty = true;
+        unsavedBadge.hidden = false;
+      };
+      var markFileClean = function () {
+        state.fileDirty = false;
+        unsavedBadge.hidden = true;
+      };
 
       var fields = [
         'entryType',
@@ -1710,6 +1922,128 @@
         acc[id] = document.getElementById(id);
         return acc;
       }, {});
+
+      function iconifySpan(iconValue) {
+        if (!iconValue) return '';
+        var dataIcon = iconValue.replace(/^iconify:/, '');
+        return '<span class="iconify" data-icon="' + escapeHtml(dataIcon) + '" style="font-size:1.7em"></span>';
+      }
+
+      function refreshIconPreview(preview, iconValue) {
+        preview.innerHTML = iconifySpan(iconValue);
+        if (window.Iconify) Iconify.scan(preview);
+      }
+
+      function getIconCatalog() {
+        return window.ICON_CATALOG || window.FA_ICONS || [];
+      }
+
+      function iconSearchText(icon) {
+        return [
+          icon.label,
+          icon.value || icon.class,
+          icon.set,
+          icon.category,
+          Array.isArray(icon.tags) ? icon.tags.join(' ') : ''
+        ].join(' ').toLowerCase();
+      }
+
+      function syncIconPicker() {
+        var preview = document.getElementById('iconPreview');
+        var manual = document.getElementById('iconManual');
+        var current = fields.icon.value.trim();
+        if (manual && manual.value !== current) manual.value = current;
+        if (preview) refreshIconPreview(preview, current);
+        renderIconResults();
+      }
+
+      function selectIcon(iconValue) {
+        fields.icon.value = iconValue || '';
+        syncIconPicker();
+        state.isDirty = true;
+        updatePreview();
+      }
+
+      function renderIconResults() {
+        var results = document.getElementById('iconResults');
+        var search = document.getElementById('iconSearch');
+        var setFilter = document.getElementById('iconSetFilter');
+        if (!results) return;
+        var catalog = getIconCatalog();
+        var query = search ? search.value.trim().toLowerCase() : '';
+        var selectedSet = setFilter ? setFilter.value : '';
+        var current = fields.icon.value.trim();
+        var matches = catalog.filter(function (icon) {
+          var value = icon.value || icon.class;
+          if (selectedSet && icon.set !== selectedSet) return false;
+          if (query && iconSearchText(icon).indexOf(query) === -1) return false;
+          return Boolean(value);
+        });
+        results.innerHTML = '';
+        if (!matches.length) {
+          results.innerHTML = '<p class="icon-picker-empty">No curated icons match this search. Paste any Iconify value below.</p>';
+          return;
+        }
+        matches.slice(0, 80).forEach(function (icon) {
+          var value = icon.value || icon.class;
+          var button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'icon-choice' + (value === current ? ' active' : '');
+          button.setAttribute('role', 'option');
+          button.setAttribute('aria-selected', value === current ? 'true' : 'false');
+          button.setAttribute('title', value);
+          button.innerHTML =
+            '<span class="iconify" data-icon="' + escapeHtml(value.replace(/^iconify:/, '')) + '" aria-hidden="true"></span>' +
+            '<span class="icon-choice-label">' + escapeHtml(icon.label || value) + '</span>';
+          button.addEventListener('click', function () {
+            selectIcon(value);
+          });
+          results.appendChild(button);
+        });
+        if (matches.length > 80) {
+          var more = document.createElement('p');
+          more.className = 'icon-picker-empty';
+          more.textContent = 'Showing 80 of ' + matches.length + ' matches. Narrow the search to see more.';
+          results.appendChild(more);
+        }
+        if (window.Iconify) Iconify.scan(results);
+      }
+
+      function renderIconPicker() {
+        var picker = document.getElementById('iconPicker');
+        var search = document.getElementById('iconSearch');
+        var setFilter = document.getElementById('iconSetFilter');
+        var manual = document.getElementById('iconManual');
+        var catalog = getIconCatalog();
+        if (!catalog.length || !picker || !fields || !fields.icon) return;
+        if (!state.iconPickerReady) {
+          var sets = [];
+          catalog.forEach(function (icon) {
+            if (icon.set && sets.indexOf(icon.set) === -1) sets.push(icon.set);
+          });
+          sets.sort().forEach(function (setName) {
+            var opt = document.createElement('option');
+            opt.value = setName;
+            opt.textContent = setName;
+            setFilter.appendChild(opt);
+          });
+          search.addEventListener('input', renderIconResults);
+          setFilter.addEventListener('change', renderIconResults);
+          manual.addEventListener('input', function () {
+            fields.icon.value = manual.value.trim();
+            syncIconPicker();
+            state.isDirty = true;
+            updatePreview();
+          });
+          fields.icon.addEventListener('input', syncIconPicker);
+          state.iconPickerReady = true;
+        }
+        syncIconPicker();
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        renderIconPicker();
+      });
 
       /* Toggle memory/prompt-specific fields based on entry type */
       var updateEntryTypeUI = function () {
@@ -1806,6 +2140,13 @@
       };
 
       var defaultIconClasses = {
+        basic: 'iconify:fa6-solid:mountain',
+        life: 'iconify:fa6-solid:heart',
+        work: 'iconify:fa6-solid:briefcase',
+        pivotal: 'iconify:fa6-solid:lightbulb',
+        passion: 'iconify:fa6-solid:palette'
+      };
+      var legacyDefaultIconClasses = {
         basic: 'basic',
         life: 'life',
         work: 'work',
@@ -1826,7 +2167,7 @@
         title: 'Template: A Story That Uses Every Field',
         description: 'Template',
         category: 'pivotal',
-        icon: 'pivotal',
+        icon: 'iconify:fa6-solid:star',
         summary: 'Shows how title, summary, category, and media combine in the card.',
         slug: 'template-event',
         timelineId: 'richard-fortune',
@@ -1861,7 +2202,7 @@
 
       var isDefaultIcon = function (icon) {
         return Object.keys(defaultIconClasses).some(function (key) {
-          return defaultIconClasses[key] === icon;
+          return defaultIconClasses[key] === icon || legacyDefaultIconClasses[key] === icon;
         });
       };
 
@@ -2107,6 +2448,7 @@
         fields.locationLng.value  = event.location && event.location.lng != null ? event.location.lng : '';
         fields.tags.value   = Array.isArray(event.tags)   ? event.tags.join(', ')   : '';
         fields.people.value = Array.isArray(event.people) ? event.people.join(', ') : '';
+        renderIconPicker();
 
         /* Scoring fields */
         var hasScoring = (event.valence != null && event.impact != null);
@@ -2150,12 +2492,28 @@
 
       var updatePreview = function () {
         els.preview.innerHTML = buildPreviewHtml(formToEvent());
+        if (window.Iconify) Iconify.scan(els.preview);
+      };
+
+      var buildIconHtml = function (event) {
+        var icon = event.icon || defaultIconForCategory(event.category);
+        if (icon && icon.startsWith('iconify:')) {
+          var dataIcon = icon.replace(/^iconify:/, '');
+          return '<div class="post-icon" aria-label="' + escapeHtml(dataIcon) + '">' +
+            '<span class="iconify" data-icon="' + escapeHtml(dataIcon) + '" style="font-size:2em"></span>' +
+            '</div>';
+        }
+        var cssClass = [
+          'post-icon', 'mytextwithicon',
+          safeClassName(event.category || 'basic'),
+          safeClassName(icon)
+        ].join(' ');
+        return '<div class="' + escapeHtml(cssClass) + '" aria-label="' + escapeHtml(icon || event.category || 'Icon') + '"></div>';
       };
 
       var buildPreviewHtml = function (event) {
         var category = escapeHtml(event.category || 'basic');
         var date = escapeHtml(event.dateIso || event.id || '');
-        var iconClass = iconClassForEvent(event, 'post-icon');
         var summary = escapeHtml(event.summary || 'No card summary yet.');
         var title = escapeHtml(event.title || 'Untitled');
         var imageSrc = event.media && event.media.image ? event.media.image : defaultHeroForCategory(event.category);
@@ -2164,7 +2522,7 @@
           '<div class="post-preview">' +
             '<div class="post-card-preview">' +
               '<div class="post-card-top">' +
-                '<div class="' + escapeHtml(iconClass) + '" aria-label="' + escapeHtml(event.icon || event.category || 'Icon') + '"></div>' +
+                buildIconHtml(event) +
                 '<div class="meta-row"><span class="pill">' + category + '</span><span class="pill">' + date + '</span></div>' +
               '</div>' +
               '<h3>' + title + '</h3>' +
@@ -2183,15 +2541,6 @@
 	        els.output.value = serialize();
 	      };
 
-
-      var iconClassForEvent = function (event, baseClass) {
-        return [
-          baseClass,
-          'mytextwithicon',
-          safeClassName(event.category || 'basic'),
-          safeClassName(event.icon || defaultIconForCategory(event.category))
-        ].join(' ');
-      };
 
 	      var renderTimeline = function () {
 	        var events = currentEvents();
@@ -2351,6 +2700,7 @@
 	        state.payload = normalizePayload(payload);
 	        sortEvents();
 	        state.isDirty = false;
+	        markFileClean();
 	        selectEvent(0);
 	        setStatus('Loaded ' + currentEvents().length + ' entries.', 'ok');
 	        applyPromptPrefill();
@@ -2407,11 +2757,11 @@
 	        }
 	        iso = uniqueIsoFrom(now.toISOString().slice(0, 10));
 	        var event = {
-	          id: idFromIso(iso),
+          id: idFromIso(iso),
           title: 'New entry',
           description: 'Life Event',
           category: 'life',
-          icon: 'life',
+          icon: defaultIconForCategory('life'),
           summary: '',
           slug: 'new-entry',
           timelineId: state.payload && state.payload.timeline ? state.payload.timeline.id : 'richard-fortune',
@@ -2442,6 +2792,7 @@
 	        copy.id = idFromIso(copy.dateIso);
 	        copy.order = events.length;
 	        events.splice(state.selectedIndex + 1, 0, copy);
+	        markFileDirty();
 	        selectEvent(state.selectedIndex + 1);
         setStatus('Duplicated the selected entry.', 'ok');
       });
@@ -2453,6 +2804,7 @@
 	        if (!window.confirm('Delete "' + (event.title || 'this entry') + '"?')) return;
 	        events.splice(state.selectedIndex, 1);
 	        state.isDirty = false;
+	        markFileDirty();
 	        selectEvent(state.selectedIndex);
 	        setStatus('Deleted the entry.', 'ok');
 	      });
@@ -2534,12 +2886,13 @@
             });
           })
           .then(function (payload) {
-            setStatus('Saved ' + payload.entries + ' entries to ' + payload.path + '.', 'ok');
+            setStatus('Saved ' + payload.entries + ' entries to ' + payload.path + '. Refresh the main page to see changes.', 'ok');
+            markFileClean();
             if (window.showToast) {
               window.showToast({
                 type: 'success',
                 title: 'Changes saved',
-                message: payload.entries + ' entries written to ' + payload.path
+                message: payload.entries + ' entries written. Refresh main page (⌘⇧R) to see updates.'
               });
             }
           })
@@ -2583,8 +2936,9 @@
 	      els.form.addEventListener('submit', function (event) {
 	        event.preventDefault();
 	        commitAndSortCurrentForm();
+	        markFileDirty();
 	        selectEvent(state.selectedIndex);
-	        setStatus('Saved the entry in this editor. Download the JSON when ready.', 'ok');
+	        setStatus('Entry saved in editor. Click "Save file" to write to disk.', 'ok');
 	      });
 
 	      els.form.addEventListener('input', function (event) {
@@ -2595,6 +2949,7 @@
         if (event.target === fields.category) {
           syncHeroImageForCategory();
           syncIconForCategory();
+          renderIconPicker();
         }
         if (event.target === fields.title && !fields.slug.value) {
           fields.slug.value = slugify(fields.title.value);
@@ -2611,11 +2966,20 @@
 	      fields.category.addEventListener('change', function () {
 	        syncHeroImageForCategory();
 	        syncIconForCategory();
+	        renderIconPicker();
 	        state.isDirty = true;
 	        updatePreview();
 	      });
 
       els.search.addEventListener('input', renderList);
+
+      /* Warn before leaving with unsaved changes */
+      window.addEventListener('beforeunload', function (e) {
+        if (state.fileDirty || state.isDirty) {
+          e.preventDefault();
+          e.returnValue = '';
+        }
+      });
 
       saveButton.hidden = true;
       els.rawOutput.style.display = 'none';

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-15T19:31:47.621Z",
+  "generatedAt": "2026-04-19T10:42:26.026Z",
   "timeline": {
     "id": "richard-fortune",
     "title": "Getting to know Richard Fortune",
@@ -13,7 +13,7 @@
       "title": "Getting Started",
       "description": "Guide",
       "category": "basic",
-      "icon": "basic",
+      "icon": "iconify:fa6-solid:mountain",
       "summary": "Welcome to the timeline of my life. Here you will find life events, experiences and achievements that I felt were worth sharing with you all",
       "slug": "getting-started",
       "timelineId": "richard-fortune",
@@ -29,20 +29,25 @@
       "title": "The young peace keeper",
       "description": "Live Event",
       "category": "life",
-      "icon": "peace",
+      "icon": "iconify:fa6-solid:heart",
       "summary": "The final installment to our family of five, I usurped my brother Tony from his position as the youngest child, a position he'd held for 8 years before I came along",
       "slug": "the-young-peace-keeper",
       "timelineId": "richard-fortune",
       "dateIso": "1978-08-11",
       "order": 1,
-      "body": "## On this day!\n\n Picture it, it's August 1978 and the following song is Number 1 in the charts.\n\n <iframe width=\"400\" height=\"230\" src=\"https://www.youtube.com/embed/hic-dnps6MU\" frameborder=\"0\" allowfullscreen></iframe>\n My late arrival as last child meant that I missed all of the sibling rivalry in our house.\n While my siblings grew up with the usual spats, I grew up in wide-eyed awe of them.\n From one brother I developed a love of comedy, from my sister I developed an appreciation\n for being sensitive to the needs of others, from another brother I learned respect for\n creativity and finally from my eldest brother I discovered an aptitude for technology.\n A rather lucky way to start life, to be honest.\n\n Being youngest also had the added benefit of a lack of desire to flaunt ego, which fortunately left space for me to focus on learning/emulating the best of each of\n them. This situation also helped me to develop a taste for adventure; with so many well trodden paths before me I was driven to make my own way. \n\nBTW, If you're curious to find out what song was #1 the day you were born you can check it out [here](http://playback.fm/birthday-song)"
+      "body": "## On this day!\n\n Picture it, it's August 1978 and the following song is Number 1 in the charts.\n\n <iframe width=\"400\" height=\"230\" src=\"https://www.youtube.com/embed/hic-dnps6MU\" frameborder=\"0\" allowfullscreen></iframe>\n My late arrival as last child meant that I missed all of the sibling rivalry in our house.\n While my siblings grew up with the usual spats, I grew up in wide-eyed awe of them.\n From one brother I developed a love of comedy, from my sister I developed an appreciation\n for being sensitive to the needs of others, from another brother I learned respect for\n creativity and finally from my eldest brother I discovered an aptitude for technology.\n A rather lucky way to start life, to be honest.\n\n Being youngest also had the added benefit of a lack of desire to flaunt ego, which fortunately left space for me to focus on learning/emulating the best of each of\n them. This situation also helped me to develop a taste for adventure; with so many well trodden paths before me I was driven to make my own way. \n\nBTW, If you're curious to find out what song was #1 the day you were born you can check it out [here](http://playback.fm/birthday-song)",
+      "media": {
+        "image": "images/flat/default/key_life.jpg"
+      },
+      "valence": 0.25,
+      "impact": 0.15
     },
     {
       "id": "05/09/1981",
       "title": "A long shot",
       "description": "Live Event",
       "category": "pivotal",
-      "icon": "longshot",
+      "icon": "iconify:fa6-solid:lightbulb",
       "summary": "My parents took a leap of faith and enrolled me in a new kind of school for my region",
       "slug": "a-long-shot",
       "timelineId": "richard-fortune",
@@ -74,7 +79,7 @@
       "title": "Ecole Navale Brest",
       "description": "Work Experience",
       "category": "work",
-      "icon": "ecole",
+      "icon": "iconify:mdi:school",
       "summary": "Studying and working in France taught me resilience and reinforced my love of deeply experiencing other cultures",
       "slug": "ecole-navale-brest",
       "timelineId": "richard-fortune",
@@ -95,14 +100,16 @@
         "technology",
         "france",
         "career"
-      ]
+      ],
+      "valence": 0.25,
+      "impact": 0.2
     },
     {
-      "id": "04/12/2000",
+      "id": "12/04/2000",
       "title": "MSN Ireland - the small fish grows",
       "description": "Pivotal Life Event",
       "category": "work",
-      "icon": "msn",
+      "icon": "iconify:fa6-solid:code",
       "summary": "Growing up in a mega corporation isn't as terrible as you might imagine.",
       "slug": "msn-ireland-the-small-fish-grows",
       "timelineId": "richard-fortune",
@@ -113,24 +120,26 @@
         "image": "images/flat/default/workw.jpg"
       },
       "location": {
-        "name": "Dublin, Ireland",
-        "lat": 53.3498,
-        "lng": -6.2603
+        "name": "Dublin, County Dublin",
+        "lat": 53.349379,
+        "lng": -6.260559
       },
       "tags": [
         "technology",
         "career",
         "testing",
-        "gaming",
+        "msn",
         "ireland"
-      ]
+      ],
+      "valence": 0.15,
+      "impact": 0.4
     },
     {
       "id": "01/09/2001",
       "title": "Hiking in Venezuela",
       "description": "Pivotal Life Event",
       "category": "pivotal",
-      "icon": "venezuela",
+      "icon": "iconify:mdi:earth",
       "summary": "Beyond beauty, to the nature of man",
       "slug": "hiking-in-venezuela",
       "timelineId": "richard-fortune",
@@ -159,7 +168,7 @@
       "title": "Discovering a hero",
       "description": "Pivotal Life Event",
       "category": "pivotal",
-      "icon": "hero",
+      "icon": "iconify:mdi:account-star",
       "summary": "I found mine in a bookshop!",
       "slug": "discovering-a-hero",
       "timelineId": "richard-fortune",
@@ -177,14 +186,16 @@
       ],
       "people": [
         "Victor Papanek"
-      ]
+      ],
+      "valence": 0.5,
+      "impact": 0.5
     },
     {
       "id": "12/06/2006",
       "title": "Joining MSN UK News team",
       "description": "Career",
       "category": "work",
-      "icon": "msnuk",
+      "icon": "iconify:mdi:microsoft",
       "summary": "Restless head syndrome - Moving to one of the worlds major capital cities",
       "slug": "joining-msn-uk-news-team",
       "timelineId": "richard-fortune",
@@ -205,14 +216,16 @@
         "london",
         "accessibility",
         "testing"
-      ]
+      ],
+      "valence": 0.1,
+      "impact": 0.1
     },
     {
       "id": "14/05/2008",
       "title": "Bucket list by 30",
       "description": "Pivotal Life Event",
       "category": "life",
-      "icon": "bucket",
+      "icon": "iconify:mdi:bucket-outline",
       "summary": "London to Beijing by train",
       "slug": "bucket-list-by-30",
       "timelineId": "richard-fortune",
@@ -233,14 +246,16 @@
         "self-discovery",
         "career",
         "sabbatical"
-      ]
+      ],
+      "valence": 0.85,
+      "impact": 0.65
     },
     {
       "id": "13/06/2008",
       "title": "Hiking in Mongolia",
       "description": "Pivotal Life Event",
       "category": "pivotal",
-      "icon": "mongolia",
+      "icon": "iconify:fa6-solid:flag",
       "summary": "Getting to know my limits!",
       "slug": "hiking-in-mongolia",
       "timelineId": "richard-fortune",
@@ -262,15 +277,15 @@
         "challenge",
         "self-discovery"
       ],
-      "valence": -0.3,
-      "impact": 0.8
+      "valence": 0.25,
+      "impact": 0.4
     },
     {
       "id": "27/04/2009",
       "title": "Whakawhetai - gratitude project",
       "description": "Passion",
       "category": "passion",
-      "icon": "whak",
+      "icon": "iconify:mdi:hand-heart",
       "summary": "30 days of documenting thanks",
       "slug": "whakawhetai-gratitude-project",
       "timelineId": "richard-fortune",
@@ -291,14 +306,16 @@
         "gratitude",
         "new-zealand",
         "self-discovery"
-      ]
+      ],
+      "valence": -0.2,
+      "impact": 0.2
     },
     {
       "id": "01/09/2010",
       "title": "Joining Xero",
       "description": "Career",
       "category": "work",
-      "icon": "xero",
+      "icon": "iconify:mdi:alpha-x-circle-outline",
       "summary": "A David versus Goliath adventure in the small business Saas world",
       "slug": "joining-xero",
       "timelineId": "richard-fortune",
@@ -329,7 +346,7 @@
       "title": "Starting Makers Org NZ",
       "description": "Passion",
       "category": "passion",
-      "icon": "monz",
+      "icon": "iconify:mdi:account-group",
       "summary": "Sometimes solving a problem for yourself means solving it for others first",
       "slug": "starting-makers-org-nz",
       "timelineId": "richard-fortune",
@@ -350,14 +367,16 @@
         "education",
         "leadership",
         "new-zealand"
-      ]
+      ],
+      "valence": 1,
+      "impact": 0.7
     },
     {
       "id": "27/03/2011",
       "title": "Oxfam 100km Trailwalk",
       "description": "Pivotal",
       "category": "passion",
-      "icon": "oxfam",
+      "icon": "iconify:mdi:charity",
       "summary": "Walking 100km in 24hours",
       "slug": "oxfam-100km-trailwalk",
       "timelineId": "richard-fortune",
@@ -383,14 +402,14 @@
         "Molly Fortune"
       ],
       "valence": 0.65,
-      "impact": 0.5
+      "impact": 0.45
     },
     {
       "id": "27/05/2012",
       "title": "MakerCrate",
       "description": "Passion",
       "category": "passion",
-      "icon": "crate",
+      "icon": "iconify:mdi:package-variant",
       "summary": "Building an MVP for the real world",
       "slug": "makercrate",
       "timelineId": "richard-fortune",
@@ -411,14 +430,16 @@
         "innovation",
         "design",
         "new-zealand"
-      ]
+      ],
+      "valence": 0.6,
+      "impact": 0.5
     },
     {
       "id": "27/11/2012",
       "title": "Kittens and a home!",
       "description": "Live Event",
       "category": "life",
-      "icon": "home",
+      "icon": "iconify:mdi:home",
       "summary": "The worlds most expensive kittens!",
       "slug": "kittens-and-a-home",
       "timelineId": "richard-fortune",
@@ -437,14 +458,16 @@
         "family",
         "home",
         "new-zealand"
-      ]
+      ],
+      "valence": 0.2,
+      "impact": 0.3
     },
     {
       "id": "27/04/2013",
       "title": "Makertorium",
       "description": "Passion",
       "category": "passion",
-      "icon": "makertorium",
+      "icon": "iconify:mdi:robot",
       "summary": "If you build it, they will come..seriously!",
       "slug": "makertorium",
       "timelineId": "richard-fortune",
@@ -465,14 +488,16 @@
         "events",
         "leadership",
         "new-zealand"
-      ]
+      ],
+      "valence": 0.65,
+      "impact": 0.6
     },
     {
       "id": "06/09/2013",
       "title": "Olympic Class Quality Engineers",
       "description": "Career",
       "category": "work",
-      "icon": "olympic",
+      "icon": "iconify:mdi:medal-outline",
       "summary": "Turning the boat around",
       "slug": "olympic-class-quality-engineers",
       "timelineId": "richard-fortune",
@@ -493,14 +518,16 @@
         "leadership",
         "testing",
         "new-zealand"
-      ]
+      ],
+      "valence": -0.1,
+      "impact": 0.25
     },
     {
       "id": "02/02/2014",
       "title": "Next Level",
       "description": "Career",
       "category": "work",
-      "icon": "nextlevel",
+      "icon": "iconify:mdi:arrow-up-bold-circle",
       "summary": "Objective approach to leveling up a team",
       "slug": "next-level",
       "timelineId": "richard-fortune",
@@ -521,14 +548,16 @@
         "coaching",
         "technology",
         "new-zealand"
-      ]
+      ],
+      "valence": 0.1,
+      "impact": 0.15
     },
     {
       "id": "06/06/2014",
       "title": "Xero Social",
       "description": "Career",
       "category": "work",
-      "icon": "social",
+      "icon": "iconify:mdi:account-multiple",
       "summary": "Growing a culture of doers",
       "slug": "xero-social",
       "timelineId": "richard-fortune",
@@ -549,14 +578,16 @@
         "career",
         "events",
         "new-zealand"
-      ]
+      ],
+      "valence": 0.15,
+      "impact": 0.05
     },
     {
       "id": "01/01/2015",
       "title": "A million words over 1000km",
       "description": "Passion",
       "category": "passion",
-      "icon": "million",
+      "icon": "iconify:mdi:numeric-1-box-multiple",
       "summary": "Tying passions together",
       "slug": "a-million-words-over-1000km",
       "timelineId": "richard-fortune",
@@ -577,14 +608,16 @@
         "charity",
         "self-discovery",
         "new-zealand"
-      ]
+      ],
+      "valence": 0.25,
+      "impact": 0.3
     },
     {
       "id": "04/04/2015",
       "title": "Getting married",
       "description": "Live Event",
       "category": "life",
-      "icon": "marriage",
+      "icon": "iconify:mdi:heart",
       "summary": "My yankee wife with an Irish name!",
       "slug": "getting-married",
       "timelineId": "richard-fortune",
@@ -616,25 +649,25 @@
       "title": "Not all of life's experiences are good",
       "description": "Live Event",
       "category": "life",
-      "icon": "dad",
+      "icon": "iconify:mdi:account-tie",
       "summary": "",
       "slug": "not-all-of-lifes-experiences-are-good",
       "timelineId": "richard-fortune",
       "dateIso": "2016-02-05",
+      "order": 22,
       "body": "I really did wonder whether or not to put this story in here. Ultimately, I felt I had to for many reasons. Primarily because I cannot present significant life events and not mention the passing of my dear dad. In Feb this year my family lost a really wonderful father/husband/friend. Thankfully, I had enough warning to get home and to be with him and support my family before he passed and the experience went as well as something like this could.\n\nThe other reason I wanted to share this event with you is that I think you would have liked him. When I was tidying up some of his affairs, I found the little Dale Carnegie book you see pictured above. When I asked dad about this in the hospital he told me that he had been sent to a Dale Carnegie event back in 1964 and that he received the booklet then. Obviously the content resonated, as dad kept it safely filed away and continued to collect self help books and motivational quotes throughout his life.\n\nIn the pop-up image for this tile is a quote I found in one of dad's last notebooks:\n\n*\"If you could achieve one goal in your life within 24 hours, which goal would have the greatest impact on your life?\"*\n",
       "media": {
         "image": "images/assets/Dad_pop.jpg"
       },
-      "order": 22,
-      "valence": -0.85,
-      "impact": 0.95
+      "valence": -1,
+      "impact": 0.75
     },
     {
       "id": "01/04/2016",
       "title": "Where to next?",
       "description": "Le Fin",
       "category": "basic",
-      "icon": "fin",
+      "icon": "iconify:mdi:flag-checkered",
       "summary": "",
       "slug": "where-to-next",
       "timelineId": "richard-fortune",
@@ -662,17 +695,23 @@
     },
     {
       "id": "mem-002",
-      "type": "memory",
       "title": "The silence after the news",
+      "description": "",
       "category": "pivotal",
-      "dateIso": "2016-02-01",
-      "attachedTo": "05/02/2016",
-      "body": "What I remember most isn't the moment itself, but the silence that followed. The hospital corridor. The fluorescent lights humming. The way everyone moved around us like we were in a bubble.\n\nDad's notebook was still in my bag. I'd been carrying it around for days, meaning to ask him about some of the quotes he'd collected. Now I couldn't. I pulled it out and sat with it for a long time, just holding it.",
-      "valence": -0.9,
-      "impact": 0.7,
-      "order": 25,
+      "icon": "",
+      "summary": "",
       "slug": "the-silence-after-the-news",
-      "timelineId": "richard-fortune"
+      "timelineId": "richard-fortune",
+      "dateIso": "2016-02-01",
+      "order": 25,
+      "body": "What I remember most isn't the moment itself, but the silence that followed. The hospital corridor. The fluorescent lights humming. The way everyone moved around us like we were in a bubble.\n\nDad's notebook was still in my bag. I'd been carrying it around for days, meaning to ask him about some of the quotes he'd collected. Now I couldn't. I pulled it out and sat with it for a long time, just holding it.",
+      "type": "memory",
+      "attachedTo": "05/02/2016",
+      "media": {
+        "image": "images/flat/default/key_experience.jpg"
+      },
+      "valence": -0.9,
+      "impact": 0.7
     },
     {
       "id": "mem-003",

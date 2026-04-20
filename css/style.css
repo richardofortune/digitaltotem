@@ -1,3 +1,31 @@
+/* Life Vase modal controls (surface selector) */
+.vase-modal-controls {
+    width: 100%;
+    padding: 16px 24px 12px 24px;
+    background: #181a24;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.vase-modal-controls label {
+    margin-right: 8px;
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+}
+
+.vase-modal-controls select {
+    font-size: 13px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: #181a24;
+    color: #fff;
+    border: 1px solid #222;
+}
 @charset "utf-8";
 /* CSS Document */
 
@@ -420,6 +448,21 @@ section.home-header {
     z-index: 20;
 }
 
+@media (max-width: 767px) {
+    .navbar {
+        top: 6px;
+        margin-bottom: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        top: 0;
+        margin-bottom: 10px;
+        border-radius: 0 0 14px 14px;
+    }
+}
+
 .navbar-default .navbar-collapse {
     border-color: transparent;
 }
@@ -561,6 +604,23 @@ button:focus-visible, .btn:focus-visible {
     border: 1px solid var(--color-border);
     border-radius: 14px;
     box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 480px) {
+    .view-switcher {
+        bottom: 12px;
+        right: 12px;
+        flex-direction: row;
+        border-radius: 12px;
+        padding: 4px;
+        gap: 2px;
+    }
+    .view-switcher .view-btn,
+    .view-switcher-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
 }
 
 /* Base reset — override any inherited .view-btn navbar styles */
@@ -907,6 +967,39 @@ body.gallery-modal-open {
     }
 }
 
+@media (max-width: 480px) {
+    .home-header .title {
+        font-size: 32px;
+    }
+    .home-header .sub-title {
+        font-size: 17px;
+    }
+    .home-header .profile-photo {
+        width: 120px;
+        height: 120px;
+    }
+    .gallery-modal-content {
+        padding: 16px 14px 22px;
+        max-height: 70vh;
+        border-radius: 14px;
+    }
+    .gallery-modal-hero-wrap {
+        height: 160px;
+    }
+    .gallery-modal-title {
+        font-size: 18px;
+    }
+    .gallery-card-body {
+        padding: 10px 12px 12px;
+    }
+    .container p {
+        font-size: 15px;
+    }
+    .pb-inner {
+        padding: 14px 16px;
+    }
+}
+
 /* ── Decades view ───────────────────────────────────────────────────── */
 
 .decades-view {
@@ -1226,6 +1319,13 @@ body.gallery-modal-open {
     background: #1a2236;
 }
 
+@media (max-width: 767px) {
+    .map-canvas {
+        height: calc(100vh - 140px);
+        min-height: 300px;
+    }
+}
+
 /* Leaflet overrides to match dark theme */
 .map-canvas .leaflet-container {
     background: #1a2236;
@@ -1261,6 +1361,13 @@ body.gallery-modal-open {
     min-height: 480px;
     background: #0c0e18;
     overflow: hidden;
+}
+
+@media (max-width: 767px) {
+    .constellation-canvas {
+        height: calc(100vh - 140px);
+        min-height: 320px;
+    }
 }
 
 .constellation-canvas svg {
@@ -1757,6 +1864,13 @@ body.pm-overlay-open {
     overflow: hidden;
 }
 
+@media (max-width: 767px) {
+    .valence-canvas {
+        height: calc(100vh - 140px);
+        min-height: 320px;
+    }
+}
+
 .valence-canvas svg {
     display: block;
     width: 100%;
@@ -1847,12 +1961,188 @@ body.pm-overlay-open {
 }
 
 @media (max-width: 768px) {
-    .valence-canvas {
-        height: calc(100vh - 220px);
-        min-height: 360px;
-    }
     .valence-legend,
     .valence-size-legend { display: none; }
+}
+
+/* ── Life Vase easter egg ──────────────────────────────────────────────── */
+
+.vase-easter-egg {
+    position: absolute;
+    bottom: 16px;
+    right: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px 6px 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    z-index: 10;
+    backdrop-filter: blur(4px);
+}
+
+.vase-easter-egg:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.vase-egg-icon {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.vase-egg-label {
+    letter-spacing: 0.03em;
+}
+
+/* Vase modal overlay */
+.vase-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.vase-modal-box {
+    background: #12141f;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 720px;
+    max-height: 90vh;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+}
+
+.vase-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.vase-modal-title-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.vase-modal-icon {
+    font-size: 28px;
+    line-height: 1;
+}
+
+.vase-modal-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.vase-modal-subtitle {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.45);
+    margin: 2px 0 0;
+}
+
+.vase-modal-close {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+}
+
+.vase-modal-close:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+.vase-modal-canvas {
+    width: 100%;
+    height: 420px;
+    position: relative;
+    background: #0c0e18;
+}
+
+.vase-modal-canvas canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.vase-modal-footer {
+    padding: 16px 24px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.vase-modal-hint {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.35);
+    margin: 0;
+}
+
+.vase-modal-export {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    background: rgba(46, 194, 126, 0.15);
+    border: 1px solid rgba(46, 194, 126, 0.3);
+    border-radius: 8px;
+    color: #2ec27e;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.vase-modal-export:hover {
+    background: rgba(46, 194, 126, 0.25);
+    border-color: rgba(46, 194, 126, 0.5);
+    transform: translateY(-1px);
+}
+
+.vase-export-icon {
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .vase-modal-canvas { height: 300px; }
+    .vase-modal-footer { flex-direction: column; text-align: center; }
+    .vase-easter-egg { bottom: 10px; right: 10px; font-size: 11px; padding: 5px 10px; }
 }
 
 /* ── Memory entries — reflective content styling ───────────────────────── */

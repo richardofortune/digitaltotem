@@ -33,6 +33,16 @@ If you're curious enough to be looking at this then we'll probably have fun work
     <link href="css/bootstrap.min.css?v=20260412" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+        <!-- Iconify loader for massive icon selection -->
+        <script src="js/iconify.min.js"></script>
+        <!-- Feature flags: set to false to disable features for public -->
+        <script>
+            window.FEATURE_FLAGS = {
+                lifeVase: false, // 3D vase easter egg
+                admin: false,    // admin UI/tools
+                experimental: false // for future use
+            };
+        </script>
     <!-- Leaflet (map view) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
@@ -55,6 +65,7 @@ If you're curious enough to be looking at this then we'll probably have fun work
     <script type="text/javascript" src="js/views/map.js"></script>
     <script type="text/javascript" src="js/views/constellation.js"></script>
     <script type="text/javascript" src="js/views/valence.js"></script>
+    <script type="text/javascript" src="js/views/vase.js"></script>
     <script type="text/javascript" src="js/prompt-banner.js"></script>
     <script type="text/javascript" src="js/prompt-modal.js"></script>
     <script type="text/javascript" src="js/filter.js"></script>
@@ -221,6 +232,19 @@ If you're curious enough to be looking at this then we'll probably have fun work
 <!-- BEGIN VALENCE VIEW -->
 <div id="valenceView" class="valence-view js-view-container" style="display:none" aria-label="Valence view">
     <div id="valenceCanvas" class="valence-canvas"></div>
+    <button class="vase-easter-egg" id="vaseEasterEgg" title="Turn your timeline into a 3D vase" style="display:none">
+        <span class="vase-egg-icon">&#x1FAD9;</span>
+        <span class="vase-egg-label">Life Vase</span>
+    </button>
+        <script>
+            // Hide/show features based on flags
+            document.addEventListener('DOMContentLoaded', function() {
+                if (window.FEATURE_FLAGS && window.FEATURE_FLAGS.lifeVase) {
+                    var vaseBtn = document.getElementById('vaseEasterEgg');
+                    if (vaseBtn) vaseBtn.style.display = '';
+                }
+            });
+        </script>
 </div>
 <!-- /END VALENCE VIEW -->
 
